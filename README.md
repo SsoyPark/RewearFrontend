@@ -1,4 +1,4 @@
-# RezeroBackend
+# RezeroFrontend
 ## 작업 시작 전 필독
 1. 처음에는 `rel/releases` 브랜치를 pull받고 작업을 시작합니다.
 
