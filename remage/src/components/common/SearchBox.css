@@ -1,0 +1,24 @@
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f2f4f6;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    /* 고정 너비 290px */
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;
+    border: none;
+    /* 윤곽선 제거 */
+    background-color: transparent;
+    /* 배경색 투명으로 설정 */
+    outline: none;
+    /* 포커스 상태에서의 윤곽선 제거 */
+    font-size: 16px;
+}

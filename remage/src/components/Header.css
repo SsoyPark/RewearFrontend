@@ -2,13 +2,29 @@
     /* 임시 영역 */
     background-color: white;
     display: flex;
+    width: 100%;
     height: 50px;
     align-items: center;
 }
 
+.header-line-2 {
+    background-color: white;
+    display: flex;
+    height: 70px;
+    align-items: center;
+}
+
+
 .login-logout-buttons {
     position: absolute;
     display: flex;
-    right: 20%;
     gap: 19px;
+    right: 18%;
+}
+
+.search-profile-contents {
+    position: absolute;
+    display: flex;
+    right: 18%;
+    gap: 29px;
 }
