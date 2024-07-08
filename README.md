@@ -31,7 +31,8 @@
 ```bash
 npx create-react-app@5.0.1 remage
 cd remage
-npm install react@18.3 react-dom@18.3 react-router-dom@6.24
+npm install react@18.3 react-dom@18.3 react-router-dom@6.24 # 기본 기능
+npm install react-icons #아이콘
 ```
 
 ### 깃 클론 후 의존성 설치

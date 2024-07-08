@@ -1,0 +1,14 @@
+.header-line-1 {
+    /* 임시 영역 */
+    background-color: white;
+    display: flex;
+    height: 50px;
+    align-items: center;
+}
+
+.login-logout-buttons {
+    position: absolute;
+    display: flex;
+    right: 20%;
+    gap: 19px;
+}
