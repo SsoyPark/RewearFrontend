@@ -1,0 +1,67 @@
+.login-page {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.login-title {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.user-type-selector {
+    display: flex;
+    gap: 10px;
+    width: 290px;
+    height: 40px;
+    background-color: #F4F5F6;
+    margin-top: 40px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.login-form-group {
+    margin-top: 16px;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.text-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-buttons .text-button+.text-button::before {
+    content: '|';
+    margin: 0 0.5em;
+    color: #ddd;
+    /* 구분 기호 색상 */
+}
+
+.login-button {
+    margin-top: 50px;
+}
+
+.login-guide-group {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.login-guide-text {
+    font-size: 12px;
+    font-weight: regular;
+}

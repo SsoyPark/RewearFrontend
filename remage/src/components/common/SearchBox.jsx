@@ -17,7 +17,7 @@ const SearchBox = () => {
   return (
     <div className="search-box">
       <input
-        className="input-box"
+        className="search-input-box"
         type="text"
         value={query}
         onChange={handleInputChange}

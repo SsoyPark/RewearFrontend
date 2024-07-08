@@ -1,0 +1,56 @@
+/* 기본 체크박스를 숨기고 커스텀 체크박스 스타일을 적용합니다 */
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: medium;
+}
+
+.form-checkbox input[type="checkbox"] {
+    /* 기본 체크박스를 숨깁니다 */
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"]+label {
+    /* 커스텀 체크박스 스타일 */
+    position: relative;
+    padding-left: 23px;
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"]+label::before {
+    /* 가짜 체크박스 */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    /* 체크박스 너비 */
+    height: 14px;
+    /* 체크박스 높이 */
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.form-checkbox input[type="checkbox"]:checked+label::before {
+    /* 체크된 상태의 가짜 체크박스 스타일 */
+    background-color: white;
+    border-color: #ddd;
+}
+
+
+
+.form-checkbox input[type="checkbox"]:checked+label::after {
+    /* 체크 표시 스타일 */
+    content: "✓";
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #007BFF;
+}

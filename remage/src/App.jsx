@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./pages/Home"; // Home 컴포넌트 불러오기
+import Login from "./pages/Login";
 import LoginGeneral from "./pages/LoginGeneral";
 import LoginCompany from "./pages/LoginCompany";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,8 +15,9 @@ function App() {
         {/* <Sidebar /> */}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login/general/" element={<LoginGeneral />} />
-          <Route path="/login/company/" element={<LoginCompany />} />
+          <Route path="/login/" element={<Login />} />
+          {/* <Route path="/login/general/" element={<LoginGeneral />} />
+          <Route path="/login/company/" element={<LoginCompany />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

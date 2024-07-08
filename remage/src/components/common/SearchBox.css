@@ -12,7 +12,7 @@
     box-sizing: border-box;
 }
 
-input {
+.search-input-box {
     width: 100%;
     border: none;
     /* 윤곽선 제거 */

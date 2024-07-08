@@ -1,3 +1,23 @@
 .text-button {
     cursor: pointer;
 }
+
+.login-page-button,
+.sign-in-page-button {
+    color: #767676;
+    font-size: 16px;
+    font-weight: "regular";
+}
+
+.user-name-find,
+.password-find {
+    color: #767676;
+    font-size: 12px;
+    font-weight: "regular";
+}
+
+.login-guide-button {
+    color: #47C282;
+    font-size: 12px;
+    font-weight: bold;
+}

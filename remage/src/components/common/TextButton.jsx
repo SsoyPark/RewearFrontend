@@ -1,10 +1,10 @@
 import React from "react";
 import "./TextButton.css";
 
-const TextButton = ({ children, onClick }) => {
+const TextButton = ({ text, onClick, className }) => {
   return (
-    <div className="text-button" onClick={onClick}>
-      {children}
+    <div className={`text-button ${className}`} onClick={onClick}>
+      {text}
     </div>
   );
 };

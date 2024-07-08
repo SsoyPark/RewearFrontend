@@ -10,14 +10,18 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate("/login/general/");
+    navigate("/login/");
   };
   return (
     <div>
       <div className="header-line-1">
         <div className="login-logout-buttons">
-          <TextButton onClick={handleLoginClick}>로그인</TextButton>
-          <TextButton>회원가입</TextButton>
+          <TextButton
+            className="login-page-button"
+            onClick={handleLoginClick}
+            text="로그인"
+          />
+          <TextButton className="sign-in-page-button" text="회원가입" />
         </div>
       </div>
       <div className="header-line-2">

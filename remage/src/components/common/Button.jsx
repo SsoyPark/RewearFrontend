@@ -1,23 +1,12 @@
 import React from "react";
+import "./Button.css";
 
-const Button = ({ children, onClick, disabled, style = {} }) => {
+const Button = ({ onClick, className, text }) => {
   return (
-    <button style={{ ...defaultStyle, ...style }} onClick={onClick}>
-      {children}
+    <button className={`button-component ${className}`} onClick={onClick}>
+      {text}
     </button>
   );
 };
 
 export default Button;
-
-const defaultStyle = {
-  border: "none",
-  borderRadius: "5px",
-  height: "32px",
-  width: "135px",
-  fontSize: "12px",
-  fontWeight: "bold",
-  backgroundColor: "#47C282",
-  color: "white",
-  cursor: "pointer",
-};
