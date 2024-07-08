@@ -23,3 +23,14 @@
 - `refactor`: 코드 리팩토링
 - `test`: 테스트 추가 또는 수정
 - 예시 : feat: 사용자 로그인 기능 추가
+
+
+## 프로젝트 환경
+
+### 초기화
+```bash
+npx create-react-app@5.0.1 remage
+cd remage
+npm install react@18.3 react-dom@18.3 react-router-dom@6.24
+```
+
