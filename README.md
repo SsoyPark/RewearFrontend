@@ -34,3 +34,49 @@ cd remage
 npm install react@18.3 react-dom@18.3 react-router-dom@6.24
 ```
 
+### 깃 클론 후 의존성 설치
+```bash
+cd remage
+npm install #의존성 설치
+npm start # 프로젝트 시작
+```
+
+## 프로젝트 구조
+```text
+project-root/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/          # 재사용 가능한 컴포넌트
+│   │   ├── common/         # 공통 컴포넌트 (Button, Input, Modal 등)
+│   │   ├── Header.jsx      # 헤더 컴포넌트
+│   │   ├── Sidebar.jsx     # 사이드바 컴포넌트
+│   │   └── ...             # 기타 컴포넌트 (게시글, 댓글, 상품 카드 등)
+│   ├── pages/               # 페이지별 컴포넌트
+│   │   ├── Home.jsx        # 메인 페이지
+│   │   ├── SignUp.jsx      # 회원가입 페이지
+│   │   ├── Login.jsx       # 로그인 페이지
+│   │   ├── MyPage
+|   |   |   ├── MyPage.jsx      # 마이페이지
+|   |   |   └── ...
+│   │   ├── RefoamRequest.jsx # 리폼 요청 페이지
+│   │   ├── RefoamOrder.jsx # 리폼 주문 관리 페이지
+│   │   ├── Board.jsx       # 게시판 페이지 (리뷰, 인기, 최신 등)
+│   │   └── ...             # 기타 페이지
+│   ├── services/            # API 요청 및 비즈니스 로직 처리
+│   │   ├── auth.js         # 인증 관련 서비스 (로그인, 회원가입 등)
+│   │   ├── api.js          # 기타 API 요청 서비스
+│   │   └── ...
+│   ├── stores/              # 상태 관리 (Recoil, Zustand 등 사용)
+│   │   ├── authStore.js     # 인증 상태 관리
+│   │   ├── userStore.js     # 사용자 정보 관리
+│   │   └── ...
+│   ├── utils/               # 유틸리티 함수 (helper functions)
+│   │   └── ...
+│   ├── styles/              # 전역 스타일 (CSS Modules 또는 CSS-in-JS)
+│   │   └── ...
+│   ├── App.jsx              # 최상위 컴포넌트
+│   ├── index.jsx            # 애플리케이션 진입점
+│   └── ...                  # 기타 설정 파일 (e.g., routes.jsx)
+└── ...
+```
