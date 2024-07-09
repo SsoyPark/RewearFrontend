@@ -101,7 +101,7 @@ const Login = () => {
                 : "login-inactive-button"
             }
             text="일반"
-          ></Button>
+          />
           <Button
             onClick={handleCompanyClick}
             className={
@@ -110,7 +110,7 @@ const Login = () => {
                 : "login-inactive-button"
             }
             text="기업"
-          ></Button>
+          />
         </div>
         {selectedUserType === "general" ? <GeneralLogin /> : <CompanyLogin />}
       </div>
