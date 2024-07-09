@@ -12,6 +12,7 @@
     display: flex;
     height: 70px;
     align-items: center;
+    border-bottom: 1px solid #ddd;
 }
 
 
@@ -20,6 +21,13 @@
     display: flex;
     gap: 19px;
     right: 18%;
+}
+
+.hamburger-logo-contents {
+    position: absolute;
+    display: flex;
+    left: 18%;
+    gap: 50px
 }
 
 .search-profile-contents {

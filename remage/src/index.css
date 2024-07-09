@@ -91,3 +91,17 @@ h2.section-title {
     padding-bottom: 8px;
     border-bottom: 1px solid #000;
 }
+
+/* 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 1px;
+  background-color: red;
+  z-index: 1000;
+  pointer-events: none;
+} */
+
