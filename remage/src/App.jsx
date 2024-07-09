@@ -6,6 +6,7 @@ import LoginCompany from "./pages/LoginCompany";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import Mypage from "./pages/Mypage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/" element={<Login />} />
+          <Route path="/mypage/" element={<Mypage />} />
           {/* <Route path="/login/general/" element={<LoginGeneral />} />
           <Route path="/login/company/" element={<LoginCompany />} /> */}
         </Routes>
