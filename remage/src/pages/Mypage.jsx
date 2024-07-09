@@ -3,17 +3,10 @@ import { Link } from 'react-router-dom';
 import './Mypage.css';
 
 const Mypage = () => {
-    const notices = [
-        '공지사항 1',
-        '공지사항 2',
-        '공지사항 3',
-        '공지사항 4',
-        '공지사항 5',
-      ];
     return (
         <div className="dashboard-container">
             <div className="dashboard-content">
-                <aside className="sidebar">
+                <aside className="mp-sidebar">
                     <div className="user-info">
                         <div className="user-avatar">
                             <span className="material-icons user-avatar-icons">person</span>

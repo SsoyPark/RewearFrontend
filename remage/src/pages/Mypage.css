@@ -3,11 +3,13 @@
 }
 
 .dashboard-content {
-display: flex;
-margin-top: 20px;
+    display: flex;
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
 }
 
-.sidebar {
+.mp-sidebar {
     width: 300px; /* 사이드바 너비 조정 */
     /* background-color: #f5f5f5; */
     padding: 20px;
@@ -199,4 +201,3 @@ padding: 20px;
     border-right: #fff;
     /* width: 100%; */
 }
-
