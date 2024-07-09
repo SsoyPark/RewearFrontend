@@ -3,7 +3,8 @@
 }
 
 .login-page-button,
-.sign-in-page-button {
+.sign-in-page-button,
+.logout-page-button {
     color: #767676;
     font-size: 16px;
     font-weight: "regular";
