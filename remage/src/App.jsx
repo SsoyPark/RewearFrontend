@@ -8,6 +8,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import Mypage from "./pages/Mypage";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/" element={<Login />} />
+          <Route path="/mypage/" element={<Mypage />} />
           <Route path="/sign-up/" element={<SignUp />} />
           {/* <Route path="/login/general/" element={<LoginGeneral />} />
           <Route path="/login/company/" element={<LoginCompany />} /> */}
