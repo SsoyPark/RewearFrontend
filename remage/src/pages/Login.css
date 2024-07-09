@@ -18,6 +18,7 @@
 
 .user-type-selector {
     display: flex;
+    justify-content: center;
     gap: 10px;
     width: 290px;
     height: 40px;
