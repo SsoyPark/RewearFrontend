@@ -22,7 +22,7 @@ function App() {
           <Route path="/login/company/" element={<LoginCompany />} /> */}
           <Route path="/service/" />
           <Route path="/service/general/" element={<ServiceGeneral />} />
-          <Route path="/service/general/write/" element={<ServiceGeneral />} />
+          <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
         </Routes>
       </div>
     </BrowserRouter>
