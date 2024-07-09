@@ -3,9 +3,12 @@ import TextButton from "./TextButton";
 
 const SidebarItem = ({ text, onClick, className, id }) => {
   return (
-    <li>
-      <TextButton text={text} onClick={onClick} className={className} id={id} />
-    </li>
+    <TextButton
+      text={text}
+      onClick={onClick}
+      className={`sidebar-item ${className}`}
+      id={id}
+    />
   );
 };
 

@@ -27,3 +27,11 @@
     font-weight: regular;
     font-size: 36px
 }
+
+.sidebar-item {
+    font-weight: medium;
+    font-size: 14px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px
+}

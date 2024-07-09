@@ -14,11 +14,15 @@ function App() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const shutDownSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
     <BrowserRouter>
       <div>
         <Header toggleSidebar={toggleSidebar} />
-        <Sidebar isOpen={isSidebarOpen} />
+        <Sidebar isOpen={isSidebarOpen} shutDownSidebar={shutDownSidebar} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/" element={<Login />} />
