@@ -13,11 +13,8 @@ const Header = ({ toggleSidebar }) => {
   const isLoggedIn = false;
   const navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    navigate("/login/");
-  };
-  const handleLogoClick = () => {
-    navigate("/");
+  const handleNavigation = (path) => {
+    navigate(path);
   };
   return (
     <div>
@@ -30,10 +27,14 @@ const Header = ({ toggleSidebar }) => {
           <div className="login-logout-buttons">
             <TextButton
               className="login-page-button"
-              onClick={handleLoginClick}
+              onClick={() => handleNavigation("/login/")}
               text="로그인"
             />
-            <TextButton className="sign-in-page-button" text="회원가입" />
+            <TextButton
+              className="sign-in-page-button"
+              text="회원가입"
+              onClick={() => handleNavigation("/sign-up/")}
+            />
           </div>
         )}
       </div>
@@ -48,7 +49,7 @@ const Header = ({ toggleSidebar }) => {
           <TextButton
             id="logo-main-page"
             text="REMAGE"
-            onClick={handleLogoClick}
+            onClick={() => handleNavigation("/")}
           />
         </div>
         <div className="search-profile-contents">
