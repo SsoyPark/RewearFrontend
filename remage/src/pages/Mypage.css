@@ -8,42 +8,66 @@ margin-top: 20px;
 }
 
 .sidebar {
-width: 300px; /* 사이드바 너비 조정 */
-background-color: #f5f5f5;
-padding: 20px;
-box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    width: 300px; /* 사이드바 너비 조정 */
+    /* background-color: #f5f5f5; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* 화면 높이에 맞춤 */
 }
 
+
 .user-info {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 .user-avatar {
-font-size: 50px; /* 아바타 크기 조정 */
-background-color: #ddd;
-width: 70px;
-height: 70px;
-border-radius: 50%;
-display: flex;
-justify-content: center;
-align-items: center;
+    font-size: 50px; /* 아바타 크기 조정 */
+    background-color: #ddd;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-avatar-icons {
+    font-size: 40px; /* 아이콘 크기 조정 */
 }
 
 .user-name {
-margin-top: 10px;
+margin-top: 20px;
 font-size: 18px;
 }
 
-.logout-button {
-margin-top: 10px;
-padding: 5px 10px;
-border: none;
-background-color: #f44336;
-color: #fff;
-cursor: pointer;
+.editprofile-button,
+.logout-button,
+.delete-account-button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.editprofile-button {
+    margin-top: 30px;
+}
+
+.delete-account-button {
+    align-items: center;
+}
+  
+.spacer {
+    flex-grow: 1;
 }
 
 .main-content {
@@ -51,57 +75,71 @@ flex-grow: 1;
 padding: 20px;
 }
 
+.section-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+.section-title-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    /* padding: 10px; */
+    /* margin-top: 10px; */
+}
+
+.arrow-icon {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
 .order-summary {
-display: flex;
-justify-content: space-around;
-margin-bottom: 20px;
-height: 170px;
-background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    height: 170px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
 }
 
 .order-item {
-/* flex-grow: 1;
-text-align: center;
-padding: 20px;
-background-color: #f0f0f0;
-margin: 0 10px;
-border-radius: 4px; */
-flex-grow: 1;
-text-align: center;
-padding: 20px;
-background-color: #f0f0f0;
-margin: 0 10px;
-border-radius: 4px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin: 0 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .order-item span {
-display: block;
-font-size: 24px;
-font-weight: bold;
-margin-top: 5px;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
 .highlighted-section {
-background-color: #ffcccb;
-height: 50px;
-border-radius: 4px;
-margin-bottom: 20px;
+    background-color: #ffcccb;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .activities-section {
     width: 100%;
     text-align: left;
-    padding: 20px;
-  }
-  
-.section-title {
-    font-size: 18px;
-    margin-bottom: 10px;
+    /* padding: 20px; */
 }
+  
   
 .activities-grid {
   display: flex;
@@ -109,19 +147,56 @@ margin-bottom: 20px;
   justify-content: space-between; /* 두 열 사이의 공간을 동일하게 분배 */
 }
 
+
 .activity-item {
-  flex: 1 1 45%; /* 두 개의 아이템이 한 줄에 배치되도록 설정 */
-  margin: 10px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
+    flex: 1 1 45%; /* 두 개의 아이템이 한 줄에 배치되도록 설정 */
+    margin: 10px 10px;
+    padding: 10px;
+    background-color: #fff;
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* 아이템 간의 공간을 동일하게 분배 */
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
 
 .full-width {
-  flex: 1 1 100%; /* 한 줄을 모두 차지하도록 설정 */
-  margin-top: 10px; /* 상위 항목들과 간격을 두기 위해 여백 추가 */
+    flex: 1 1 calc(50% - 20px); /* 너비를 50%로 설정하고 간격 고려 */
+    margin: 10px 10px;
+    padding: 10px;
+    background-color: #fff;
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between; /* 아이템 간의 공간을 동일하게 분배 */
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
+
+.activity-item-arrow-icon {
+    font-size: 24px;
+    right: 10%
+}
+
+.notices-section {
+    width: 100%;
+    text-align: left;
+}
+
+.notices-list {
+    list-style: none;
+    padding: 0 0;
+    margin: 10px;
+}
+
+.notice-item {
+    padding: 15px 10px;
+    border: 1px solid #ddd;
+    border-left: #fff;
+    border-right: #fff;
+    /* width: 100%; */
+}
+
