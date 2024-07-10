@@ -15,11 +15,14 @@ const Textarea = ({
     ...classArray.map((cls) => styles[cls])
   );
   return (
-    <textarea className={componentClass}
-      id={id}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
+    <div className={componentClass}>
+        <textarea
+            className={styles.textareaInner}
+            id={id}
+            placeholder={placeholder}
+            onChange={onChange}
+        />
+    </div>
   );
 };
 
