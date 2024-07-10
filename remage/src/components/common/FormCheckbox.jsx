@@ -1,10 +1,17 @@
 import React from "react";
-import "./FormCheckbox.css";
+import classNames from "classnames";
+import styles from "./FormCheckbox.module.css";
 
-const FormCheckbox = ({ id, label }) => {
+const FormCheckbox = ({ id, label, onChange, className }) => {
+  const classArray = className ? className.split(" ") : [];
+
+  const componentClass = classNames(
+    styles["component"],
+    ...classArray.map((cls) => styles[cls])
+  );
   return (
-    <div className="form-checkbox">
-      <input id={id} type="checkbox" />
+    <div className={componentClass}>
+      <input id={id} type="checkbox" onChange={onChange} />
       <label htmlFor={id}>{label}</label>
     </div>
   );

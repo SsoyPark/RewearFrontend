@@ -10,13 +10,15 @@
 }
 
 .mp-sidebar {
-    width: 300px; /* 사이드바 너비 조정 */
+    width: 300px;
+    /* 사이드바 너비 조정 */
     /* background-color: #f5f5f5; */
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh; /* 화면 높이에 맞춤 */
+    height: 100vh;
+    /* 화면 높이에 맞춤 */
 }
 
 
@@ -29,7 +31,8 @@
 }
 
 .user-avatar {
-    font-size: 50px; /* 아바타 크기 조정 */
+    font-size: 50px;
+    /* 아바타 크기 조정 */
     background-color: #ddd;
     width: 60px;
     height: 60px;
@@ -40,12 +43,13 @@
 }
 
 .user-avatar-icons {
-    font-size: 40px; /* 아이콘 크기 조정 */
+    font-size: 40px;
+    /* 아이콘 크기 조정 */
 }
 
 .user-name {
-margin-top: 20px;
-font-size: 18px;
+    margin-top: 20px;
+    font-size: 18px;
 }
 
 .editprofile-button,
@@ -67,14 +71,14 @@ font-size: 18px;
 .delete-account-button {
     align-items: center;
 }
-  
+
 .spacer {
     flex-grow: 1;
 }
 
 .main-content {
-flex-grow: 1;
-padding: 20px;
+    flex-grow: 1;
+    padding: 20px;
 }
 
 .section-title {
@@ -141,17 +145,19 @@ padding: 20px;
     text-align: left;
     /* padding: 20px; */
 }
-  
-  
+
+
 .activities-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* 두 열 사이의 공간을 동일하게 분배 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* 두 열 사이의 공간을 동일하게 분배 */
 }
 
 
 .activity-item {
-    flex: 1 1 45%; /* 두 개의 아이템이 한 줄에 배치되도록 설정 */
+    flex: 1 1 45%;
+    /* 두 개의 아이템이 한 줄에 배치되도록 설정 */
     margin: 10px 10px;
     padding: 10px;
     background-color: #fff;
@@ -159,13 +165,15 @@ padding: 20px;
     border-radius: 4px;
     cursor: pointer;
     display: flex;
-    justify-content: space-between; /* 아이템 간의 공간을 동일하게 분배 */
+    justify-content: space-between;
+    /* 아이템 간의 공간을 동일하게 분배 */
     align-items: center;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  }
+}
 
 .full-width {
-    flex: 1 1 calc(50% - 20px); /* 너비를 50%로 설정하고 간격 고려 */
+    flex: 1 1 calc(50% - 20px);
+    /* 너비를 50%로 설정하고 간격 고려 */
     margin: 10px 10px;
     padding: 10px;
     background-color: #fff;
@@ -173,7 +181,8 @@ padding: 20px;
     border-radius: 4px;
     cursor: pointer;
     display: flex;
-    justify-content: space-between; /* 아이템 간의 공간을 동일하게 분배 */
+    justify-content: space-between;
+    /* 아이템 간의 공간을 동일하게 분배 */
     align-items: center;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }

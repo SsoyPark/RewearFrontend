@@ -1,0 +1,40 @@
+.wrap {
+    min-width: 588px;
+    width: 49%;
+    margin: 0 auto;
+}
+
+/* step 부제목 스타일 */
+.steps {
+    width: 524px;
+    margin: 20px auto 0 auto;
+}
+
+/* col 2줄 정렬 */
+/*
+.col-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+*/
+
+.col-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(294px, 1fr));
+}
+/*
+.col FormInput {
+    display: gird;
+    grid-template-columns: repeat(auto-fill, minmax(147px, 1fr));
+}
+*/
+.col-container .new-line {
+    grid-column: 1 /-1;
+}
+.col-container .full-width > .form-input > input {
+    width: 100%;
+    height: 80px;
+    padding: 0 16px;
+    overflow-y: scroll;
+}

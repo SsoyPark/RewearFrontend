@@ -2,7 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import { MdOutlineClose } from "react-icons/md";
 import IconButton from "./common/IconButton";
-import SidebarItem from "./common/SidebarItem";
+import SidebarItem from "./SidebarItem";
 import TextButton from "./common/TextButton";
 
 const Sidebar = ({ isOpen, shutDownSidebar }) => {

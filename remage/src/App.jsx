@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import LoginGeneral from "./pages/LoginGeneral";
 import LoginCompany from "./pages/LoginCompany";
+import ServiceGeneral from "./pages/ServiceGeneral";
+import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -32,6 +34,9 @@ function App() {
           <Route path="/mypage/" element={<Mypage />} />
           {/* <Route path="/login/general/" element={<LoginGeneral />} />
           <Route path="/login/company/" element={<LoginCompany />} /> */}
+          <Route path="/service/" />
+          <Route path="/service/general/" element={<ServiceGeneral />} />
+          <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
         </Routes>
       </div>
     </BrowserRouter>

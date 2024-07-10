@@ -1,5 +1,5 @@
 import React from "react";
-import TextButton from "./TextButton";
+import TextButton from "./common/TextButton";
 
 const SidebarItem = ({ text, onClick, className, id }) => {
   return (

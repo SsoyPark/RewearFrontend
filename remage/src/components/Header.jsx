@@ -27,7 +27,8 @@ const Header = ({ toggleSidebar }) => {
           <div className="login-logout-buttons">
             <TextButton
               className="login-page-button"
-              onClick={() => handleNavigation("/login/")}
+              // onClick={() => handleNavigation("/login/")}
+              url="/login/"
               text="로그인"
             />
             <TextButton
