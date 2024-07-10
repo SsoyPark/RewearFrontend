@@ -19,6 +19,7 @@
 }
 */
 
+/* 인풋 및 라벨 정렬 */
 .col-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(294px, 1fr));
@@ -32,9 +33,6 @@
 .col-container .new-line {
     grid-column: 1 /-1;
 }
-.col-container .full-width > .form-input > input {
-    width: 100%;
-    height: 80px;
-    padding: 0 16px;
-    overflow-y: scroll;
+.col-container .full-width-input textarea {
+
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 // import Button from "../components/common/Button";
+import ImageUploader from "../components/common/ImageUploader";
 import FormInput from "../components/common/FormInput";
+import Textarea from "../components/common/Textarea";
 import { useNavigate } from "react-router-dom";
-import "../index.css"
-import "./ServiceGeneralWrite.css"
+import "./ServiceGeneralWrite.css";
 
 const ServiceGeneralWrite = () => {
   const navigate = useNavigate();
@@ -24,11 +25,9 @@ const ServiceGeneralWrite = () => {
                         <span className="step round"><span>3.<span className="space"></span>주문 완료</span></span>
                     </div>
                     <div className="content">
-                        <div className="paragraph-title"><h3>리폼할 의류 사진</h3></div>
-                            <div>
-
-                            </div>
-                        <div className="paragraph-title"><h3>의류 정보</h3></div>
+                        <h3 className="paragraph-title">리폼할 의류 사진</h3>
+                            <ImageUploader />
+                        <h3 className="paragraph-title">의류 정보</h3>
                         <div className="clothes-info col-container">
                             <div className="col">
                                 <FormInput
@@ -62,7 +61,7 @@ const ServiceGeneralWrite = () => {
 
                             </div>
                         </div>
-                        <div className="paragraph-title"><h3>리폼 요청사항</h3></div>
+                        <h3 className="paragraph-title">리폼 요청사항</h3>
                         <div className="reform-info col-container">
                             <div className="col">
                                 <FormInput
@@ -100,11 +99,13 @@ const ServiceGeneralWrite = () => {
                                     value={' '}
                                 />
                             </div>
-                            <div className="new-line full-width">
-                                <FormInput
+                            <div className="new-line full-width-input">
+                                <Textarea
                                     id="clothes-others"
-                                    value={'요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.요청사항을 입력해주세요.'}
+                                    placeholder=" "
                                 />
+
+
                             </div>
                         </div>
                     </div>
