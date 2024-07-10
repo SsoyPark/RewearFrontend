@@ -1,14 +1,14 @@
-.form-input {
+.component {
     display: flex;
     flex-direction: column;
     font-weight: medium;
 }
 
-.form-input label {
+.component label {
     font-size: 14px;
 }
 
-.form-input input {
+.component input {
     width: 290px;
     height: 40px;
     line-height: 3;
@@ -22,7 +22,7 @@
     font-weight: bol;
 }
 
-.form-input input::placeholder {
+.component input::placeholder {
     color: #999;
     font-size: 12px;
 }

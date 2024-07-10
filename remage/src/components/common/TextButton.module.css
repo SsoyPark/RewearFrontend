@@ -1,4 +1,4 @@
-.text-button {
+.component {
     cursor: pointer;
 }
 
@@ -35,4 +35,8 @@
     height: 40px;
     margin-left: 20px;
     margin-top: 10px
+}
+
+#a.component {
+    text-decoration: none;
 }
