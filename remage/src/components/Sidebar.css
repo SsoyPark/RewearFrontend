@@ -15,3 +15,12 @@
 .sidebar.open {
     transform: translateX(0);
 }
+
+#sidebar-escape {
+    display: flex;
+    justify-content: end;
+}
+
+#sidebar-items {
+    font-size: 24;
+}

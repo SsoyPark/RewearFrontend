@@ -20,19 +20,19 @@
     position: absolute;
     display: flex;
     gap: 19px;
-    right: 18%;
+    right: 10%;
 }
 
 .hamburger-logo-contents {
     position: absolute;
     display: flex;
-    left: 18%;
+    left: 10%;
     gap: 50px
 }
 
 .search-profile-contents {
     position: absolute;
     display: flex;
-    right: 18%;
+    right: 10%;
     gap: 29px;
 }

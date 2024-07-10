@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "./pages/Home"; // Home 컴포넌트 불러오기
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp/SignUp";
 import LoginGeneral from "./pages/LoginGeneral";
 import LoginCompany from "./pages/LoginCompany";
 import { useState } from "react";
@@ -15,14 +16,19 @@ function App() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const shutDownSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
     <BrowserRouter>
       <div>
         <Header toggleSidebar={toggleSidebar} />
-        <Sidebar isOpen={isSidebarOpen} />
+        <Sidebar isOpen={isSidebarOpen} shutDownSidebar={shutDownSidebar} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/" element={<Login />} />
+          <Route path="/sign-up/" element={<SignUp />} />
           <Route path="/mypage/" element={<Mypage />} />
           {/* <Route path="/login/general/" element={<LoginGeneral />} />
           <Route path="/login/company/" element={<LoginCompany />} /> */}

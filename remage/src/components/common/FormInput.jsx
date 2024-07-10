@@ -1,5 +1,6 @@
 import React from "react";
-import "./FormInput.css";
+import classNames from "classnames";
+import styles from "./FormInput.module.css";
 
 const FormInput = ({
   id,
@@ -8,9 +9,16 @@ const FormInput = ({
   value,
   placeholder,
   onChange,
+  className,
 }) => {
+  const classArray = className ? className.split(" ") : [];
+
+  const componentClass = classNames(
+    styles["component"],
+    ...classArray.map((cls) => styles[cls])
+  );
   return (
-    <div className="form-input">
+    <div className={componentClass}>
       <label htmlFor={id}>{label}</label>
       <input
         id={id}

@@ -1,9 +1,10 @@
-.text-button {
+.component {
     cursor: pointer;
 }
 
 .login-page-button,
-.sign-in-page-button {
+.sign-in-page-button,
+.logout-page-button {
     color: #767676;
     font-size: 16px;
     font-weight: "regular";
@@ -26,4 +27,16 @@
     font-family: "Black Han Sans", sans-serif;
     font-weight: regular;
     font-size: 36px
+}
+
+.sidebar-item {
+    font-weight: medium;
+    font-size: 14px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px
+}
+
+#a.component {
+    text-decoration: none;
 }

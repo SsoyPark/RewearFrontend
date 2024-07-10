@@ -11,7 +11,7 @@
   }; */
 
 
-.button-component {
+.component {
     border: none;
     border-radius: 5px;
     height: 32px;
@@ -21,6 +21,9 @@
     background-color: #47c282;
     color: white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -36,4 +39,23 @@
     color: white;
     /* font-size: 12px; */
     /* font-weight: bold; */
+}
+
+.navigation-button {
+    background-color: transparent;
+    color: #767676;
+    font-size: 16px;
+    font-weight: medium;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.navigation-button.active {
+    color: white;
+    background-color: #47c282;
+}
+
+.my-button {
+    background-color: black
 }
