@@ -1,5 +1,5 @@
 /* 기본 체크박스를 숨기고 커스텀 체크박스 스타일을 적용합니다 */
-.form-checkbox {
+.component {
     display: flex;
     align-items: center;
     font-size: 14px;
