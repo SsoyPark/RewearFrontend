@@ -55,7 +55,7 @@ const Header = ({ toggleSidebar }) => {
               <MdOutlineChatBubbleOutline style={{ fontSize: "24px" }} />
             </IconButton>
           )}
-          <IconButton url="/mypage">
+          <IconButton url="/mypage/">
             <FaUser style={{ fontSize: "24px" }} />
           </IconButton>
         </div>
