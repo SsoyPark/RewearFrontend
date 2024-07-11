@@ -34,6 +34,9 @@ html, body, #root, #root > div {
     max-width: 1200px;
     margin: 0 auto;
 }
+section {
+    padding-bottom: 80px;
+}
 
 /* 공용 스타일 속성 */
 .round {
@@ -90,4 +93,3 @@ h3.paragraph-title {
     padding-bottom: 8px;
     border-bottom: 1px solid #000;
 }
-
