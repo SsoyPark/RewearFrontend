@@ -111,9 +111,6 @@ h2.section-title {
 /* 컨텐츠 내 단락 제목 */
 h3.paragraph-title {
     margin: 40px 0 20px;
-}
-
-.paragraph-title h3 {
     font-size: 20px;
     font-weight: bold;
     line-height: 32px;
