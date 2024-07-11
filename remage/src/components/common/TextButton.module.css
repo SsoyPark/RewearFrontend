@@ -5,14 +5,14 @@
 .login-page-button,
 .sign-in-page-button,
 .logout-page-button {
-    color: #767676;
+    color: #495057;
     font-size: 16px;
     font-weight: "regular";
 }
 
 .user-name-find,
 .password-find {
-    color: #767676;
+    color: #495057;
     font-size: 12px;
     font-weight: "regular";
 }
@@ -39,4 +39,8 @@
 
 #a.component {
     text-decoration: none;
+}
+
+.btn-grey {
+    color: #495057;
 }
