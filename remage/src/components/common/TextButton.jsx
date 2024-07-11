@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./TextButton.module.css";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 const TextButton = ({ text, onClick, className, id, url = "" }) => {
   const classArray = className ? className.split(" ") : [];
@@ -13,9 +14,9 @@ const TextButton = ({ text, onClick, className, id, url = "" }) => {
   return (
     <>
       {url ? (
-        <a id={id} className={componentClass} href={`${baseUrl}${url}`}>
+        <Link id={id} className={componentClass} to={`${baseUrl}${url}`}>
           {text}
-        </a>
+        </Link>
       ) : (
         <div id={id} className={componentClass} onClick={onClick}>
           {text}

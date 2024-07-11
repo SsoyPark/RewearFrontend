@@ -49,6 +49,7 @@
     width: 100px;
     height: 30px;
     border-radius: 10px;
+    cursor: default;
 }
 
 .navigation-button.active {
@@ -56,6 +57,17 @@
     background-color: #47c282;
 }
 
-.my-button {
-    background-color: black
+.user-info-button {
+    width: 100px;
+    height: 40px;
+    background-color: white;
+    color: #47C282;
+    border: solid 1px #47C282;
+}
+
+.sign-up-complete {
+    color: #495057;
+    width: 132px;
+    background-color: white;
+    border: solid 1px #CDD3D9;
 }

@@ -1,17 +1,16 @@
-#sign-up-page {
+.sign-up-page {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#sign-up-title {
-    margin-top: 60px;
-    margin-bottom: 35px;
-    font-size: 48px;
-    font-weight: bold;
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#sign-up-navigation-bar {
+.sign-up-navigation-bar {
     display: flex;
     align-items: center;
     gap: 6px;
