@@ -51,6 +51,9 @@ a {
     max-width: 1200px;
     margin: 0 auto;
 }
+section {
+    padding-bottom: 80px;
+}
 
 /* 공용 스타일 속성 */
 .round {
@@ -106,7 +109,7 @@ h2.section-title {
 }
 
 /* 컨텐츠 내 단락 제목 */
-.paragraph-title {
+h3.paragraph-title {
     margin: 40px 0 20px;
 }
 
