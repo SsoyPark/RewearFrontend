@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-// import Button from "../components/common/Button";
 import ImageUploader from "../components/common/ImageUploader";
 import Button from "../components/common/Button";
-import FormInput from "../components/common/FormInput";
+// import FormInput from "../components/common/FormInput";
 import Textarea from "../components/common/Textarea";
 import SelectField from "../components/common/SelectField";
 import { useNavigate } from "react-router-dom";
