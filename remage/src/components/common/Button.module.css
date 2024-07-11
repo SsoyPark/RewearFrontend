@@ -86,3 +86,22 @@
     font-weight: 300;
     font-size: 14px;
 }
+
+.cancel,
+.confirm {
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+
+}
+
+.cancel {
+    background-color: white;
+    color: #495057;
+    border: solid 1px #E9ECEF;
+}
+
+.confirm {
+    color: white;
+    background-color: #47C282;
+}
