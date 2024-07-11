@@ -26,18 +26,23 @@
     grid-gap: 24px;
     row-gap: 8px;
 }
+
 /* FormInput 라벨과 인풋 영역 가로로 정렬 */
-.form-item > div {
+.form-item>div {
     display: flex;
     flex-direction: row;
     grid-gap: 12px;
 }
+
 .form-item label {
     flex: 1;
 }
-.form-item input, select {
+
+.form-item input,
+select {
     flex: 2;
-    margin: 0; /* FormInput 컴포넌트에 설정된 margin-top 초기화 */
+    margin: 0;
+    /* FormInput 컴포넌트에 설정된 margin-top 초기화 */
 }
 
 /*
@@ -52,14 +57,17 @@
 
 
 /* 라벨과 출력값 스타일 */
-.service-general-write label, .form-item p {
+.service-general-write label,
+.form-item p {
     height: 40px;
     font-size: 14px;
     line-height: 40px;
 }
+
 .service-general-write label {
     font-weight: 500;
 }
+
 .form-item p {
     color: #495057;
 }
@@ -74,7 +82,8 @@
     height: 40px;
     font-size: 16px;
 }
-.service-general-write .content > button:nth-of-type(2) {
+
+.service-general-write .content>button:nth-of-type(2) {
     position: relative;
     left: calc(100% - 100px);
     right: 0;
@@ -83,7 +92,7 @@
 }
 
 /* 텍스트 입력칸 여백 조정 */
-.reform-info .new-line > div {
+.reform-info .new-line>div {
     margin-top: 8px;
 }
 

@@ -12,7 +12,7 @@ const Header = ({ toggleSidebar }) => {
   const isLoggedIn = false;
 
   return (
-    <div>
+    <div className="header-container">
       <div className="header-line-1">
         {isLoggedIn ? (
           <div className="login-logout-buttons">
