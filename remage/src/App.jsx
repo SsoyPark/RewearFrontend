@@ -7,6 +7,7 @@ import LoginGeneral from "./pages/LoginGeneral";
 import LoginCompany from "./pages/LoginCompany";
 import ServiceGeneral from "./pages/ServiceGeneral";
 import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
+import ServiceGeneralComplete from "./pages/ServiceGeneralComplete";
 import ServiceGeneralRecommend from "./pages/ServiceGeneralRecommend";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -42,6 +43,7 @@ function App() {
           <Route path="/service/general/" element={<ServiceGeneral />} />
           <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
           <Route path="/service/general/write/recommend/" element={<ServiceGeneralRecommend />} />
+          <Route path="/service/general/write/complete/" element={<ServiceGeneralComplete />} />
           <Route path="/Board/" element={<Board />} />
         </Routes>
       </div>

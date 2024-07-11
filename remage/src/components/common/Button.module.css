@@ -71,3 +71,15 @@
     background-color: white;
     border: solid 1px #CDD3D9;
 }
+
+.btn-white {
+    background-color: #fff;
+    color: #495057;
+    border: 1px solid #CDD3D9;
+}
+
+.btn-go-home {
+    width: 132px;
+    height: 40px;
+    margin: 24px auto 0;
+}
