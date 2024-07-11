@@ -18,9 +18,9 @@ const ServiceGeneralWrite = () => {
                     <h2 className="section-title">주문하기</h2>
                     <div className="subtitle steps">
                         <span className="step round primary"><span>1.<span className="space"></span>주문서 작성하기</span></span>
-                        <span className="next">></span>
+                        <span className="next"></span>
                         <span className="step round"><span>2.<span className="space"></span>리폼 디자인 추천받기</span></span>
-                        <span className="next">></span>
+                        <span className="next"></span>
                         <span className="step round"><span>3.<span className="space"></span>주문 완료</span></span>
                     </div>
                     <div className="content">
