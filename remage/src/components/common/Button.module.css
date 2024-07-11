@@ -64,3 +64,10 @@
     color: #47C282;
     border: solid 1px #47C282;
 }
+
+.sign-up-complete {
+    color: #495057;
+    width: 132px;
+    background-color: white;
+    border: solid 1px #CDD3D9;
+}

@@ -56,6 +56,13 @@ const UserInfo = ({ setCurrentStage }) => {
       setIsPasswordValid(true);
       setPasswordSystemMessage("유효한 비밀번호 입니다.");
     }
+    if (newPassword !== passwordConfirm) {
+      setIsPasswordConfirmValid(false);
+      setPasswordConfirmSystemMessage("비밀번호가 일치하지 않습니다.");
+    } else {
+      setIsPasswordConfirmValid(true);
+      setPasswordConfirmSystemMessage("비밀번호가 일치합니다.");
+    }
   };
 
   const handlePasswordConfirmChange = (e) => {

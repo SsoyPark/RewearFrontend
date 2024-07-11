@@ -33,6 +33,7 @@
 .search-profile-contents {
     position: absolute;
     display: flex;
+    align-items: center;
     right: 10%;
     gap: 29px;
 }

@@ -1,0 +1,21 @@
+.complete-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.title {
+    color: #495057;
+    font-size: 20px;
+
+}
