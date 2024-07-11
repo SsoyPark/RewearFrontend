@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Mypage from "./pages/Mypage";
+import Board from "./pages/Board";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -37,6 +38,7 @@ function App() {
           <Route path="/service/" />
           <Route path="/service/general/" element={<ServiceGeneral />} />
           <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
+          <Route path="/Board/" element={<Board />} />
         </Routes>
       </div>
     </BrowserRouter>
