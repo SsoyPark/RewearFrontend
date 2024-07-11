@@ -2,7 +2,6 @@ import React from "react";
 import { FaUser, FaRegBell } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineChatBubbleOutline } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 
 import IconButton from "./common/IconButton";
 import TextButton from "./common/TextButton";
@@ -11,11 +10,7 @@ import "./Header.css";
 
 const Header = ({ toggleSidebar }) => {
   const isLoggedIn = false;
-  const navigate = useNavigate();
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
   return (
     <div>
       <div className="header-line-1">
@@ -27,14 +22,13 @@ const Header = ({ toggleSidebar }) => {
           <div className="login-logout-buttons">
             <TextButton
               className="login-page-button"
-              // onClick={() => handleNavigation("/login/")}
               url="/login/"
               text="로그인"
             />
             <TextButton
               className="sign-in-page-button"
               text="회원가입"
-              onClick={() => handleNavigation("/sign-up/")}
+              url="/sign-up/"
             />
           </div>
         )}
@@ -47,11 +41,7 @@ const Header = ({ toggleSidebar }) => {
               onClick={toggleSidebar}
             />
           </IconButton>
-          <TextButton
-            id="logo-main-page"
-            text="REMAGE"
-            onClick={() => handleNavigation("/")}
-          />
+          <TextButton id="logo-main-page" text="REMAGE" url="/" />
         </div>
         <div className="search-profile-contents">
           <SearchBox />

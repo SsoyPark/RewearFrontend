@@ -81,3 +81,89 @@ project-root/
 │   └── ...                  # 기타 설정 파일 (e.g., routes.jsx)
 └── ...
 ```
+
+## 스타일링
+앞으로 작성하는 전역 스타일을 제외한 css코드는 css modules를 이용해주세요.`MyStyle.module.css`형식으로 파일명을 작성하면 됩니다.
+
+```jsx
+import styles from './MyStyle.module.css'
+
+<p className={`${styles["test-button"]} title`}></p>
+```
+전역 스타일만 사용시에는 기존과 같습니다.
+```jsx
+<p className="title">제목</p>
+```
+
+
+
+
+### 컴포넌트
+컴포넌트 작성시 기본 스타일 이름은 `component`로 해주세요. 기본적인 스타일을 위한 틀은 다음과 같이 통일하면 좋을것 같습니다.
+```jsx
+import React from "react";
+import classNames from "classnames";
+import styles from "./MyComponent.module.css";
+
+const MyComponent = ({className}) => {
+
+  // className prop을 공백을 기준으로 여러개 받기 위한 코드
+  const classArray = className ? className.split(" ") : [];
+  const componentClass = classNames(
+    styles["component"], // 기본 스타일 이름은 component로 통일
+    ...classArray.map((cls) => styles[cls])
+  );
+
+  return (
+    <div className={componentClass}>
+        Component
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+기본이 아닌 특별한 스타일링이 필요할 경우에 `className`을 `prop`으로 전달하고 css 파일에 새로 정의해주세요.
+```jsx
+<MyComponent className="my-class"/>
+```
+```css
+.component {
+/* 기본 스타일 */
+}
+.my-class {
+/* 다른 스타일 */
+}
+
+```
+
+
+
+## 라우팅
+- 환경변수에 `baseUrl` 등록했습니다. 현재 `http://localhost:3000`로 되어 있고 배포시 변경 예정입니다.
+
+- 페이지 전환 UI 만들때 아래와 같이 작성해주세요
+```jsx
+import { Link } from "react-router-dom";
+
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
+<Link  to={`${baseUrl}${url}`}>
+    버튼
+</Link>
+```
+```jsx
+import { Link } from "react-router-dom";
+
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
+<Link  to={`${baseUrl}/login/`}>
+    버튼
+</Link>
+```
+
+
+- TextButton 컴포넌트 사용시에는 url만 지정해주면 됩니다.
+```jsx
+<TextButton url="/login/"text="로그인"/>
+```

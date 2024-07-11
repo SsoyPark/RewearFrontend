@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./pages/Home"; // Home 컴포넌트 불러오기
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp/SignUp";
+import Completion from "./pages/SignUp/Completion";
 import LoginGeneral from "./pages/LoginGeneral";
 import LoginCompany from "./pages/LoginCompany";
 import ServiceGeneral from "./pages/ServiceGeneral";
@@ -30,13 +31,17 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login/" element={<Login />} />
-          <Route path="/sign-up/" element={<SignUp />} />
+          <Route path="/sign-up/*" element={<SignUp />} />
+          <Route path="/sign-up/complete" element={<Completion />} />
           <Route path="/mypage/" element={<Mypage />} />
           {/* <Route path="/login/general/" element={<LoginGeneral />} />
           <Route path="/login/company/" element={<LoginCompany />} /> */}
           <Route path="/service/" />
           <Route path="/service/general/" element={<ServiceGeneral />} />
-          <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
+          <Route
+            path="/service/general/write/"
+            element={<ServiceGeneralWrite />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
