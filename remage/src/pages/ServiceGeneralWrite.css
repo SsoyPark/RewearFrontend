@@ -107,3 +107,7 @@ select {
 .service-general-write textarea::-webkit-scrollbar {
     display: none;
 }
+
+div.new-line {
+    display: none;
+}

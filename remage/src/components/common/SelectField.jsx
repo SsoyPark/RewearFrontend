@@ -4,6 +4,7 @@ import styles from "./SelectField.module.css";
 
 const SelectField = ({
   id,
+  name,
   label,
   placeholder,
   className,
@@ -34,6 +35,7 @@ const SelectField = ({
       <select
         className={styles.selectInner}
         id={id}
+        name={name}
         value={selectedValue}
         placeholder={placeholder}
         onChange={handleSelectChange}

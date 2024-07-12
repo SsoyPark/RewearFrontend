@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageUploader from "../components/common/ImageUploader";
 import Button from "../components/common/Button";
 // import FormInput from "../components/common/FormInput";
@@ -11,18 +11,20 @@ import "./ServiceGeneralWrite.css";
 const ServiceGeneralWrite = () => {
     const navigate = useNavigate();
     const [selectedUserType, setSelectedUserType] = useState("general");
-
     const [formData, setFormData] = useState({
         selectField: "",
+        otherOption: "",
     });
-
     const [errorMessage, setErrorMessage] = useState("");
+    const [buttonClass, setButtonClass] = useState("inactive");
 
     const handleSelectChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
-            selectField: value,
+            [name]: value,
+            // selectField: value,
+            // otherOption: name === "otherOption" ? value : formData.otherOption,
         });
     };
 
@@ -35,6 +37,23 @@ const ServiceGeneralWrite = () => {
             navigate("/service/general/write/recommend/");
         }
     };
+
+    useEffect(() => {
+        if (formData.selectField) {
+            setButtonClass("active");
+        } else {
+            setButtonClass("inactive");
+        }
+    }, [formData]);
+
+    useEffect(() => {
+        const otherOptionDiv = document.querySelector(".new-line");
+        if (formData.otherOption === "others") {
+            otherOptionDiv.style.display = "block";
+        } else {
+            otherOptionDiv.style.display = "none";
+        }
+    }, [formData.otherOption]);
 
     const sleeveOptions = [
         { value: "short", label: "짧은소매" },
@@ -115,7 +134,7 @@ const ServiceGeneralWrite = () => {
                             <h3 className="paragraph-title">요청사항 입력</h3>
 
                             <form onSubmit={handleSubmit}>
-                            {/* <form> */}
+                                {/* <form> */}
                                 <div className="reform-info form-container">
                                     <div className="form-item">
                                         <SelectField
@@ -131,7 +150,7 @@ const ServiceGeneralWrite = () => {
                                             label="넥라인 변경"
                                             options={necklineOptions}
                                             placeholder="넥라인 선택"
-                                            required                                            
+                                            required
                                         />
                                     </div>
                                     <div className="form-item">
@@ -152,9 +171,11 @@ const ServiceGeneralWrite = () => {
                                     </div>
                                     <div className="form-item">
                                         <SelectField
+                                            name="otherOption"
                                             label="기타 (선택)"
                                             options={otherOptions}
                                             placeholder="기타 선택"
+                                            onChange={handleSelectChange}
                                             required
                                         />
                                     </div>
@@ -164,18 +185,18 @@ const ServiceGeneralWrite = () => {
                                             placeholder="요청사항을 입력해주세요."
                                         />
                                     </div>
-                                    {/* 리폼 요청사항 입력 영역 끝 */}
-                                    <div className="form-next inactive">
-                                        <Button
-                                            text="다음"
-                                            className="btn-next"
-                                            // url="/service/general/write/recommend/"
-                                            // onClick={handleSubmit}
-                                            type="submit"
-                                        />
-                                    </div>
-                                    {errorMessage && <p className="error">{errorMessage}</p>}
                                 </div>
+                                {/* 리폼 요청사항 입력 영역 끝 */}
+                                <div className="form-next">
+                                    <Button
+                                        text="다음"
+                                        className="btn-next"
+                                        // url="/service/general/write/recommend/"
+                                        // onClick={handleSubmit}
+                                        type="submit"
+                                    />
+                                </div>
+                                {/* {errorMessage && <p className="error">{errorMessage}</p>} */}
                             </form>
                         </div>
                     </div>
