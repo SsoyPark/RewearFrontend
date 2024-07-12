@@ -14,6 +14,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Mypage from "./pages/MyPage/Mypage";
+import Mypageorderlist from "./pages/MypageOrderlist";
 import Board from "./pages/Board";
 import EditProfile from "./pages/MyPage/EditProfile";
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/sign-up/complete" element={<Completion />} />
             <Route path="/mypage/" element={<Mypage />} />
             <Route path="/mypage/edit" element={<EditProfile />} />
+            <Route path="/mypage/orderlist" element={<Mypageorderlist/>}/>
             {/* <Route path="/login/general/" element={<LoginGeneral />} />
             <Route path="/login/company/" element={<LoginCompany />} /> */}
             <Route path="/service/" />
