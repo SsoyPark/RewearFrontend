@@ -6,10 +6,13 @@ const SelectField = ({
   id,
   label,
   placeholder,
-  onChange,
   className,
-  options = []
+  options = [],
+  onChange,
+  required = false
 }) => {
+  const [selectedValue, setSelectedValue] = useState("");
+
   const classArray = className ? className.split(" ") : [];
 
   const componentClass = classNames(
@@ -17,16 +20,26 @@ const SelectField = ({
     ...classArray.map((cls) => styles[cls])
   );
 
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+    setSelectedValue(value);
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   return (
     <div className={componentClass}>
       {label && <label htmlFor={id} className={styles.label}>{label}</label>}
       <select
         className={styles.selectInner}
         id={id}
+        value={selectedValue}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={handleSelectChange}
+        required={required}
       >
-        <option value="" disabled selected>{placeholder}</option>
+        <option value="" disabled>{placeholder}</option>
         {options.map((option, index) => (
           <option key={index} value={option.value}>{option.label}</option>
         ))}
