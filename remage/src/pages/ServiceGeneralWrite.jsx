@@ -55,6 +55,11 @@ const ServiceGeneralWrite = () => {
         }
     }, [formData.otherOption]);
 
+    const handleImageAnalyze = () => {
+        const infoAreaDiv = document.querySelector(".info-area");
+        infoAreaDiv.style.display = "block";
+    };
+
     const sleeveOptions = [
         { value: "short", label: "짧은소매" },
         { value: "long", label: "긴소매" },
@@ -105,88 +110,92 @@ const ServiceGeneralWrite = () => {
                             {/* 의류 사진 업로드 영역 시작 */}
                             <h3 className="paragraph-title">리폼할 의류 사진</h3>
                             <ImageUploader />
-                            <Button className="btn-image-analyze" text="이미지 분석하기" />
+                            <Button
+                                className="btn-image-analyze"
+                                text="이미지 분석하기"
+                                onClick={handleImageAnalyze}
+                            />
                             {/* 의류 사진 업로드 영역 끝 */}
-                            {/* 의류 정보 출력 영역 시작 */}
-                            <h3 className="paragraph-title">분석 결과</h3>
-                            <div className="clothes-info form-container">
-                                <div className="form-item">
-                                    <div>
-                                        <label>카테고리</label>
-                                        <div><p>티셔츠</p></div>
+                            <div className="info-area">
+                                {/* 의류 정보 출력 영역 시작 */}
+                                <h3 className="paragraph-title">분석 결과</h3>
+                                <div className="clothes-info form-container">
+                                    <div className="form-item">
+                                        <div>
+                                            <label>카테고리</label>
+                                            <div><p>티셔츠</p></div>
+                                        </div>
+                                    </div>
+                                    <div className="form-item">
+                                        <div>
+                                            <label>재질</label>
+                                            <div><p>면</p></div>
+                                        </div>
+                                    </div>
+                                    <div className="form-item">
+                                        <div>
+                                            <label>색상</label>
+                                            <div><p>보라색</p></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="form-item">
-                                    <div>
-                                        <label>재질</label>
-                                        <div><p>면</p></div>
-                                    </div>
-                                </div>
-                                <div className="form-item">
-                                    <div>
-                                        <label>색상</label>
-                                        <div><p>보라색</p></div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* 의류 정보 출력 영역 끝 */}
-                            {/* 리폼 요청사항 입력 영역 시작 */}
-                            <h3 className="paragraph-title">요청사항 입력</h3>
-
-                            <form onSubmit={handleSubmit}>
+                                {/* 의류 정보 출력 영역 끝 */}
+                                {/* 리폼 요청사항 입력 영역 시작 */}
+                                <h3 className="paragraph-title">요청사항 입력</h3>
+                                <form onSubmit={handleSubmit}>
                                 {/* <form> */}
-                                <div className="reform-info form-container">
-                                    <div className="form-item">
-                                        <SelectField
-                                            label="소매길이 수정"
-                                            options={sleeveOptions}
-                                            placeholder="소매길이 선택"
-                                            onChange={handleSelectChange}
-                                            required
-                                        />
+                                    <div className="reform-info form-container">
+                                        <div className="form-item">
+                                            <SelectField
+                                                label="소매길이 수정"
+                                                options={sleeveOptions}
+                                                placeholder="소매길이 선택"
+                                                onChange={handleSelectChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-item">
+                                            <SelectField
+                                                label="넥라인 변경"
+                                                options={necklineOptions}
+                                                placeholder="넥라인 선택"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-item">
+                                            <SelectField
+                                                label="부자재 수정"
+                                                options={materialOptions}
+                                                placeholder="부자재 선택"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-item">
+                                            <SelectField
+                                                label="주머니 선택"
+                                                options={pocketOptions}
+                                                placeholder="주머니 선택"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-item">
+                                            <SelectField
+                                                name="otherOption"
+                                                label="기타 (선택)"
+                                                options={otherOptions}
+                                                placeholder="기타 선택"
+                                                onChange={handleSelectChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="new-line full-width-input">
+                                            <Textarea
+                                                id="clothes-others"
+                                                placeholder="요청사항을 입력해주세요."
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="form-item">
-                                        <SelectField
-                                            label="넥라인 변경"
-                                            options={necklineOptions}
-                                            placeholder="넥라인 선택"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-item">
-                                        <SelectField
-                                            label="부자재 수정"
-                                            options={materialOptions}
-                                            placeholder="부자재 선택"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-item">
-                                        <SelectField
-                                            label="주머니 선택"
-                                            options={pocketOptions}
-                                            placeholder="주머니 선택"
-                                            required
-                                        />
-                                    </div>
-                                    <div className="form-item">
-                                        <SelectField
-                                            name="otherOption"
-                                            label="기타 (선택)"
-                                            options={otherOptions}
-                                            placeholder="기타 선택"
-                                            onChange={handleSelectChange}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="new-line full-width-input">
-                                        <Textarea
-                                            id="clothes-others"
-                                            placeholder="요청사항을 입력해주세요."
-                                        />
-                                    </div>
-                                </div>
-                                {/* 리폼 요청사항 입력 영역 끝 */}
+                                    {/* 리폼 요청사항 입력 영역 끝 */}      
                                 <div className="form-next">
                                     <Button
                                         text="다음"
@@ -198,6 +207,7 @@ const ServiceGeneralWrite = () => {
                                 </div>
                                 {/* {errorMessage && <p className="error">{errorMessage}</p>} */}
                             </form>
+                            </div>
                         </div>
                     </div>
                 </div>

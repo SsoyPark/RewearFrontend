@@ -111,3 +111,6 @@ select {
 div.new-line {
     display: none;
 }
+.info-area {
+    display: none;
+}
