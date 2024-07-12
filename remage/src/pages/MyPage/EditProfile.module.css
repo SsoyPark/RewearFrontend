@@ -21,10 +21,27 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    height: 40px;
 }
 
 
 
 .wrap {
     max-width: 588px;
+}
+
+.password-field {
+    height: 40px;
+    width: 290px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* background-color: beige; */
+    border-bottom: 1px solid #CDD3D9;
+}
+
+.cancel-confirm-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
 }
