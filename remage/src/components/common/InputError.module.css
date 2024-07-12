@@ -1,6 +1,10 @@
-.input-error {
+.component {
     color: #FC8181;
     font-size: 12px;
     font-weight: medium;
     margin-top: 4px;
+}
+
+.success {
+    color: #47C282;
 }

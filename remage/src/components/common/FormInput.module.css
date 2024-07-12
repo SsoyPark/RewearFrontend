@@ -1,28 +1,30 @@
-.form-input {
+.component {
     display: flex;
     flex-direction: column;
     font-weight: medium;
+    /* width: 100%; */
 }
 
-.form-input label {
+.component label {
     font-size: 14px;
 }
 
-.form-input input {
+.component input {
     width: 290px;
+    /* max-width: 290px; */
     height: 40px;
     line-height: 3;
-    border: #cccccc 1px solid;
+    border: #CDD3D9 1px solid;
     border-radius: 5px;
     outline: none;
-    padding-left: 16px;
+    padding: 12px 16px;
     box-sizing: border-box;
     margin-top: 4px;
     font-size: 12px;
     font-weight: bol;
 }
 
-.form-input input::placeholder {
+.component input::placeholder {
     color: #999;
     font-size: 12px;
 }

@@ -4,7 +4,10 @@
     display: flex;
     width: 100%;
     height: 50px;
+    top: 0px;
     align-items: center;
+    position: fixed;
+    z-index: 1000;
 }
 
 .header-line-2 {
@@ -13,6 +16,10 @@
     height: 70px;
     align-items: center;
     border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 50px;
+    z-index: 1000;
+    width: 100%;
 }
 
 
@@ -20,19 +27,20 @@
     position: absolute;
     display: flex;
     gap: 19px;
-    right: 18%;
+    right: 10%;
 }
 
 .hamburger-logo-contents {
     position: absolute;
     display: flex;
-    left: 18%;
+    left: 10%;
     gap: 50px
 }
 
 .search-profile-contents {
     position: absolute;
     display: flex;
-    right: 18%;
+    align-items: center;
+    right: 10%;
     gap: 29px;
 }

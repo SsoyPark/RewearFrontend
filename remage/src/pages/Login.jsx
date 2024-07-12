@@ -6,12 +6,17 @@ import FormInput from "../components/common/FormInput";
 import FormCheckbox from "../components/common/FormCheckbox";
 import TextButton from "../components/common/TextButton";
 import InputError from "../components/common/InputError";
+import { useNavigate } from "react-router-dom";
 
 const GeneralLogin = () => {
   const [usernameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [usernameError, setUserNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
+  const handleSignUpClick = () => {
+    navigate("/sign-up");
+  };
   const handleLoginClick = () => {
     if (usernameInput === "") {
       setUserNameError("아이디를 입력해 주세요.");
@@ -68,7 +73,11 @@ const GeneralLogin = () => {
       />
       <div className="login-guide-group">
         <span className="login-guide-text">아직 회원이 아니신가요?</span>
-        <TextButton className={"login-guide-button"} text="회원가입 하기" />
+        <TextButton
+          className={"login-guide-button"}
+          text="회원가입 하기"
+          onClick={handleSignUpClick}
+        />
       </div>
     </div>
   );

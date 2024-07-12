@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import "./SearchBox.css";
+import styles from "./SearchBox.module.css";
+import classNames from "classnames";
 
-const SearchBox = () => {
+const SearchBox = ({ className }) => {
+  const classArray = className ? className.split(" ") : [];
+
+  const componentClass = classNames(
+    styles["component"],
+    ...classArray.map((cls) => styles[cls])
+  );
   const [query, setQuery] = useState("");
 
   const handleInputChange = (e) => {
@@ -15,9 +22,9 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="search-box">
+    <div className={componentClass}>
       <input
-        className="search-input-box"
+        // className="search-input-box"
         type="text"
         value={query}
         onChange={handleInputChange}

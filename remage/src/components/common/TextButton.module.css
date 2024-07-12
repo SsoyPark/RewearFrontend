@@ -1,17 +1,18 @@
-.text-button {
+.component {
     cursor: pointer;
 }
 
 .login-page-button,
-.sign-in-page-button {
-    color: #767676;
+.sign-in-page-button,
+.logout-page-button {
+    color: #495057;
     font-size: 16px;
     font-weight: "regular";
 }
 
 .user-name-find,
 .password-find {
-    color: #767676;
+    color: #495057;
     font-size: 12px;
     font-weight: "regular";
 }
@@ -26,4 +27,20 @@
     font-family: "Black Han Sans", sans-serif;
     font-weight: regular;
     font-size: 36px
+}
+
+.sidebar-item {
+    font-weight: medium;
+    font-size: 14px;
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 10px
+}
+
+#a.component {
+    text-decoration: none;
+}
+
+.btn-grey {
+    color: #495057;
 }

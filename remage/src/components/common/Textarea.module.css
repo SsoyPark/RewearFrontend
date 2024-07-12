@@ -1,0 +1,23 @@
+.component {
+    width: 100%;
+    height: 80px;
+    padding: 16px;
+    border: 1px solid #CDD3D9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.component textarea {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    overflow-y: scroll;
+    resize: none;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}

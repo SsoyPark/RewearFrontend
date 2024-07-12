@@ -1,0 +1,105 @@
+.wrap {
+    min-width: 588px;
+    width: 49%;
+    margin: 0 auto;
+}
+
+/* step 부제목 스타일 */
+.steps {
+    width: 524px;
+    margin: 20px auto 0 auto;
+}
+
+/* col 2줄 정렬 */
+/*
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+*/
+
+/* 인풋 및 라벨 정렬 */
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    grid-gap: 24px;
+    row-gap: 8px;
+}
+
+/* FormInput 라벨과 인풋 영역 가로로 정렬 */
+.form-item>div {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 12px;
+}
+
+.form-item label {
+    flex: 1;
+}
+
+.form-item input,
+select {
+    flex: 2;
+    margin: 0;
+    /* FormInput 컴포넌트에 설정된 margin-top 초기화 */
+}
+
+/*
+.form-item FormInput {
+    display: gird;
+    grid-template-columns: repeat(auto-fill, minmax(147px, 1fr));
+}
+*/
+.form-container .new-line {
+    grid-column: 1 /-1;
+}
+
+
+/* 라벨과 출력값 스타일 */
+.service-general-write label,
+.form-item p {
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.service-general-write label {
+    font-weight: 500;
+}
+
+.form-item p {
+    color: #495057;
+}
+
+/* 버튼 스타일 */
+.service-general-write button {
+    margin-top: 16px;
+}
+
+.col-container .full-width>.form-input>input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+}
+
+.service-general-write .content>button:nth-of-type(2) {
+    position: relative;
+    left: calc(100% - 100px);
+    right: 0;
+    width: 100px;
+    margin-top: 40px;
+}
+
+/* 텍스트 입력칸 여백 조정 */
+.reform-info .new-line>div {
+    margin-top: 8px;
+}
+
+.service-general-write img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
