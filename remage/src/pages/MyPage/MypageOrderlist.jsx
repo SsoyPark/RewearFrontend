@@ -126,7 +126,7 @@ const MypageOrderlist = () => {
             />
             <div className="order_box">
               <p className="order_date">{order.date}</p>
-              <p className="order_title">{order.description}</p>
+              <p className="order_title1">{order.description}</p>
               <p className="order_detail">{order.detail}</p>
             </div>
             <div className="order_status">{order.status}</div>
