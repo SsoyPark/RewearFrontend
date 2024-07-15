@@ -76,6 +76,19 @@ const ServiceGeneralWrite = () => {
         }
     };
 
+    // 카테고리
+    const [category, setCategory] = useState("스웨터");
+
+    // const handleCategoryChange = (e) => {
+    //     setCategory(e.target.value);
+    // };
+
+    // useEffect(() => {
+    //     fetchCategory().then(data => {
+    //         setCategory(data.category);
+    //     });
+    // }, []);
+
     const sleeveOptions = [
         { value: "short", label: "짧은소매" },
         { value: "long", label: "긴소매" },
@@ -87,9 +100,14 @@ const ServiceGeneralWrite = () => {
         { value: "round", label: "라운드넥" },
         { value: "vneck", label: "브이넥" },
         { value: "square", label: "스퀘어넥" },
-        { value: "turtle", label: "터틀넥" },
-        { value: "mock", label: "모크넥" },
     ];
+    // 카테고리 '스웨터'일 때만 '터틀벡', '모크넥' 옵션 추가
+    if (category === "스웨터") {
+        necklineOptions.push(
+            { value: "turtle", label: "터틀넥" },
+            { value: "mock", label: "모크넥" }
+        );
+    }
 
     const pocketOptions = [
         { value: "none", label: "없음" },
@@ -99,8 +117,10 @@ const ServiceGeneralWrite = () => {
 
     const materialOptions = [
         { value: "none", label: "없음" },
-        { value: "buttons", label: "단추" },
-        { value: "zippers", label: "지퍼" },
+        { value: "buttons-full", label: "단추 - 풀" },
+        { value: "buttons-half", label: "단추 - 하프" },
+        { value: "zippers-full", label: "지퍼 - 풀" },
+        { value: "zippers-half", label: "지퍼 - 하프" },
     ];
 
     const otherOptions = [
@@ -141,7 +161,7 @@ const ServiceGeneralWrite = () => {
                                     <div className="form-item">
                                         <div>
                                             <label>카테고리</label>
-                                            <div><p>티셔츠</p></div>
+                                            <div><p>{category}</p></div>
                                         </div>
                                     </div>
                                     <div className="form-item">
@@ -180,22 +200,30 @@ const ServiceGeneralWrite = () => {
                                                 required
                                             />
                                         </div>
-                                        <div className="form-item">
-                                            <SelectField
-                                                label="부자재 수정"
-                                                options={materialOptions}
-                                                placeholder="부자재 선택"
-                                                required
-                                            />
-                                        </div>
-                                        <div className="form-item">
-                                            <SelectField
-                                                label="주머니 선택"
-                                                options={pocketOptions}
-                                                placeholder="주머니 선택"
-                                                required
-                                            />
-                                        </div>
+                                        {
+                                            category === "스웨터" && (
+                                                <div className="form-item">
+                                                    <SelectField
+                                                        label="부자재 수정"
+                                                        options={materialOptions}
+                                                        placeholder="부자재 선택"
+                                                        required
+                                                    />
+                                                </div>
+                                            )
+                                        }
+                                        {
+                                            category != "스웨터" && (
+                                                <div className="form-item">
+                                                    <SelectField
+                                                        label="주머니 수정"
+                                                        options={pocketOptions}
+                                                        placeholder="주머니 선택"
+                                                        required
+                                                    />
+                                                </div>
+                                            )
+                                        }
                                         <div className="form-item">
                                             <SelectField
                                                 name="otherOption"
