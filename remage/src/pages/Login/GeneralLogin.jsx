@@ -7,12 +7,16 @@ import TextButton from "../../components/common/TextButton";
 import Button from "../../components/common/Button";
 import styles from "./GeneralLogin.module.css";
 import { loginUser } from "../../api/auth";
+import useAuthStore from "../../stores/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 const GeneralLogin = ({ userType }) => {
+  const { login, isAuthenticated, accessToken } = useAuthStore();
   const [usernameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [usernameError, setUserNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
   const handleLoginClick = async () => {
     if (usernameInput === "") {
       setUserNameError("아이디를 입력해 주세요.");
@@ -29,7 +33,11 @@ const GeneralLogin = ({ userType }) => {
     // console.log(passwordInput);
     try {
       const response = await loginUser(usernameInput, passwordInput);
-      console.log(response);
+      const data = response.data;
+      // console.log(response);
+      login(data.access_token, data.refresh_token);
+      // console.log(isAuthenticated, accessToken);
+      navigate("/");
     } catch (err) {
       alert(err.message);
     }

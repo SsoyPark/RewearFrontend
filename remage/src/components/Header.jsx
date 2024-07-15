@@ -2,21 +2,26 @@ import React from "react";
 import { FaUser, FaRegBell } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineChatBubbleOutline } from "react-icons/md";
-
+import useAuthStore from "../stores/useAuthStore";
+import { useEffect } from "react";
 import IconButton from "./common/IconButton";
 import TextButton from "./common/TextButton";
 import SearchBox from "./common/SearchBox";
 import "./Header.css";
 
 const Header = ({ toggleSidebar }) => {
-  const isLoggedIn = false;
-
+  const { logout } = useAuthStore();
+  const isLoggedIn = useAuthStore((state) => state.isAuthenticated);
   return (
     <div className="header-container">
       <div className="header-line-1">
         {isLoggedIn ? (
           <div className="login-logout-buttons">
-            <TextButton className="logout-page-button" text="로그아웃" />
+            <TextButton
+              className="logout-page-button"
+              text="로그아웃"
+              onClick={logout}
+            />
           </div>
         ) : (
           <div className="login-logout-buttons">

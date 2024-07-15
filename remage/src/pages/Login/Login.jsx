@@ -1,13 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "./Login.css";
 import Button from "../../components/common/Button";
 import GeneralLogin from "./GeneralLogin";
-
-const CompanyLogin = () => {
-  return <div>CompanyLogin</div>;
-};
 
 const Login = () => {
   const [selectedUserType, setSelectedUserType] = useState("general");

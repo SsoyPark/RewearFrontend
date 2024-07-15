@@ -12,6 +12,8 @@ import UserInfoNextButton from "./UserInfoNextButton";
 const UserInfo = ({ setCurrentStage }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const type = queryParams.get("type");
   const [isValidAccess, setIsValidAccess] = useState(false);
   useEffect(() => {
     if (location.state?.from !== "TermsOfServices") {
@@ -195,6 +197,57 @@ const UserInfo = ({ setCurrentStage }) => {
               className={isNicknameValid ? "success" : ""}
             />
           </div>
+          {type === "company" && (
+            <>
+              <div>
+                <div className={styles["input-set"]}>
+                  <FormInput
+                    label={
+                      <span>
+                        사업자 등록번호{" "}
+                        <span style={{ color: "#FC8181" }}>*</span>
+                      </span>
+                    }
+                    value={nickname}
+                    onChange={handleNicknameChange}
+                    placeholder="사업자 등록 번호를 입력해주세요."
+                  ></FormInput>
+                  <Button
+                    className="user-info-button"
+                    text="확인"
+                    onClick={handleNicknameCheck}
+                  />
+                </div>
+                <InputError
+                  errorMessage={nicknameSystemMessage}
+                  className={isNicknameValid ? "success" : ""}
+                />
+              </div>
+              <div>
+                <div className={styles["input-set"]}>
+                  <FormInput
+                    label={
+                      <span>
+                        회사명 <span style={{ color: "#FC8181" }}>*</span>
+                      </span>
+                    }
+                    value={nickname}
+                    onChange={handleNicknameChange}
+                    placeholder="사용하실 회사명을 입력해주세요"
+                  ></FormInput>
+                  <Button
+                    className="user-info-button"
+                    text="중복 확인"
+                    onClick={handleNicknameCheck}
+                  />
+                </div>
+                <InputError
+                  errorMessage={nicknameSystemMessage}
+                  className={isNicknameValid ? "success" : ""}
+                />
+              </div>
+            </>
+          )}
           <div>
             <FormInput
               label={

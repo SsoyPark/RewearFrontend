@@ -42,7 +42,7 @@ const TermsOfServices = ({ setCurrentStage }) => {
   const [userInfoChecked, setUserInfoChecked] = useState(false);
   const [termsOfServiceError, setTermsOfServiceError] = useState("");
   const [userInfoError, setUserInfoError] = useState("");
-  const handleNextButton = (event) => {
+  const handleNextButton = (event, type) => {
     event.preventDefault();
     let flag = false;
     if (!termsOfServiceChecked) {
@@ -60,7 +60,9 @@ const TermsOfServices = ({ setCurrentStage }) => {
     if (flag) {
       return;
     }
-    navigate("/sign-up/userinfo/", { state: { from: "TermsOfServices" } });
+    navigate(`/sign-up/userinfo/?type=${type}`, {
+      state: { from: "TermsOfServices" },
+    });
   };
   return (
     <div className={styles["terms-of-services"]}>
@@ -84,8 +86,19 @@ const TermsOfServices = ({ setCurrentStage }) => {
         <FormCheckbox label="SMS 수신 동의 (선택)" id="terms-checkbox-3" />
         <FormCheckbox label="이메일 수신 동의 (선택)" id="terms-checkbox-4" />
       </div>
-      <div className={styles["terms-of-services-next-button"]}>
-        <Button text="다음" onClick={handleNextButton} />
+      <div className={styles["next-button"]}>
+        <div className={styles["terms-of-services-next-button"]}>
+          <Button
+            text="일반 회원 가입"
+            onClick={(e) => handleNextButton(e, "general")}
+          />
+        </div>
+        <div className={styles["terms-of-services-next-button"]}>
+          <Button
+            text="기업 회원 가입"
+            onClick={(e) => handleNextButton(e, "company")}
+          />
+        </div>
       </div>
     </div>
   );
