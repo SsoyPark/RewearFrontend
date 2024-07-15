@@ -6,13 +6,14 @@ import FormCheckbox from "../../components/common/FormCheckbox";
 import TextButton from "../../components/common/TextButton";
 import Button from "../../components/common/Button";
 import styles from "./GeneralLogin.module.css";
+import { loginUser } from "../../api/auth";
 
 const GeneralLogin = ({ userType }) => {
   const [usernameInput, setUserNameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [usernameError, setUserNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const handleLoginClick = () => {
+  const handleLoginClick = async () => {
     if (usernameInput === "") {
       setUserNameError("아이디를 입력해 주세요.");
       return;
@@ -24,8 +25,14 @@ const GeneralLogin = ({ userType }) => {
     }
     setUserNameError("");
     setPasswordError("");
-    console.log(usernameInput);
-    console.log(passwordInput);
+    // console.log(usernameInput);
+    // console.log(passwordInput);
+    try {
+      const response = await loginUser(usernameInput, passwordInput);
+      console.log(response);
+    } catch (err) {
+      alert(err.message);
+    }
   };
   return (
     <div className={styles["login-page"]}>

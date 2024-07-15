@@ -11,9 +11,9 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Mypage from "./pages/Mypage/Mypage";
+import Mypage from "./pages/MyPage/Mypage";
 import Board from "./pages/Board";
-import EditProfile from "./pages/Mypage/EditProfile";
+import EditProfile from "./pages/MyPage/EditProfile";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
