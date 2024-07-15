@@ -16,7 +16,10 @@ const ServiceGeneralWrite = () => {
         otherOption: "",
     });
     const [errorMessage, setErrorMessage] = useState("");
+    const [imageError, setImageError] = useState("");
     const [buttonClass, setButtonClass] = useState("inactive");
+    // 이미지 업로드 상태
+    const [uploadedImage, setUploadedImage] = useState(null);
 
     const handleSelectChange = (e) => {
         const { name, value } = e.target;
@@ -50,9 +53,24 @@ const ServiceGeneralWrite = () => {
         }
     }, [formData.otherOption]);
 
+    useEffect(() => {
+        if (uploadedImage) {
+            setImageError("");
+        }
+    }, [uploadedImage]);
+
+    const handleImageUpload = (imageData) => {
+        setUploadedImage(imageData);
+    };
+
     const handleImageAnalyze = () => {
-        const infoAreaDiv = document.querySelector(".info-area");
-        infoAreaDiv.style.display = "block";
+        if (uploadedImage) {
+            setImageError("");
+            const infoAreaDiv = document.querySelector(".info-area");
+            infoAreaDiv.style.display = "block";
+        } else {
+            setImageError("분석할 사진을 선택해주세요.");
+        }
     };
 
     const sleeveOptions = [
@@ -104,12 +122,13 @@ const ServiceGeneralWrite = () => {
                         <div className="content">
                             {/* 의류 사진 업로드 영역 시작 */}
                             <h3 className="paragraph-title">리폼할 의류 사진</h3>
-                            <ImageUploader />
+                            <ImageUploader onImageUpload={(handleImageUpload)} />
                             <Button
                                 className="btn-image-analyze"
                                 text="이미지 분석하기"
                                 onClick={handleImageAnalyze}
                             />
+                            {imageError && <p className="error-message">{imageError}</p>}
                             {/* 의류 사진 업로드 영역 끝 */}
                             <div className="info-area">
                                 {/* 의류 정보 출력 영역 시작 */}
