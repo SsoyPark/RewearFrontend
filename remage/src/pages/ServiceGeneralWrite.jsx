@@ -30,12 +30,7 @@ const ServiceGeneralWrite = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!formData.selectField) {
-            setErrorMessage("모든 필수 입력 필드를 채워주세요.");
-        } else {
-            setErrorMessage(""); // 에러 메시지 초기화
-            navigate("/service/general/write/recommend/");
-        }
+        navigate("/service/general/write/recommend/");
     };
 
     useEffect(() => {
