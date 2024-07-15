@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import "./MypageOrderlist.css";
 import "./Mypage.css";
+import { Link } from "react-router-dom";
 
 const orders = [
   {},
@@ -83,6 +84,7 @@ const orders = [
     detail:
       "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
     status: "주문완료",
+    url: "http://localhost:3000/mypage/orderdetail"
   },
   /*추가 주문 내역이 있으면 여기 생성될 수 있도록 구성*/
 ];
@@ -131,9 +133,10 @@ const MypageOrderlist = () => {
             </div>
             <div className="order_status">{order.status}</div>
             {/* 주문 연결이 필요해요. */}
-            <div className="view_order_details">
-              주문상세보기 <FaChevronRight />
-            </div>
+            <Link to={order.url}><div className="view_order_details">
+                주문상세보기 <FaChevronRight />
+              </div>
+            </Link>
           </div>
         ))}
       </div>
