@@ -20,30 +20,23 @@ const ServiceGeneralWrite = () => {
     const [buttonClass, setButtonClass] = useState("inactive");
     // 이미지 업로드 상태
     const [uploadedImage, setUploadedImage] = useState(null);
-
+    
+    // select 필드 상태 관리
     const handleSelectChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
             [name]: value,
-            // selectField: value,
-            // otherOption: name === "otherOption" ? value : formData.otherOption,
         });
     };
 
+    //[다음] 버튼 클릭 시 다음 페이지로 이동
     const handleSubmit = (e) => {
         e.preventDefault();
         navigate("/service/general/write/recommend/");
     };
 
-    useEffect(() => {
-        if (formData.selectField) {
-            setButtonClass("active");
-        } else {
-            setButtonClass("inactive");
-        }
-    }, [formData]);
-
+    // '기타 (선택)' 필드에서 '그 외' 선택 시 텍스트 입력 필드 노출
     useEffect(() => {
         const otherOptionDiv = document.querySelector(".new-line");
         if (formData.otherOption === "others") {
@@ -53,6 +46,7 @@ const ServiceGeneralWrite = () => {
         }
     }, [formData.otherOption]);
 
+    // 이미지 업로드 시 오류메시지 초기화 및 이미지 반환
     useEffect(() => {
         if (uploadedImage) {
             setImageError("");
@@ -64,11 +58,13 @@ const ServiceGeneralWrite = () => {
     };
 
     const handleImageAnalyze = () => {
+        // [이미지 분석하기] 버튼 클릭 시 숨겨져있던 하단 영역 노출
         if (uploadedImage) {
             setImageError("");
             const infoAreaDiv = document.querySelector(".info-area");
             infoAreaDiv.style.display = "block";
         } else {
+            // 업로드된 이미지가 없을 경우 오류메시지
             setImageError("분석할 사진을 선택해주세요.");
         }
     };
@@ -101,6 +97,7 @@ const ServiceGeneralWrite = () => {
     ];
 
     const otherOptions = [
+        { value: "none", label: "없음" },
         { value: "crop", label: "크롭" },
         { value: "resize", label: "폼 줄이기" },
         { value: "others", label: "그 외" },
