@@ -136,19 +136,19 @@ h3.paragraph-title {
     border-bottom: 1px solid #000;
 }
 
-.form-next {
+/* .form-next {
     width: 100%;
     padding-top: 16px;
     position: relative;
     left: calc(200% - 100px + 24px);
-    /* margin-left: 100%; */
 }
-/* .form-next {
+*/
+.form-next {
     display: flex;
     justify-content: right;
     width: 100%;
     padding-top: 40px;
-} */
+}
 .form-next button {
     width: 100px;
 }
