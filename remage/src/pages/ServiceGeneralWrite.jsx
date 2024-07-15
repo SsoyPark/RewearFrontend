@@ -33,6 +33,13 @@ const ServiceGeneralWrite = () => {
     //[다음] 버튼 클릭 시 다음 페이지로 이동
     const handleSubmit = (e) => {
         e.preventDefault();
+        // '기타 (선택)' 필드에서 '그 외'가 선택되어 있고, 요청사항 입력란이 비어있는 경우
+        if (formData.otherOption === "others" && !document.getElementById("clothes-others").value) {
+            const userConfirmation = window.confirm("기타 요청사항을 입력하지 않았습니다. 이대로 진행하시겠습니까?")
+            if (!userConfirmation) {
+                return;
+            }
+        }
         navigate("/service/general/write/recommend/");
     };
 
