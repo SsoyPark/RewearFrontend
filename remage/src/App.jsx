@@ -16,6 +16,7 @@ import Sidebar from "./components/Sidebar";
 import Mypage from "./pages/Mypage/Mypage";
 import Board from "./pages/Board";
 import EditProfile from "./pages/Mypage/EditProfile";
+import CompanyOrder from "./pages/CompanyOrder";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -58,6 +59,7 @@ function App() {
               element={<ServiceGeneralComplete />}
             />
             <Route path="/Board/" element={<Board />} />
+            <Route path="/service/company/order" element={<CompanyOrder />}/>
           </Routes>
         </div>
       </div>

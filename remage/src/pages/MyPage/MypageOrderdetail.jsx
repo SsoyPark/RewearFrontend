@@ -62,7 +62,7 @@ const MypageOrderdetail = () => {
     const handleOrder = () => {
         navigate("/service/general/write/");
       };
-    const currentOrder = order[2];
+    const currentOrder = order[0    ];
 
     const getStatusStyle = (status) => {
         switch (status) {
