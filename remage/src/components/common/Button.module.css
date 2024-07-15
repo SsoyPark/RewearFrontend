@@ -112,7 +112,7 @@
     border: 1px solid #CDD3D9;
 }
 
-.btn-image-analyze {
+.btn-image-analyze, .btn-full-width {
     width: 100%;
     height: 40px;
     font-size: 14px;
