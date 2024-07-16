@@ -83,16 +83,16 @@ select {
     font-size: 16px;
 }
 
-.service-general-write .content>button:nth-of-type(2) {
+/* .service-general-write .content > button:nth-of-type(2) {
     position: relative;
     left: calc(100% - 100px);
-    right: 0;
     width: 100px;
     margin-top: 40px;
-}
+} */
 
 /* 텍스트 입력칸 여백 조정 */
-.reform-info .new-line>div {
+
+.reform-info .new-line > div {
     margin-top: 8px;
 }
 
@@ -102,4 +102,15 @@ select {
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
+}
+
+.service-general-write textarea::-webkit-scrollbar {
+    display: none;
+}
+
+div.new-line {
+    display: none;
+}
+.info-area {
+    display: none;
 }

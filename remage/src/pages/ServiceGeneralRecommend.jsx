@@ -30,8 +30,9 @@ const ServiceGeneralRecommend = () => {
                             <img src="https://img.animalplanet.co.kr/thumbnail/2020/05/20/2000/e23u07g3t2a9461ruhm0.jpg" alt="" />
                             <TextButton className="btn-grey" text="다시 추천받기" />
                             <Button
+                                className="btn-full-width"
                                 text="이 이미지 사용하기"
-                                url="/service/general/write/recommend"
+                                url="/service/general/write/complete"
                             />
                         </div>
                     </div>

@@ -27,7 +27,7 @@ const ServiceGeneralComplete = () => {
                             <div>
                                 <p>악수하는햄스터 님의<br/>문의가 정상적으로 등록되었습니다.</p>
                             </div>
-                            <Button className="btn-white btn-go-home" text="홈으로 돌아가기" />
+                            <Button className="btn-white btn-go-home" text="홈으로 돌아가기" url="/" />
                         </div>
                     </div>
                 </div>
