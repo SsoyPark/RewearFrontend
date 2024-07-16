@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ImageUploader from "../components/common/ImageUploader";
 import Button from "../components/common/Button";
+import TextButton from "../components/common/TextButton";
 // import FormInput from "../components/common/FormInput";
 import Textarea from "../components/common/Textarea";
 import SelectField from "../components/common/SelectField";
@@ -29,10 +30,9 @@ const ServiceGeneralWrite = () => {
             [name]: value,
         });
     };
-
-    //[다음] 버튼 클릭 시 다음 페이지로 이동
+    
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //submit 버튼을 눌렀을 때 페이지 새로고침 방지
         // '기타 (선택)' 필드에서 '그 외'가 선택되어 있고, 요청사항 입력란이 비어있는 경우
         if (formData.otherOption === "others" && !document.getElementById("clothes-others").value) {
             const userConfirmation = window.confirm("기타 요청사항을 입력하지 않았습니다. 이대로 진행하시겠습니까?")
@@ -40,7 +40,7 @@ const ServiceGeneralWrite = () => {
                 return;
             }
         }
-        navigate("/service/general/write/recommend/");
+        // navigate("/service/general/write/recommend/");
     };
 
     // '기타 (선택)' 필드에서 '그 외' 선택 시 텍스트 입력 필드 노출
@@ -74,6 +74,34 @@ const ServiceGeneralWrite = () => {
             // 업로드된 이미지가 없을 경우 오류메시지
             setImageError("분석할 사진을 선택해주세요.");
         }
+    };
+
+    // [디자인 추천받기] 버튼 클릭 시 동작
+    const handleGenImage = () => {
+        // '기타 (선택)' 필드에서 '그 외' 선택 시 요청사항 입력이 없을 때
+        if (formData.otherOption === "others" && !document.getElementById("clothes-others").value) {
+            const userConfirmation = window.confirm("기타 요청사항을 입력하지 않았습니다. 이대로 진행하시겠습니까?")
+            if (!userConfirmation) {
+                return;
+            }
+        } else {
+            const genAreaDiv = document.querySelector(".img-generate-area");
+            const bottomBtn = document.querySelector(".order-bottom-btn");
+            genAreaDiv.style.display = "block";
+            bottomBtn.style.display = "flex";
+        }
+        // required가 true인 필드만 검사
+        // const isAllRequiredFilled = Object.entries(formData).every(([key, { value, required }]) =>
+        //     !required || (required && value.trim() !== "")
+        // );        
+        // // required 필드가 모두 채워져 있을 때만 숨겨진 영역이 나타나도록
+        // if (isAllRequiredFilled) {
+        //     const genAreaDiv = document.querySelector(".img-generate-area");
+        //     genAreaDiv.style.display = "block";
+        // }
+        // else {
+        //     console.log('required 필드가 채워지지 않았습니다.');
+        // }
     };
 
     // 카테고리
@@ -135,6 +163,7 @@ const ServiceGeneralWrite = () => {
             <section>
                 <div className="inner">
                     <div className="wrap">
+                        {/* 페이지 타이틀 시작 */}
                         <h2 className="section-title">주문하기</h2>
                         <div className="subtitle steps">
                             <span className="step round primary"><span>1.<span className="space"></span>주문서 작성하기</span></span>
@@ -143,19 +172,24 @@ const ServiceGeneralWrite = () => {
                             <span className="next"></span>
                             <span className="step round"><span>3.<span className="space"></span>주문 완료</span></span>
                         </div>
+                        {/* 페이지 타이틀 끝 */}
                         <div className="content">
-                            {/* 의류 사진 업로드 영역 시작 */}
-                            <h3 className="paragraph-title">리폼할 의류 사진</h3>
-                            <ImageUploader onImageUpload={(handleImageUpload)} />
-                            <Button
-                                className="btn-image-analyze"
-                                text="이미지 분석하기"
-                                onClick={handleImageAnalyze}
-                            />
+                            <form onSubmit={handleSubmit}>
+                            {/* <form> */}
+                                {/* 의류 사진 업로드 영역 시작 */}
+                                <h3 className="paragraph-title">리폼할 의류 사진</h3>
+                                <ImageUploader onImageUpload={(handleImageUpload)} />
+                                <Button
+                                    type="submit"
+                                    className="btn-image-analyze"
+                                    text="이미지 분석하기"
+                                    onClick={handleImageAnalyze}
+                                />
+                            </form>
                             {imageError && <p className="error-message">{imageError}</p>}
                             {/* 의류 사진 업로드 영역 끝 */}
                             <div className="info-area">
-                                {/* 의류 정보 출력 영역 시작 */}
+                                {/* 분석 결과 출력 영역 시작 */}
                                 <h3 className="paragraph-title">분석 결과</h3>
                                 <div className="clothes-info form-container">
                                     <div className="form-item">
@@ -177,11 +211,11 @@ const ServiceGeneralWrite = () => {
                                         </div>
                                     </div>
                                 </div>
-                                {/* 의류 정보 출력 영역 끝 */}
-                                {/* 리폼 요청사항 입력 영역 시작 */}
-                                <h3 className="paragraph-title">요청사항 입력</h3>
+                                {/* 분석 결과 출력 영역 끝 */}
+                                {/* 리폼 요청사항 입력 폼 시작 */}
                                 <form onSubmit={handleSubmit}>
                                 {/* <form> */}
+                                    <h3 className="paragraph-title">요청사항 입력</h3>
                                     <div className="reform-info form-container">
                                         <div className="form-item">
                                             <SelectField
@@ -241,21 +275,50 @@ const ServiceGeneralWrite = () => {
                                             />
                                         </div>
                                     </div>
-                                    {/* 리폼 요청사항 입력 영역 끝 */}
                                     <div className="order-notice round">
                                         <p>* 주문 내용에 따라 판매자로부터 요청사항에 대한 추가확인 및 상세한 상담을 위한 문의 요청이 발생할 수 있습니다.</p>
-                                    </div>      
-                                <div className="form-next">
+                                    </div>
                                     <Button
-                                        text="다음"
-                                        className="btn-next"
-                                        // url="/service/general/write/recommend/"
-                                        // onClick={handleSubmit}
                                         type="submit"
+                                        className="btn-full-width"
+                                        text="디자인 추천받기"
+                                        onClick={handleGenImage}
                                     />
-                                </div>
-                            </form>
+                                </form>
+                                {/* 리폼 요청사항 입력 폼 끝 */}
                             </div>
+
+                            {/* 디자인 추천 영역 시작 */}
+                            <div className="img-generate-area">
+                                <h3 className="paragraph-title">리폼 디자인 추천</h3>
+                                {/* <ImageUploader /> */}
+                                <img src="https://img.animalplanet.co.kr/thumbnail/2020/05/20/2000/e23u07g3t2a9461ruhm0.jpg" alt="" />
+                                <TextButton className="btn-grey" text="다시 추천받기" />
+                                {/* <Button
+                                        className="btn-full-width"
+                                        text="이 이미지 사용하기"
+                                        url="/service/general/write/complete"
+                                    /> */}
+                            </div>
+                            {/* 디자인 추천 영역 끝 */}
+
+                            {/* 하단 버튼 영역 시작 */}
+                            <div className="order-bottom-btn">
+                                <Button
+                                    text="가상피팅"
+                                    className="btn-next btn-white"
+                                    // url="/service/general/write/recommend/"
+                                    // onClick={handleSubmit}
+                                />
+                                <Button
+                                    text="주문 진행"
+                                    className="btn-next"
+                                    // url="/service/general/write/recommend/"
+                                    // onClick={handleSubmit}
+                                />
+                            </div>
+                            {/* 하단 버튼 영역 끝 */}
+
                         </div>
                     </div>
                 </div>

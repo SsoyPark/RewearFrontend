@@ -111,7 +111,7 @@ select {
 div.new-line {
     display: none;
 }
-.info-area {
+.info-area, .img-generate-area, .order-bottom-btn {
     display: none;
 }
 
