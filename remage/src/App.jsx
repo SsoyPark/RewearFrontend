@@ -1,10 +1,8 @@
 import React from "react";
 import Home from "./pages/Home"; // Home 컴포넌트 불러오기
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Completion from "./pages/SignUp/Completion";
-import LoginGeneral from "./pages/LoginGeneral";
-import LoginCompany from "./pages/LoginCompany";
 import ServiceGeneral from "./pages/ServiceGeneral";
 import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
 import ServiceGeneralRecommend from "./pages/ServiceGeneralRecommend";
@@ -13,10 +11,9 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Mypage from "./pages/MyPage/Mypage";
+import Mypage from "./pages/Mypage/Mypage";
 import Board from "./pages/Board";
-import EditProfile from "./pages/MyPage/EditProfile";
-
+import EditProfile from "./pages/Mypage/EditProfile";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -36,18 +33,28 @@ function App() {
           <Sidebar isOpen={isSidebarOpen} shutDownSidebar={shutDownSidebar} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login/" element={<Login />} />
+            <Route path="/login/*" element={<Login />} />
             <Route path="/sign-up/*" element={<SignUp />} />
             <Route path="/sign-up/complete" element={<Completion />} />
-            <Route path="/mypage/" element={<Mypage />} />
+            <Route path="/mypage/*" element={<Mypage />} />
             <Route path="/mypage/edit" element={<EditProfile />} />
+            {/* <Route path="/mypage/orderlist" element={<Mypageorderlist/>}/> */}
             {/* <Route path="/login/general/" element={<LoginGeneral />} />
             <Route path="/login/company/" element={<LoginCompany />} /> */}
             <Route path="/service/" />
             <Route path="/service/general/" element={<ServiceGeneral />} />
-            <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
-            <Route path="/service/general/write/recommend/" element={<ServiceGeneralRecommend />} />
-            <Route path="/service/general/write/complete/" element={<ServiceGeneralComplete />} />
+            <Route
+              path="/service/general/write/"
+              element={<ServiceGeneralWrite />}
+            />
+            <Route
+              path="/service/general/write/recommend/"
+              element={<ServiceGeneralRecommend />}
+            />
+            <Route
+              path="/service/general/write/complete/"
+              element={<ServiceGeneralComplete />}
+            />
             <Route path="/Board/" element={<Board />} />
           </Routes>
         </div>

@@ -1,0 +1,10 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

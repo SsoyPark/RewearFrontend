@@ -1,0 +1,99 @@
+
+
+.order-sub-title{
+    margin-top: 35px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #767676; /* 아랫부분에 밑줄 추가 */
+    font-size: 14px;
+}
+  
+.myorder-count{
+    color:#47c282;
+}
+
+.order_list{
+    height: 912px;
+}
+
+.order_item{
+    display: flex;
+    padding: 5px 0 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order_image{
+    width: 96px;
+    height: 96px;
+    margin: 20px 15px 20px 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
+
+.order_box{
+    width:450px;
+    margin-right: 20px;
+}
+
+.order_date{
+    font-size: 10px;
+    margin: 3px 0 5px 0;
+}
+
+.order_title1{
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.order_detail{
+    font-size: 14px;
+}
+
+.order_status{
+    display :flex;
+    width: 100px;
+    height: 136px; 
+    justify-content: center; 
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.view_order_details{
+    display :flex;
+    width: 160px;
+    height: 136px;
+    justify-content: center; 
+    align-items: center; 
+    font-size: 14px;
+
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .page-number {
+    margin: 0 5px;
+    padding: 5px;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+  }
+  
+  .page-number.active {
+    background-color: transparent;
+    color: green;
+    font-weight: bold;
+  }
+  
+  .page-number:disabled {
+    color: grey;
+    cursor: not-allowed;
+  }
+  

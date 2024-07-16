@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 // import "./LoginGeneral.css";
-import Button from "../components/common/Button";
+import Button from "../../components/common/Button";
 import { useNavigate } from "react-router-dom";
 
 const LoginCompany = () => {
