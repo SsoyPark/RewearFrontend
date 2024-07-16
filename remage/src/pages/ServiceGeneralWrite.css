@@ -114,3 +114,13 @@ div.new-line {
 .info-area {
     display: none;
 }
+
+.order-notice {
+    width: 100%;
+    font-size: 12px;
+    font-weight: normal;
+    color: #495057;
+    background-color: #F2F4F6;
+    margin-top: 24px;
+    padding: 16px 24px;
+}

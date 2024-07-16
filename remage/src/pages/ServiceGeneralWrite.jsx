@@ -241,7 +241,10 @@ const ServiceGeneralWrite = () => {
                                             />
                                         </div>
                                     </div>
-                                    {/* 리폼 요청사항 입력 영역 끝 */}      
+                                    {/* 리폼 요청사항 입력 영역 끝 */}
+                                    <div className="order-notice round">
+                                        <p>* 주문 내용에 따라 판매자로부터 요청사항에 대한 추가확인 및 상세한 상담을 위한 문의 요청이 발생할 수 있습니다.</p>
+                                    </div>      
                                 <div className="form-next">
                                     <Button
                                         text="다음"
@@ -251,7 +254,6 @@ const ServiceGeneralWrite = () => {
                                         type="submit"
                                     />
                                 </div>
-                                {/* {errorMessage && <p className="error">{errorMessage}</p>} */}
                             </form>
                             </div>
                         </div>
