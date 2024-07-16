@@ -3,7 +3,7 @@ import classNames from "classnames";
 import styles from "./Button.module.css";
 import { Link } from "react-router-dom";
 
-const Button = ({ className, text, url = "", ...rest }) => {
+const Button = ({ className, text, url = "", type="button", onClick, ...rest }) => {
   const classArray = className ? className.split(" ") : [];
   const componentClass = classNames(
     styles["component"],
@@ -17,7 +17,7 @@ const Button = ({ className, text, url = "", ...rest }) => {
           {text}
         </Link>
       ) : (
-        <button className={componentClass} {...rest}>
+        <button type={type} className={componentClass} onClick={onClick} {...rest}>
           {text}
         </button>
       )}

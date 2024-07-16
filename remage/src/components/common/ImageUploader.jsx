@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import styles from "./ImageUploader.module.css";
 
-const ImageUploader = ({ className }) => {
+const ImageUploader = ({ className, onImageUpload }) => {
   const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -11,6 +11,9 @@ const ImageUploader = ({ className }) => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result);
+        if (onImageUpload) {
+          onImageUpload(reader.result);
+        }
       };
       reader.readAsDataURL(file);
     }

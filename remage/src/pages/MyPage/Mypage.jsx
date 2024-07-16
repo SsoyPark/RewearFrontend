@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import MypageMain from "./MypageMain";
 import MypageOrderlist from "./MypageOrderlist";
 import ProtectedRoute from "../../components/ProtectedRoute";
+import MypageOrderdetail from "./MypageOrderdetail";
 
 const Mypage = () => {
   return (
@@ -35,6 +36,14 @@ const Mypage = () => {
               element={
                 <ProtectedRoute>
                   <MypageOrderlist />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="orderdetail"
+              element={
+                <ProtectedRoute>
+                  <MypageOrderdetail />
                 </ProtectedRoute>
               }
             />
