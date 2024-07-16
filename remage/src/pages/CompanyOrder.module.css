@@ -58,15 +58,14 @@ tr{
 }
 
 .pagination button {
-    margin: 0 5px;
     padding: 5px 10px;
-    border: 1px solid #ddd;
-    background-color: #fff;
+    background-color: white;;
+    border: 1px solid white;
     cursor: pointer;
 }
 
 .pagination button.active {
     color: #28a745; /* 초록색 */
-    border-color: #28a745;
-    background-color: #fff; /* 배경색을 흰색으로 유지 */
+    background-color: white; /* 배경색을 흰색으로 유지 */
+    border: 1px solid white;
 }
