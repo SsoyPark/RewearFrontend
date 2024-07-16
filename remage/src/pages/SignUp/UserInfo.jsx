@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./UserInfo.module.css";
 import styles2 from "./SignUp.module.css";
-import { Form, useLocation, useNavigate } from "react-router-dom";
+import { Form, UNSAFE_ErrorResponseImpl, useLocation, useNavigate } from "react-router-dom";
 import FormInput from "../../components/common/FormInput";
 import Button from "../../components/common/Button";
 import { useState, useEffect } from "react";
@@ -36,7 +36,9 @@ const UserInfo = ({ setCurrentStage }) => {
   const [passwordSystemMessage, setPasswordSystemMessage] = useState("");
   const [isPasswordConfirmValid, setIsPasswordConfirmValid] = useState(false);
   const [passwordConfirmSystemMessage, setPasswordConfirmSystemMessage] =
-    useState("");
+    useState(""); 
+  const [businessNumber, setBusinessNumber] = useState("");
+  const [businessName, setBusinessName] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
@@ -78,6 +80,14 @@ const UserInfo = ({ setCurrentStage }) => {
       setPasswordConfirmSystemMessage("비밀번호가 일치합니다.");
     }
   };
+  const handleBusinessNumberChange = (e) =>{
+    const newBusinessNumber = e.target.value;
+    setBusinessNumber(newBusinessNumber);
+  };
+  const handleBusinessNameChange=(e)=>{
+    const newBusinessName = e.target.value;
+    setBusinessName(newBusinessName);
+  }
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
   };
@@ -208,8 +218,8 @@ const UserInfo = ({ setCurrentStage }) => {
                         <span style={{ color: "#FC8181" }}>*</span>
                       </span>
                     }
-                    value={nickname}
-                    onChange={handleNicknameChange}
+                    value={businessNumber}
+                    onChange={handleBusinessNumberChange}
                     placeholder="사업자 등록 번호를 입력해주세요."
                   ></FormInput>
                   <Button
@@ -231,8 +241,8 @@ const UserInfo = ({ setCurrentStage }) => {
                         회사명 <span style={{ color: "#FC8181" }}>*</span>
                       </span>
                     }
-                    value={nickname}
-                    onChange={handleNicknameChange}
+                    value={businessName}
+                    onChange={handleBusinessNameChange}
                     placeholder="사용하실 회사명을 입력해주세요"
                   ></FormInput>
                   <Button
