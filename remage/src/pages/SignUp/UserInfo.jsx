@@ -8,8 +8,9 @@ import { useState, useEffect } from "react";
 import InputError from "../../components/common/InputError";
 import PostcodeComponent from "./PostcodeComponent";
 import UserInfoNextButton from "./UserInfoNextButton";
+import { signUp, signUpB } from "../../api/signup";
 
-const UserInfo = ({ setCurrentStage }) => {
+const UserInfo = ({ setCurrentStage, emailReciecveChecked, smsRecieveChecked }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -25,29 +26,44 @@ const UserInfo = ({ setCurrentStage }) => {
     setIsValidAccess(true);
   }, [location, navigate, setCurrentStage]);
   const [userId, setUserId] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [isUserIdValid, setIsUserIdValid] = useState(false);
   const [userIdSystemMessage, setUserIdSystemMessage] = useState("");
-  const [isNicknameValid, setIsNicknameValid] = useState(false);
+  const [isUserIdValid, setIsUserIdValid] = useState(false);
+
+  const [nickname, setNickname] = useState("");
   const [nicknameSystemMessage, setNicknameSystemMessage] = useState("");
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [isNicknameValid, setIsNicknameValid] = useState(false);
+
+  const [password, setPassword] = useState("");
   const [passwordSystemMessage, setPasswordSystemMessage] = useState("");
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isPasswordConfirmValid, setIsPasswordConfirmValid] = useState(false);
   const [passwordConfirmSystemMessage, setPasswordConfirmSystemMessage] =
     useState(""); 
+  
   const [businessNumber, setBusinessNumber] = useState("");
+  const [businessNumberSystemMessage, setBusinessNumberSystemMessage] = useState("")
+  const [isBusinessNumberValid, setIsBusinessNumberValid] = useState("")
+
   const [businessName, setBusinessName] = useState("");
+  const [businessNameSystemMessage, setBusinessNameSystemMessage] = useState("");
+  const [isBusinessNameValid, setIsBusinessNameValid] = useState(false);
+
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
   const handleUserIdChange = (e) => {
     setUserId(e.target.value);
+    setUserIdSystemMessage("")
+    setIsUserIdValid(false)
   };
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
+    setNicknameSystemMessage("")
+    setIsNicknameValid(false)
   };
 
   const handlePasswordChange = (e) => {
@@ -83,10 +99,14 @@ const UserInfo = ({ setCurrentStage }) => {
   const handleBusinessNumberChange = (e) =>{
     const newBusinessNumber = e.target.value;
     setBusinessNumber(newBusinessNumber);
+    setBusinessNumberSystemMessage("")
+    setIsBusinessNumberValid(false)
   };
   const handleBusinessNameChange=(e)=>{
     const newBusinessName = e.target.value;
     setBusinessName(newBusinessName);
+    setBusinessNameSystemMessage("")
+    setIsBusinessNameValid(false)
   }
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
@@ -105,6 +125,15 @@ const UserInfo = ({ setCurrentStage }) => {
     // 여기서는 예시로 임의의 로직을 사용합니다.
     return nickname !== "중복";
   };
+
+  const checkBusinessNumber = (businessNumber) => {
+    return businessNumber !== "중복"
+  }
+
+
+  const checkBusinessName = (businessName) =>{
+    return businessName !== "중복"
+  }
   const handleUserIdCheck = () => {
     if (!userId) {
       setIsUserIdValid(false);
@@ -122,6 +151,7 @@ const UserInfo = ({ setCurrentStage }) => {
     }
   };
 
+
   const handleNicknameCheck = () => {
     if (!nickname) {
       setIsNicknameValid(false);
@@ -138,8 +168,47 @@ const UserInfo = ({ setCurrentStage }) => {
       setNicknameSystemMessage("이미 사용중인 닉네임입니다.");
     }
   };
+  
+  
 
-  const handleRegisterButton = () => {
+  const handleBusinessNumberCheck=()=>{
+    if (!businessNumber) {
+      setIsBusinessNumberValid(false)
+      setBusinessNumberSystemMessage("사업자등록번호를 입력해주세요.")
+      return
+    }
+    const isValid = checkBusinessNumber(businessNumber)
+    setIsBusinessNumberValid(isValid)
+    if (isValid) {
+      setBusinessNumberSystemMessage("유효한 사업자등록번호 입니다.")
+    } else {
+      setBusinessNumberSystemMessage("유효하지 않은 사업자 등록번호 입니다.")
+    }
+  }
+
+  const handleBusinessNameCheck=()=>{
+    if (!businessName) {
+      setIsBusinessNameValid(false)
+      setBusinessNameSystemMessage("회사명을 입력해주세요.")
+      return
+    }
+      const isValid = checkBusinessName(businessName)
+      setIsBusinessNameValid(isValid)
+    if (isValid) {
+      setBusinessNameSystemMessage("유효한 회사명 입니다.")
+    } else {
+      setBusinessNameSystemMessage("유효하지 않은 회사명입니다.")
+    }
+  } 
+  
+
+
+  const handlePhoneNumberChange=(e)=>{
+    const newPhoneNumber = e.target.value
+    setPhoneNumber(newPhoneNumber)
+  }
+
+  const handleRegisterButton = async () => {
     if (
       !(
         isUserIdValid &&
@@ -147,12 +216,21 @@ const UserInfo = ({ setCurrentStage }) => {
         isPasswordValid &&
         isNicknameValid &&
         address &&
-        addressDetail
+        addressDetail &&
+        (type === "general" || (isBusinessNameValid&&isBusinessNumberValid))
       )
     ) {
       alert("입력이 유효하지 않습니다.");
     } else {
-      navigate("/sign-up/complete/", { state: { from: "UserInfo" } });
+      if (type==="general") {
+        try {const response = await signUp(userId,nickname, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailReciecveChecked)
+          navigate("/sign-up/complete/", { state: { from: "UserInfo" } }); 
+      }catch(err){alert(err.message)};
+      } else {
+        try {const response = await signUpB(userId,nickname,businessNumber, businessName, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailReciecveChecked)
+          navigate("/sign-up/complete/", { state: { from: "UserInfo" } }); 
+      }catch(err){alert(err.message)};
+      }
     }
   };
 
@@ -225,12 +303,12 @@ const UserInfo = ({ setCurrentStage }) => {
                   <Button
                     className="user-info-button"
                     text="확인"
-                    onClick={handleNicknameCheck}
+                    onClick={handleBusinessNumberCheck}
                   />
                 </div>
                 <InputError
-                  errorMessage={nicknameSystemMessage}
-                  className={isNicknameValid ? "success" : ""}
+                  errorMessage={businessNumberSystemMessage}
+                  className={isBusinessNumberValid ? "success" : ""}
                 />
               </div>
               <div>
@@ -248,12 +326,12 @@ const UserInfo = ({ setCurrentStage }) => {
                   <Button
                     className="user-info-button"
                     text="중복 확인"
-                    onClick={handleNicknameCheck}
+                    onClick={handleBusinessNameCheck}
                   />
                 </div>
                 <InputError
-                  errorMessage={nicknameSystemMessage}
-                  className={isNicknameValid ? "success" : ""}
+                  errorMessage={businessNameSystemMessage}
+                  className={isBusinessNameValid ? "success" : ""}
                 />
               </div>
             </>
@@ -295,6 +373,8 @@ const UserInfo = ({ setCurrentStage }) => {
           <FormInput
             label="전화번호 (선택)"
             placeholder="전화번호를 입력해주세요."
+            value={phoneNumber}
+            onChange={handlePhoneNumberChange}
           ></FormInput>
           <div>
             <div className={styles["input-set"]}>

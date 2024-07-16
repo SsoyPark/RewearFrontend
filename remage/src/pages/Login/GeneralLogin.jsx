@@ -33,9 +33,11 @@ const GeneralLogin = ({ userType }) => {
     // console.log(passwordInput);
     try {
       const response = await loginUser(usernameInput, passwordInput);
-      const data = response.data;
+      console.log(response);
+      const token = response.headers['authorization'].split(' ')[1];
+      const refresh_token = response.headers['refresh-token']
       // console.log(response);
-      login(data.access_token, data.refresh_token);
+      login(token, refresh_token);
       // console.log(isAuthenticated, accessToken);
       navigate("/");
     } catch (err) {

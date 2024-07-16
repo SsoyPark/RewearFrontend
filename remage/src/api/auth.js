@@ -16,6 +16,7 @@ export const loginUser = async (username, password) => {
         },
       }
     );
+    console.log(response.headers['authorization']);
     return response;
   } catch (error) {
     if (error.response) {
