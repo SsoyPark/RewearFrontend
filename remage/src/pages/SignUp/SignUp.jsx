@@ -9,6 +9,8 @@ import UserInfo from "./UserInfo";
 import Completion from "./Completion";
 
 const SignUp = () => {
+  const [emailRecieveChecked, setEmailRecieveChecked] = useState(false);
+  const [smsRecieveChecked, setSmsRecieveChecked] = useState(false);
   const [currentStage, setCurrentStage] = useState("약관동의");
   return (
     <div className={`${styles["sign-up-page"]} page`}>
@@ -42,11 +44,11 @@ const SignUp = () => {
               <Route path="/" element={<Navigate to="confirm" replace />} />
               <Route
                 path="confirm"
-                element={<TermsOfServices setCurrentStage={setCurrentStage} />}
+                element={<TermsOfServices setCurrentStage={setCurrentStage} emailRecieveChecked={emailRecieveChecked} smsRecieveChecked={smsRecieveChecked} setEmailRecieveChecked={setEmailRecieveChecked} setSmsRecieveChecked={setSmsRecieveChecked}/>}
               />
               <Route
                 path="userinfo"
-                element={<UserInfo setCurrentStage={setCurrentStage} />}
+                element={<UserInfo setCurrentStage={setCurrentStage} emailRecieveChecked={emailRecieveChecked} smsRecieveChecked={smsRecieveChecked}/>}
               />
             </Routes>
           </div>
