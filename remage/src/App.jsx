@@ -9,6 +9,7 @@ import ServiceGeneral from "./pages/ServiceGeneral";
 import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
 import ServiceGeneralRecommend from "./pages/ServiceGeneralRecommend";
 import ServiceGeneralComplete from "./pages/ServiceGeneralComplete";
+import ServiceGeneralConfirm from "./pages/ServiceGeneralConfirm";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -46,8 +47,9 @@ function App() {
             <Route path="/service/" />
             <Route path="/service/general/" element={<ServiceGeneral />} />
             <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
-            <Route path="/service/general/write/recommend/" element={<ServiceGeneralRecommend />} />
             <Route path="/service/general/write/complete/" element={<ServiceGeneralComplete />} />
+            <Route path="/service/general/write/fitting/" element={<ServiceGeneralFitting />} />
+            <Route path="/service/general/write/confirm/" element={<ServiceGeneralConfirm />} />
             <Route path="/Board/" element={<Board />} />
           </Routes>
         </div>
