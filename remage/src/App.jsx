@@ -5,7 +5,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Completion from "./pages/SignUp/Completion";
 import ServiceGeneral from "./pages/ServiceGeneral";
 import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
-import ServiceGeneralRecommend from "./pages/ServiceGeneralRecommend";
+import ServiceGeneralFitting from "./pages/ServiceGeneralFitting";
 import ServiceGeneralComplete from "./pages/ServiceGeneralComplete";
 import ServiceGeneralConfirm from "./pages/ServiceGeneralConfirm";
 import { useState } from "react";
