@@ -16,6 +16,7 @@
     background: transparent;
     overflow-y: scroll;
     resize: none;
+    color: #9da6b0;
 }
 
 ::-webkit-scrollbar-track {
