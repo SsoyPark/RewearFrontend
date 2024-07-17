@@ -4,17 +4,17 @@ import styles from "./CompanyOrder.module.css";
 import { Link } from 'react-router-dom';
 
 const orders = [
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530204", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.1.30", dueDate: "2024.2.18", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530081", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.2.30", dueDate: "2024.3.19", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530051", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.3.30", dueDate: "2024.4.15", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530041", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.30", dueDate: "2024.5.10", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530031", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.28", dueDate: "", status: "진행중" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.25", dueDate: "2024.6.10", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530234", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.05", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.28", dueDate: "2024.6.05", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.30", dueDate: "", status: "진행중" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.02", dueDate: "2024.6.15", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530011", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.18", dueDate: "2024.5.01", status: "완료" },
 ];
 
 const CompanyOrderlist = () => {
@@ -23,16 +23,15 @@ const CompanyOrderlist = () => {
     const [searchFilter, setSearchFilter] = useState("orderNumber");
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredOrders, setFilteredOrders] = useState(orders);
+    const [sortOrder, setSortOrder] = useState('orderDate'); // 초기 정렬 기준을 orderDate로 설정
     const itemsPerPage = 10;
-    const [sortOrder, setSortOrder] = useState('desc');
-
 
     const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
 
     // 현재 페이지의 아이템들 가져오기
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentOrders = [...filteredOrders].reverse().slice(indexOfFirstItem, indexOfLastItem);
+    const currentOrders = filteredOrders.slice(indexOfFirstItem, indexOfLastItem);
 
     // 페이지 변경 핸들러
     const handlePageChange = (pageNumber) => {
@@ -55,11 +54,11 @@ const CompanyOrderlist = () => {
         setSearchQuery(searchTerm);
         setCurrentPage(1);
     };
+
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
         setCurrentPage(1);
     };
-    
 
     useEffect(() => {
         let filtered = orders.filter((order) => {
@@ -72,13 +71,13 @@ const CompanyOrderlist = () => {
             }
             return false;
         });
-    
+
         filtered = filtered.sort((a, b) => {
-            const dateA = new Date(a.orderDate);
-            const dateB = new Date(b.orderDate);
-            return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+            const dateA = new Date(a[sortOrder]);
+            const dateB = new Date(b[sortOrder]);
+            return dateB - dateA; // 내림차순 정렬
         });
-    
+
         setFilteredOrders(filtered);
     }, [searchQuery, searchFilter, sortOrder]);
 
@@ -128,8 +127,8 @@ const CompanyOrderlist = () => {
                                 <span className="myorder-count">{filteredOrders.length}건</span>의 주문이 검색되었습니다.
                             </p>
                             <select className={styles["search-sort-method"]} value={sortOrder} onChange={handleSortChange}>
-                                <option value='desc'>주문일자 순 (내림차순)</option>
-                                <option value='asc'>주문일자 순 (오름차순)</option>
+                                <option value='orderDate'>주문일자 순 (내림차순)</option>
+                                <option value='dueDate'>마감일자 순 (내림차순)</option>
                             </select>
                         </div>
                         <table className={styles["table"]}>

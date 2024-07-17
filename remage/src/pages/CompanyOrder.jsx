@@ -4,17 +4,17 @@ import styles from "./CompanyOrder.module.css";
 import { Link } from 'react-router-dom';
 
 const orders = [
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.6.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530031", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530041", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530051", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530061", category: "청바지", orderDate: "2024.6.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530071", category: "청바지", orderDate: "2024.5.30" },
     { customer: "박수치는헬스터", orderNumber: "C20240530204", category: "청바지", orderDate: "2024.6.30" },
     { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", orderDate: "2024.5.30" },
     { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", orderDate: "2024.7.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530081", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", orderDate: "2024.5.30" },
 ];
 
 const CompanyOrder = () => {
@@ -25,6 +25,7 @@ const CompanyOrder = () => {
     const [filteredOrders, setFilteredOrders] = useState(orders);
     const itemsPerPage = 10;
     const [sortOrder, setSortOrder] = useState('desc');
+    
 
 
     const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
@@ -60,7 +61,13 @@ const CompanyOrder = () => {
         setCurrentPage(1);
     };
     
-
+    const handleReject = (orderNumber) => {
+        const confirmReject = window.confirm("정말 이 주문을 거절하시겠습니까?");
+        if (confirmReject) {
+            setFilteredOrders(filteredOrders.filter(order => order.orderNumber !== orderNumber));
+        }
+    };    
+  
     useEffect(() => {
         let filtered = orders.filter((order) => {
             if (searchFilter === "customer") {
@@ -142,6 +149,7 @@ const CompanyOrder = () => {
                                     <th>고객 주문 번호</th>
                                     <th>의상카테고리</th>
                                     <th>주문일자</th>
+                                    <th>수락여부</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -152,6 +160,10 @@ const CompanyOrder = () => {
                                         <td>{order.orderNumber}</td>
                                         <td>{order.category}</td>
                                         <td>{order.orderDate}</td>
+                                        <td>
+                                            <button className={styles["accept"]} >수락</button>
+                                            <button onClick={() => handleReject(order.orderNumber)} className={styles["decline"]}>거절</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
