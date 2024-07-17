@@ -163,7 +163,7 @@ const Board = () => {
   };
 
   return (
-    <div className="board">
+    <div className="page board">
       <section>
         <div className="inner">
           <div className="tab-container">
