@@ -5,6 +5,9 @@
   width: 1020px;
 }
 
+.tab-container{
+  margin-right :10px;
+}
 .tab-buttons {
   display: flex;
   justify-content: center;

@@ -4,20 +4,20 @@ import styles from "./CompanyOrder.module.css";
 import { Link } from 'react-router-dom';
 
 const orders = [
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.6.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530204", category: "청바지", orderDate: "2024.6.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", orderDate: "2024.7.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", orderDate: "2024.5.30" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530204", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530001", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.30", dueDate: "2024.7.5", status: "완료" },
 ];
 
-const CompanyOrder = () => {
+const CompanyOrderlist = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchFilter, setSearchFilter] = useState("orderNumber");
@@ -81,24 +81,22 @@ const CompanyOrder = () => {
     
         setFilteredOrders(filtered);
     }, [searchQuery, searchFilter, sortOrder]);
-    
 
-    
     return (
         <div className="page company_order">
             <section>
                 <div className="inner">
                     <div className="tab-container">
                         <h3 className="tab-title">서비스</h3>
-                        <div className={styles["tab-item"]}>
+                        <div className={styles["active-tab"]}>
                             <Link to="/service/company/orderlist">받은 주문관리</Link>
                         </div>
-                        <div className={styles["active-tab"]}>
+                        <div className={styles["tab-item"]}>
                             <Link to="/service/company/order">주문 받기</Link>
                         </div>
                     </div>
                     <div className="qnatabs">
-                        <h2 className="section-title">주문 받기</h2>
+                        <h2 className="section-title">받은 주문 관리</h2>
                         <div className="custom-search-box">
                             <select
                                 className="search-select"
@@ -140,8 +138,11 @@ const CompanyOrder = () => {
                                     <th>번호</th>
                                     <th>주문고객</th>
                                     <th>고객 주문 번호</th>
-                                    <th>의상카테고리</th>
+                                    <th>주문 의류 원본</th>
+                                    <th>희망 결과</th>
                                     <th>주문일자</th>
+                                    <th>마감일자</th>
+                                    <th>상태</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -150,8 +151,11 @@ const CompanyOrder = () => {
                                         <td>{filteredOrders.length - (currentPage - 1) * itemsPerPage - index}</td>
                                         <td>{order.customer}</td>
                                         <td>{order.orderNumber}</td>
-                                        <td>{order.category}</td>
+                                        <td>{order.original}</td>
+                                        <td>{order.result}</td>
                                         <td>{order.orderDate}</td>
+                                        <td>{order.dueDate}</td>
+                                        <td>{order.status}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -174,4 +178,4 @@ const CompanyOrder = () => {
     );
 };
 
-export default CompanyOrder;
+export default CompanyOrderlist;
