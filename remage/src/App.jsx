@@ -15,6 +15,7 @@ import Mypage from "./pages/MyPage/Mypage";
 import Board from "./pages/Board";
 import EditProfile from "./pages/MyPage/EditProfile";
 import CompanyOrder from "./pages/CompanyOrder";
+import Fitting from "./pages/Fitting/Fitting";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -39,6 +40,7 @@ function App() {
             <Route path="/sign-up/complete" element={<Completion />} />
             <Route path="/mypage/*" element={<Mypage />} />
             <Route path="/mypage/edit" element={<EditProfile />} />
+            <Route path="/fitting" element={<Fitting/>} />
             {/* <Route path="/mypage/orderlist" element={<Mypageorderlist/>}/> */}
             {/* <Route path="/login/general/" element={<LoginGeneral />} />
             <Route path="/login/company/" element={<LoginCompany />} /> */}

@@ -5,13 +5,15 @@ const useAuthStore = create(
   persist(
     (set) => ({
       isAuthenticated: false,
+      userType: null,
       accessToken: null,
       refreshToken: null,
-      login: (accessToken, refreshToken) => {
+      login: (accessToken, refreshToken, userType) => {
         set({
           isAuthenticated: true,
           accessToken: accessToken,
           refreshToken: refreshToken,
+          userType: userType,
         });
         console.log("complete");
       },

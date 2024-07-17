@@ -1,7 +1,15 @@
 import React from "react";
 import Button from "../../components/common/Button";
+import useAuthStore from "../../stores/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 const MypageSidebar = () => {
+const navigate = useNavigate()
+const {logout} = useAuthStore()
+const handleLogoutClick = () =>{
+  navigate("/")
+  logout()
+}
   return (
     <aside className="mp-sidebar">
       <div className="user-info">
@@ -14,7 +22,7 @@ const MypageSidebar = () => {
           url="/mypage/edit/"
           className="editprofile-button"
         ></Button>
-        <button className="logout-button">로그아웃</button>
+        <button className="logout-button" onClick={handleLogoutClick}>로그아웃</button>
       </div>
       <div className="spacer"></div>
       <button className="delete-account-button">회원 탈퇴</button>

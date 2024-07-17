@@ -23,7 +23,7 @@ const TermsOfServicesContent = ({
           id={id}
           label={confirmationText}
           onChange={handleChange}
-        />
+          />
       </div>
     </div>
   );
