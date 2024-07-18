@@ -4,9 +4,37 @@ import Button from "../../components/common/Button";
 import PostcodeComponent from "../SignUp/PostcodeComponent";
 import styles from "./EditProfile.module.css";
 import PasswordChangeModal from "./PasswordChangeModal";
+import { getUserProfile } from "../../api/auth";
 
 const EditProfile = () => {
-  const [nickname, setNickname] = useState("defaultNickname");
+  const [userId, setUserId] = useState("")
+  const [nickname, setNickname] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [address, setAddress] = useState("")
+  const [detailAddress, setDetailAddress] = useState("")
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await getUserProfile();
+        const profile = response.data
+        setUserId(profile.username)
+        setNickname(profile.nickname)
+        setPhoneNumber(profile.phone)
+        setAddress(profile.address)
+        setDetailAddress(profile.detail_address)
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfile();
+  }, [])
+  
+
+
   const [isNicknameChanged, setIsNicknameChanged] = useState(false);
   const [isNicknameValid, setIsNicknameValid] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,11 +53,24 @@ const EditProfile = () => {
   useEffect(() => {
     if (nickname.includes(" ")) {
       setIsNicknameValid(false);
-    }
-    console.log(isNicknameValid);
+    };
 
     return () => {};
   }, [nickname, isNicknameValid]);
+  const handlePhoneNumberChange = (e) =>{
+    const newPhoneNumber = e.target.value
+    setPhoneNumber(newPhoneNumber);
+  }
+  const handleAddressChange = (e) =>{
+    const newAddress = e.target.value
+    setAddress(newAddress);
+  }
+  const handleDetailAddressChange = (e) =>{
+    const newDetailAddress = e.target.value
+    setDetailAddress(newDetailAddress);
+  }
+
+  if (loading) return <div>Loading...</div>;
   return (
     <div className="page">
       <section>
@@ -47,7 +88,7 @@ const EditProfile = () => {
                     </span>
                   }
                   className="user-info"
-                  placeholder="기존 아이디"
+                  placeholder={userId}
                   disabled
                 ></FormInput>
               </div>
@@ -83,6 +124,8 @@ const EditProfile = () => {
               <FormInput
                 label="전화번호 (선택)"
                 placeholder="전화번호를 입력해주세요."
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
               ></FormInput>
 
               <div className={styles["input-set"]}>
@@ -92,7 +135,9 @@ const EditProfile = () => {
                       주소 <span style={{ color: "#FC8181" }}>*</span>
                     </span>
                   }
-                  placeholder="주소"
+                  value={address}
+                  onChange={handleAddressChange}
+                  placeholder="주소를 입력해주세요."
                 ></FormInput>
                 {/* <Button className="user-info-button" text="주소 검색" /> */}
                 <PostcodeComponent
@@ -100,7 +145,7 @@ const EditProfile = () => {
                   text="주소 검색"
                 />
               </div>
-              <FormInput placeholder="상세주소를 입력해주세요."></FormInput>
+              <FormInput value={detailAddress} onChange={handleDetailAddressChange} placeholder="상세주소를 입력해주세요."></FormInput>
               <div className={styles["cancel-confirm-buttons"]}>
                 <Button text="취소" className="cancel" />
                 <Button text="수정" className="confirm" />

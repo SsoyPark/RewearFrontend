@@ -13,7 +13,7 @@ const Button = ({ className, text, url = "", type="button", onClick, ...rest }) 
   return (
     <>
       {url ? (
-        <Link className={componentClass} to={`${baseUrl}${url}`} {...rest}>
+        <Link className={componentClass} to={`${baseUrl}${url}`} onClick={onClick} {...rest}>
           {text}
         </Link>
       ) : (

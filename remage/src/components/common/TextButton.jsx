@@ -14,7 +14,7 @@ const TextButton = ({ text, onClick, className, id, url = "" }) => {
   return (
     <>
       {url ? (
-        <Link id={id} className={componentClass} to={`${baseUrl}${url}`}>
+        <Link id={id} className={componentClass} to={`${baseUrl}${url}`} onClick={onClick}>
           {text}
         </Link>
       ) : (

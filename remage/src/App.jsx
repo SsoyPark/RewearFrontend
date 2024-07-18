@@ -16,6 +16,7 @@ import Mypage from "./pages/Mypage/Mypage";
 import Board from "./pages/Board";
 import EditProfile from "./pages/Mypage/EditProfile";
 import CompanyOrder from "./pages/CompanyOrder";
+import Fitting from "./pages/Fitting/Fitting";
 import CompanyOrderlist from "./pages/CompanyOrderlist";
 
 function App() {
@@ -41,8 +42,7 @@ function App() {
             <Route path="/sign-up/complete" element={<Completion />} />
             <Route path="/mypage/" element={<Mypage />} />
             <Route path="/mypage/edit" element={<EditProfile />} />
-            {/* <Route path="/login/general/" element={<LoginGeneral />} />
-            <Route path="/login/company/" element={<LoginCompany />} /> */}
+            <Route path="/fitting" element={<Fitting/>} />
             <Route path="/service/" />
             <Route path="/service/general/" element={<ServiceGeneral />} />
             <Route path="/service/general/write/" element={<ServiceGeneralWrite />} />
