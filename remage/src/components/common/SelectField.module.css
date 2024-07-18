@@ -1,3 +1,11 @@
+.component {
+    height: 40px;
+}
+/* 높이가 큰 필드 */
+.broad-field {
+    height: 56px;
+}
+
 /* 라벨 스타일 */
 .component label {
     font-size: 14px;
@@ -7,9 +15,9 @@
 /* 셀렉트필드 스타일 */
 .component select {
     width: 100%;
-    height: 40px;
+    height: inherit;
     line-height: 3;
-    color: #495057;
+    color: #9da6b0;
     border: #CDD3D9 1px solid;
     border-radius: 10px;
     outline: none;
