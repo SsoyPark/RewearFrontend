@@ -33,9 +33,12 @@ axiosInstance.interceptors.response.use(
       // console.log(refreshToken);
       if (refreshToken) {
         try {
-          const response = await axiosInstance.post('/token/refresh/', {
+          const response = await axiosInstance.post('/users/token/refresh/', {
             refresh: refreshToken,
-          });
+          },{
+            headers: {
+              "Refresh-Token" : refreshToken
+          }});
           authStorage.state.accessToken = response.data.access;
           localStorage.setItem("auth-storage", JSON.stringify(authStorage));
           axiosInstance.defaults.headers.common['Authorization'] =

@@ -51,6 +51,7 @@ function App() {
               element={<ServiceGeneralWrite />}
             />
             <Route
+
               path="/service/general/write/recommend/"
               element={<ServiceGeneralRecommend />}
             />
