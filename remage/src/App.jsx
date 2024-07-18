@@ -11,10 +11,11 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Mypage from "./pages/MyPage/Mypage";
+import Mypage from "./pages/Mypage/Mypage";
 import Board from "./pages/Board";
-import EditProfile from "./pages/MyPage/EditProfile";
+import EditProfile from "./pages/Mypage/EditProfile";
 import CompanyOrder from "./pages/CompanyOrder";
+import CompanyOrderlist from "./pages/CompanyOrderlist";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -58,6 +59,7 @@ function App() {
             />
             <Route path="/Board/" element={<Board />} />
             <Route path="/service/company/order" element={<CompanyOrder />}/>
+            <Route path="/service/company/orderlist" element={<CompanyOrderlist />}/>
           </Routes>
         </div>
       </div>
