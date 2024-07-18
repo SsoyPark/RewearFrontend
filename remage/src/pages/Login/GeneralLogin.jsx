@@ -17,7 +17,8 @@ const GeneralLogin = ({ userType }) => {
   const [passwordInput, setPasswordInput] = useState("");
   const [usernameError, setUserNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const handleLoginClick = () => {
+  const navigate = useNavigate();
+  const handleLoginClick = async () => {
     if (usernameInput === "") {
       setUserNameError("아이디를 입력해 주세요.");
       return;

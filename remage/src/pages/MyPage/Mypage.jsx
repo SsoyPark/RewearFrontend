@@ -15,10 +15,38 @@ const Mypage = () => {
         <div className="inner">
           <MypageSidebar />
           <Routes>
-            <Route path="/" element={<Navigate to="main" replace />} />
-            <Route path="main" element={<MypageMain />} />
-            <Route path="orderlist" element={<MypageOrderlist />} />
-            <Route path="orderdetail" element={<MypageOrderdetail />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Navigate to="main" replace />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="main"
+              element={
+                <ProtectedRoute>
+                  <MypageMain />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="orderlist"
+              element={
+                <ProtectedRoute>
+                  <MypageOrderlist />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="orderdetail"
+              element={
+                <ProtectedRoute>
+                  <MypageOrderdetail />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </section>
