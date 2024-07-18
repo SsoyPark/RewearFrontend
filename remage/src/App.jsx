@@ -21,19 +21,21 @@ import Fitting from "./pages/Fitting/Fitting";
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-  const shutDownSidebar = () => {
-    setIsSidebarOpen(false);
-  };
+  // const toggleSidebar = () => {
+  //   setIsSidebarOpen(!isSidebarOpen);
+  // };
+  // const shutDownSidebar = () => {
+  //   setIsSidebarOpen(false);
+  // };
 
   return (
     <BrowserRouter>
       <div>
-        <Header toggleSidebar={toggleSidebar} />
+        <Header 
+        // toggleSidebar={toggleSidebar} 
+        />
         <div className={`sidebar-main-page ${isSidebarOpen ? "shift" : ""}`}>
-          <Sidebar isOpen={isSidebarOpen} shutDownSidebar={shutDownSidebar} />
+          {/* <Sidebar isOpen={isSidebarOpen} shutDownSidebar={shutDownSidebar} /> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login/*" element={<Login />} />

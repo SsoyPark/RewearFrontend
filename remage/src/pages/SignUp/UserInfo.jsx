@@ -130,6 +130,9 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
     return businessNumber !== "중복"
   }
 
+  const checkDuplication = async (type) => {
+    
+  }
 
   const checkBusinessName = (businessName) =>{
     return businessName !== "중복"
