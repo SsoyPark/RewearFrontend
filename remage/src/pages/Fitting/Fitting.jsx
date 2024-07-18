@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Fitting = () => {
-    const baseURL = "http://127.0.0.1:8001";
+    const baseURL = "http://34.47.76.146:8000";
     const [file1, setFile1] = useState(null);
     const [file2, setFile2] = useState(null);
     const [file1URL, setFile1URL] = useState(null);

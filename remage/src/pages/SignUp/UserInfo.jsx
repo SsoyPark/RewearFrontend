@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import InputError from "../../components/common/InputError";
 import PostcodeComponent from "./PostcodeComponent";
 import UserInfoNextButton from "./UserInfoNextButton";
-import { signUp, signUpB } from "../../api/signup";
+import { signUp, signUpB, duplicationCheck } from "../../api/signup";
 
 const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) => {
   const location = useLocation();
