@@ -10,7 +10,7 @@ import PostcodeComponent from "./PostcodeComponent";
 import UserInfoNextButton from "./UserInfoNextButton";
 import { signUp, signUpB } from "../../api/signup";
 
-const UserInfo = ({ setCurrentStage, emailReciecveChecked, smsRecieveChecked }) => {
+const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -223,11 +223,13 @@ const UserInfo = ({ setCurrentStage, emailReciecveChecked, smsRecieveChecked }) 
       alert("입력이 유효하지 않습니다.");
     } else {
       if (type==="general") {
-        try {const response = await signUp(userId,nickname, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailReciecveChecked)
+        console.log(emailRecieveChecked);
+        try {const response = await signUp(userId,nickname, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailRecieveChecked)
+          
           navigate("/sign-up/complete/", { state: { from: "UserInfo" } }); 
       }catch(err){alert(err.message)};
       } else {
-        try {const response = await signUpB(userId,nickname,businessNumber, businessName, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailReciecveChecked)
+        try {const response = await signUpB(userId,nickname,businessNumber, businessName, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailRecieveChecked)
           navigate("/sign-up/complete/", { state: { from: "UserInfo" } }); 
       }catch(err){alert(err.message)};
       }

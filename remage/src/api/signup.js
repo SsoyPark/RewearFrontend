@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_API_BACKEND_URL;
 // const BASE_URL = process.env.REACT_APP_API_BASE_URL;
-export const signUp = async (username, nickname, password, verifyPW, phone, address, detail_address, agree_terms, agree_privacy, recieve_sms, recieve_email) => {
+export const signUp = async (username, nickname, password, verifyPW, phone, address, detail_address, agree_terms, agree_privacy, receive_sms, receive_email) => {
   try {
     console.log(BASE_URL);
     const requestBody = { 
@@ -15,10 +15,11 @@ export const signUp = async (username, nickname, password, verifyPW, phone, addr
         detail_address,
         agree_terms,
         agree_privacy,
-        recieve_sms,
-        recieve_email
+        receive_sms,
+        receive_email
       }
     console.log(requestBody);
+    console.log("요청은잘감");
     const response = await axios.post(
       `${BASE_URL}/users/register/`,
       requestBody,
@@ -33,7 +34,7 @@ export const signUp = async (username, nickname, password, verifyPW, phone, addr
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 반환했지만 상태 코드는 2xx 범위 밖입니다.
-      throw new Error(error.response.data.detail || "Login failed");
+      throw new Error(error.response.data.detail || "SignUp failed");
     } else if (error.request) {
       // 요청이 만들어졌지만 응답을 받지 못했습니다.
       throw new Error("No response received from server");
@@ -44,7 +45,7 @@ export const signUp = async (username, nickname, password, verifyPW, phone, addr
   }
 };
 
-export const signUpB = async (username, nickname,business_registration_number, company_name, password, verifyPW, phone, address, detail_address, agree_terms, agree_privacy, recieve_sms, recieve_email) => {
+export const signUpB = async (username, nickname,business_registration_number, company_name, password, verifyPW, phone, address, detail_address, agree_terms, agree_privacy, receive_sms, receive_email) => {
     try {
       console.log(BASE_URL);
       const requestBody = { 
@@ -59,8 +60,8 @@ export const signUpB = async (username, nickname,business_registration_number, c
           detail_address,
           agree_terms,
           agree_privacy,
-          recieve_sms,
-          recieve_email
+          receive_sms,
+          receive_email
         }
       console.log(requestBody);
       const response = await axios.post(
