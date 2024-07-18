@@ -10,7 +10,7 @@ axiosInstance.interceptors.request.use(
     const authStorage = JSON.parse(localStorage.getItem("auth-storage"));
     const accessToken = authStorage?.state?.accessToken;
     if (accessToken) {
-      // config.headers['Authorization'] = 'Bearer ' + accessToken;
+      config.headers['Authorization'] = 'Bearer ' + accessToken;
     }
     return config;
   },
@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
               "Refresh-Token" : refreshToken
           }});
           
-          console.log(response.headers['authorization']);
+          console.log(`토큰 만료. 다음 토큰 재생성${response.headers['authorization']}`);
           const newToken = response.headers['authorization']
           authStorage.state.accessToken = newToken;
           localStorage.setItem("auth-storage", JSON.stringify(authStorage));

@@ -16,6 +16,7 @@ const EditProfile = () => {
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchProfile = async () => {
+      console.log('프로필 페이지에서 요청');
       try {
         const response = await getUserProfile();
         const profile = response.data
