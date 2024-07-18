@@ -74,9 +74,7 @@ const CompanyOrder = () => {
                 return order.customer.includes(searchQuery);
             } else if (searchFilter === "orderNumber") {
                 return order.orderNumber.includes(searchQuery);
-            } else if (searchFilter === "orderDate") {
-                return order.orderDate.includes(searchQuery);
-            }
+            } 
             return false;
         });
     
@@ -114,7 +112,6 @@ const CompanyOrder = () => {
                             >
                                 <option value="customer">주문고객</option>
                                 <option value="orderNumber">고객 주문 번호</option>
-                                <option value="orderDate">주문일자</option>
                             </select>
                             <input 
                                 type="text" 
