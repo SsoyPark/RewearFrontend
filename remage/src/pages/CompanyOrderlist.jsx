@@ -4,17 +4,17 @@ import styles from "./CompanyOrder.module.css";
 import { Link } from 'react-router-dom';
 
 const orders = [
-    { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.1.30", dueDate: "2024.2.18", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530081", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.2.30", dueDate: "2024.3.19", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530051", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.3.30", dueDate: "2024.4.15", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530041", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.30", dueDate: "2024.5.10", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530031", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.28", dueDate: "", status: "진행중" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.25", dueDate: "2024.6.10", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530234", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.05", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.28", dueDate: "2024.6.05", status: "완료" },
-    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.30", dueDate: "", status: "진행중" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.02", dueDate: "2024.6.15", status: "완료" },
-    { customer: "악수하는헬스터", orderNumber: "C20240530011", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.18", dueDate: "2024.5.01", status: "완료" },
+    { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.1.30", dueDate: "2024.2.18", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530081", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.2.30", dueDate: "2024.3.19", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530051", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.3.30", dueDate: "2024.4.15", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530041", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.30", dueDate: "2024.5.10", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530031", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.28", dueDate: "", status: false },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.25", dueDate: "2024.6.10", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530234", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.05", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.28", dueDate: "2024.6.05", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.30", dueDate: "", status: false },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.02", dueDate: "2024.6.15", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530011", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.18", dueDate: "2024.5.01", status: true },
 ];
 
 const CompanyOrderlist = () => {
@@ -66,9 +66,7 @@ const CompanyOrderlist = () => {
                 return order.customer.includes(searchQuery);
             } else if (searchFilter === "orderNumber") {
                 return order.orderNumber.includes(searchQuery);
-            } else if (searchFilter === "orderDate") {
-                return order.orderDate.includes(searchQuery);
-            }
+            } 
             return false;
         });
 
@@ -104,7 +102,6 @@ const CompanyOrderlist = () => {
                             >
                                 <option value="customer">주문고객</option>
                                 <option value="orderNumber">고객 주문 번호</option>
-                                <option value="orderDate">주문일자</option>
                             </select>
                             <input 
                                 type="text" 
@@ -154,7 +151,7 @@ const CompanyOrderlist = () => {
                                         <td>{order.result}</td>
                                         <td>{order.orderDate}</td>
                                         <td>{order.dueDate}</td>
-                                        <td>{order.status}</td>
+                                        <td>{order.status ? "완료" : "진행중"}</td>
                                     </tr>
                                 ))}
                             </tbody>

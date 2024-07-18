@@ -5,101 +5,104 @@ import "./Mypage.css";
 import { Link } from "react-router-dom";
 
 const orders = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
   {
-    /*이미지 정보가 필요하다*/
-    date: "저장 날짜: 2024.0.00",
-    description: "청바지 리폼1 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "임시저장",
-    /*주문상세 링크도 필요한가..? 어떻게 하는지 모르겠다*/
-    url: "/order/1",
+    orderId: "C20240530001",
+    category: "의류",
+    orderDate: "2024.05.30",
+    companyName: "업체A",
+    status: "주문 완료"
   },
   {
-    date: "주문 날짜: 2024.0.00",
-    description: "청바지 리폼2 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "주문대기",
-    url: "/order/2",
+    orderId: "A20487560301",
+    category: "가전",
+    orderDate: "2024.06.15",
+    companyName: "업체B",
+    status: "주문 대기"
   },
   {
-    date: "저장 날짜: 2024.0.00",
-    description: "청바지 리폼3 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "주문완료",
-    url: "/order/3",
+    orderId: "C483475214768",
+    category: "가구",
+    orderDate: "2024.07.01",
+    companyName: "업체C",
+    status: "주문 수락"
   },
   {
-    date: "주문 날짜: 2024.0.00",
-    description: "청바지 리폼4 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "주문대기",
-    url: "/order/4",
+    orderId: "B30298562345",
+    category: "생활용품",
+    orderDate: "2024.08.10",
+    companyName: "업체D",
+    status: "주문 거절"
   },
   {
-    date: "저장 날짜: 2024.0.00",
-    description: "청바지 리폼5 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "임시저장",
-    url: "/order/5",
+    orderId: "D20487560322",
+    category: "주방용품",
+    orderDate: "2024.09.05",
+    companyName: "업체E",
+    status: "주문 완료"
   },
   {
-    date: "주문 날짜: 2024.0.00",
-    description: "청바지 리폼6 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "배송완료",
-    url: "/order/6",
+    orderId: "E20487560367",
+    category: "문구류",
+    orderDate: "2024.10.20",
+    companyName: "업체F",
+    status: "주문 대기"
+  },
+  // 추가적인 빈 데이터 예시
+  {
+    orderId: "C20240530002",
+    category: "의류",
+    orderDate: "2024.06.30",
+    companyName: "업체G",
+    status: "주문 완료"
   },
   {
-    date: "저장 날짜: 2024.0.00",
-    description: "청바지 리폼7 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "임시저장",
-    url: "/order/7",
+    orderId: "A20487560302",
+    category: "가전",
+    orderDate: "2024.07.15",
+    companyName: "업체H",
+    status: "주문 대기"
   },
   {
-    image: "1.jpg" /* 백에서 api를 통해 가져와줄거라 믿어봅니다*/,
-    date: "주문 날짜: 2024.0.00",
-    description: "청바지 리폼8 부탁드립니다.",
-    detail:
-      "가능하면 최대한 워싱 부분 살렸으면 좋겠어요. 단추도 디테일로 살릴 수 있으면 살리고 싶습니다.",
-    status: "주문완료",
-    url: "http://localhost:3000/mypage/orderdetail"
+    orderId: "C483475214769",
+    category: "가구",
+    orderDate: "2024.08.01",
+    companyName: "업체I",
+    status: "주문 수락"
   },
-  /*추가 주문 내역이 있으면 여기 생성될 수 있도록 구성*/
+  {
+    orderId: "B30298562346",
+    category: "생활용품",
+    orderDate: "2024.09.10",
+    companyName: "업체J",
+    status: "주문 거절"
+  }
 ];
 
 const MypageOrderlist = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const [sortOrder, setSortOrder] = useState('orderDateDesc');
+  const itemsPerPage = 10;
+
+  // 정렬 함수
+  const sortOrders = (orders, sortOrder) => {
+    return orders.slice().sort((a, b) => {
+      const dateA = new Date(a.orderDate);
+      const dateB = new Date(b.orderDate);
+      if (sortOrder === 'orderDateAsc') {
+        return dateA - dateB;
+      } else {
+        return dateB - dateA;
+      }
+    });
+  };
+
+  // 정렬된 주문 목록 가져오기
+  const sortedOrders = sortOrders(orders, sortOrder);
 
   // 현재 페이지에 해당하는 아이템을 계산
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentOrders = orders
-    .slice()
-    .reverse()
-    .slice(indexOfFirstItem, indexOfLastItem);
+  const currentOrders = sortedOrders.slice(indexOfFirstItem, indexOfLastItem);
 
   // 페이지 변경 핸들러
   const handleClick = (pageNumber) => {
@@ -112,63 +115,70 @@ const MypageOrderlist = () => {
     pageNumbers.push(i);
   }
 
+  // 정렬 변경 핸들러
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
-    // <div className="mypage-orderlist">
     <main className="main-content">
       <h2 className="h2 title">주문내역</h2>
-      <p className="order-sub-title">
-        내 주문 <span className="myorder-count">{orders.length}건</span>
-      </p>
-      <div className="order_list">
-        {currentOrders.map((order, index) => (
-          <div key={index} className="order_item">
-            <img
-              src={order.image || "default-image.jpg"}
-              className="order_image"
-            />
-            <div className="order_box">
-              <p className="order_date">{order.date}</p>
-              <p className="order_title1">{order.description}</p>
-              <p className="order_detail">{order.detail}</p>
-            </div>
-            <div className="order_status">{order.status}</div>
-            {/* 주문 연결이 필요해요. */}
-            <Link to={order.url}><div className="view_order_details">
-                주문상세보기 <FaChevronRight />
-              </div>
-            </Link>
-          </div>
-        ))}
+      <div className="list-head">
+        <p className="order-sub-title">
+          내 주문 <span className="myorder-count">{orders.length}건</span>
+        </p>
+        <select className="search-sort-method" value={sortOrder} onChange={handleSortChange}>
+          <option value='orderDateDesc'>주문일자 순 (내림차순)</option>
+          <option value='orderDateAsc'>주문일자 순 (오름차순)</option>
+        </select>
+      </div>
+      <div className="order-table">
+        <table>
+          <thead>
+            <tr className="tr">
+              <th>번호</th>
+              <th>고객 주문 번호</th>
+              <th>카테고리</th>
+              <th>주문 날짜</th>
+              <th>주문 업체명</th>
+              <th>주문 상태</th>
+              <th>주문 상세 보기</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentOrders.map((order, index) => (
+              <tr key={index}>
+                <td>{sortedOrders.length - (currentPage - 1) * itemsPerPage - index}</td>
+                <td>{order.orderId}</td>
+                <td>{order.category}</td>
+                <td>{order.orderDate}</td>
+                <td>{order.companyName}</td>
+                <td>{order.status}</td>
+                <td>
+                  <Link to={`/mypage/orderdetail/`}>
+                    <div className="view_order_details">
+                      주문상세보기 <FaChevronRight />
+                    </div>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div className="pagination">
-        {currentPage !== 1 && (
-          <button
-            onClick={() => handleClick(currentPage - 1)}
-            className="page-number"
-          >
-            &lt;
-          </button>
-        )}
         {pageNumbers.map((number) => (
           <button
             key={number}
             onClick={() => handleClick(number)}
-            className={`page-number ${number === currentPage ? "active" : ""}`}
+            className={currentPage === number ? "active" : ""}
           >
             {number}
           </button>
         ))}
-        {currentPage !== pageNumbers.length && (
-          <button
-            onClick={() => handleClick(currentPage + 1)}
-            className="page-number"
-          >
-            &gt;
-          </button>
-        )}
       </div>
     </main>
-    // </div>
   );
 };
 
