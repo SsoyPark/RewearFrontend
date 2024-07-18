@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  // baseURL: 'http://localhost:8000',
+  baseURL: 'http://localhost:8000',
   timeout: 1000,
 });
 
@@ -10,7 +10,7 @@ axiosInstance.interceptors.request.use(
     const authStorage = JSON.parse(localStorage.getItem("auth-storage"));
     const accessToken = authStorage?.state?.accessToken;
     if (accessToken) {
-      config.headers['Authorization'] = 'Bearer ' + accessToken;
+      // config.headers['Authorization'] = 'Bearer ' + accessToken;
     }
     return config;
   },
@@ -33,16 +33,19 @@ axiosInstance.interceptors.response.use(
       // console.log(refreshToken);
       if (refreshToken) {
         try {
-          const response = await axiosInstance.post('/users/token/refresh/', {
+          const response = await axiosInstance.post('/users/reissue/', {
             refresh: refreshToken,
           },{
             headers: {
               "Refresh-Token" : refreshToken
           }});
-          authStorage.state.accessToken = response.data.access;
+          
+          console.log(response.headers['authorization']);
+          const newToken = response.headers['authorization']
+          authStorage.state.accessToken = newToken;
           localStorage.setItem("auth-storage", JSON.stringify(authStorage));
           axiosInstance.defaults.headers.common['Authorization'] =
-            'Bearer ' + response.data.access;
+            'Bearer ' + newToken;
           return axiosInstance(originalRequest);
         } catch (err) {
           console.error('Refresh token expired or invalid.');
