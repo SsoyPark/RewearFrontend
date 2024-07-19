@@ -23,13 +23,19 @@ const TermsOfServicesContent = ({
           id={id}
           label={confirmationText}
           onChange={handleChange}
-          />
+        />
       </div>
     </div>
   );
 };
 
-const TermsOfServices = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked, setEmailRecieveChecked, setSmsRecieveChecked }) => {
+const TermsOfServices = ({
+  setCurrentStage,
+  emailRecieveChecked,
+  smsRecieveChecked,
+  setEmailRecieveChecked,
+  setSmsRecieveChecked,
+}) => {
   useEffect(() => {
     setCurrentStage("약관동의");
   }, [setCurrentStage]);
@@ -83,8 +89,16 @@ const TermsOfServices = ({ setCurrentStage, emailRecieveChecked, smsRecieveCheck
       />
       {userInfoError && <InputError errorMessage={userInfoError} />}
       <div className={styles["selective-checkbox-contents"]}>
-        <FormCheckbox label="SMS 수신 동의 (선택)" id="terms-checkbox-3" onChange={()=>setSmsRecieveChecked(!smsRecieveChecked)}/>
-        <FormCheckbox label="이메일 수신 동의 (선택)" id="terms-checkbox-4" onChange={()=>setEmailRecieveChecked(!emailRecieveChecked)} />
+        <FormCheckbox
+          label="SMS 수신 동의 (선택)"
+          id="terms-checkbox-3"
+          onChange={() => setSmsRecieveChecked(!smsRecieveChecked)}
+        />
+        <FormCheckbox
+          label="이메일 수신 동의 (선택)"
+          id="terms-checkbox-4"
+          onChange={() => setEmailRecieveChecked(!emailRecieveChecked)}
+        />
       </div>
       <div className={styles["next-button"]}>
         <div className={styles["terms-of-services-next-button"]}>

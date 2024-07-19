@@ -38,6 +38,7 @@
 .search-profile-contents {
     /* position: absolute; */
     display: flex;
+    justify-content: space-around;
     align-items: center;
     margin-right: 10%;
     margin-left: 10%;
@@ -52,6 +53,7 @@
 
 @media (max-width: 460px) {
     .header-box {
-        justify-content: center;
+        display: flex;
+        justify-content: end;
     }
 }

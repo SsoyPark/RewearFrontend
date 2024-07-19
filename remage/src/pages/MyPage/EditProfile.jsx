@@ -4,27 +4,33 @@ import Button from "../../components/common/Button";
 import PostcodeComponent from "../SignUp/PostcodeComponent";
 import styles from "./EditProfile.module.css";
 import PasswordChangeModal from "./PasswordChangeModal";
-import { getUserProfile } from "../../api/auth";
+import { getUserProfile, patchProfile } from "../../api/auth";
+import { duplicationCheck } from "../../api/signup";
+import InputError from "../../components/common/InputError";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
-  const [userId, setUserId] = useState("")
+  const navigate = useNavigate()
+  const [profile, setProfile] = useState(null);
+  const [userId, setUserId] = useState("");
   const [nickname, setNickname] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [address, setAddress] = useState("")
-  const [detailAddress, setDetailAddress] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [detailAddress, setDetailAddress] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchProfile = async () => {
-      console.log('프로필 페이지에서 요청');
+      console.log("프로필 페이지에서 요청");
       try {
         const response = await getUserProfile();
-        const profile = response.data
-        setUserId(profile.username)
-        setNickname(profile.nickname)
-        setPhoneNumber(profile.phone)
-        setAddress(profile.address)
-        setDetailAddress(profile.detail_address)
+        const profile = response.data;
+        setProfile(profile);
+        setUserId(profile.username);
+        setNickname(profile.nickname);
+        setPhoneNumber(profile.phone);
+        setAddress(profile.address);
+        setDetailAddress(profile.detail_address);
       } catch (err) {
         setError(err);
       } finally {
@@ -32,44 +38,71 @@ const EditProfile = () => {
       }
     };
     fetchProfile();
-  }, [])
-  
-
+  }, []);
 
   const [isNicknameChanged, setIsNicknameChanged] = useState(false);
   const [isNicknameValid, setIsNicknameValid] = useState(true);
+  const [nicknameSystemMessage, setNicknameSystemMessage] = useState("");
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  //닉네임이 원래 닉네임과 같으면 valid, 달라지면 invalid
   const handleNicknameChange = (e) => {
     const newNickname = e.target.value;
     setNickname(newNickname);
-    const isChanged = newNickname !== "defaultNickname";
+    const isChanged = newNickname !== profile.nickname;
     setIsNicknameChanged(isChanged);
+    setIsNicknameValid(!isChanged);
+    setNicknameSystemMessage("");
+  };
+  const handleNicknameCheck = async () => {
+    // 유효성 검사
+    if (!isNicknameChanged) {
+      setNicknameSystemMessage("닉네임이 변경되지 않았습니다.");
+      setIsNicknameValid("true");
+      return;
+    }
+    if (nickname.includes(" ") || nickname.length < 4) {
+      setNicknameSystemMessage("유효하지 않은 닉네임입니다.");
+      return;
+    }
+    const isValid = await duplicationCheck(nickname, "nickname");
+    setIsNicknameValid(isValid);
+    if (isValid) {
+      setNicknameSystemMessage("사용 가능한 닉네임입니다.");
+    } else {
+      setNicknameSystemMessage("이미 사용중인 닉네임입니다.");
+    }
+    return;
+  };
+  const handlePhoneNumberChange = (e) => {
+    const newPhoneNumber = e.target.value;
+    setPhoneNumber(newPhoneNumber);
+  };
+  const handleAddressChange = (e) => {
+    const newAddress = e.target.value;
+    setAddress(newAddress);
+  };
+  const handleDetailAddressChange = (e) => {
+    const newDetailAddress = e.target.value;
+    setDetailAddress(newDetailAddress);
+  };
 
-    // 유효성 검사:공백확인
-    if (newNickname.trim() === "" || newNickname.includes(" ")) {
-      setIsNicknameValid(false);
-      console.log("유효하지 않은 닉네임입니다.");
+  const handleEditButton = async () => {
+    try {
+      const response = await patchProfile("general", {
+        username: userId,
+        nickname: nickname,
+        phone: phoneNumber,
+        address: address,
+        detail_address: detailAddress,
+      });
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      navigate('/mypage/main')
     }
   };
-  useEffect(() => {
-    if (nickname.includes(" ")) {
-      setIsNicknameValid(false);
-    };
-
-    return () => {};
-  }, [nickname, isNicknameValid]);
-  const handlePhoneNumberChange = (e) =>{
-    const newPhoneNumber = e.target.value
-    setPhoneNumber(newPhoneNumber);
-  }
-  const handleAddressChange = (e) =>{
-    const newAddress = e.target.value
-    setAddress(newAddress);
-  }
-  const handleDetailAddressChange = (e) =>{
-    const newDetailAddress = e.target.value
-    setDetailAddress(newDetailAddress);
-  }
 
   if (loading) return <div>Loading...</div>;
   return (
@@ -93,17 +126,27 @@ const EditProfile = () => {
                   disabled
                 ></FormInput>
               </div>
-              <div className={styles["input-set"]}>
-                <FormInput
-                  label={
-                    <span>
-                      닉네임 <span style={{ color: "#FC8181" }}>*</span>
-                    </span>
-                  }
-                  value={nickname}
-                  onChange={handleNicknameChange}
-                ></FormInput>
-                <Button className="user-info-button" text="중복 확인" />
+              <div>
+                <div className={styles["input-set"]}>
+                  <FormInput
+                    label={
+                      <span>
+                        닉네임 <span style={{ color: "#FC8181" }}>*</span>
+                      </span>
+                    }
+                    value={nickname}
+                    onChange={handleNicknameChange}
+                  ></FormInput>
+                  <Button
+                    className="user-info-button"
+                    text="중복 확인"
+                    onClick={handleNicknameCheck}
+                  />
+                </div>
+                <InputError
+                  errorMessage={nicknameSystemMessage}
+                  className={isNicknameValid ? "success" : ""}
+                />
               </div>
               <div className={`${styles["input-set"]}`}>
                 <div className={styles["password-field"]}>
@@ -146,10 +189,14 @@ const EditProfile = () => {
                   text="주소 검색"
                 />
               </div>
-              <FormInput value={detailAddress} onChange={handleDetailAddressChange} placeholder="상세주소를 입력해주세요."></FormInput>
+              <FormInput
+                value={detailAddress}
+                onChange={handleDetailAddressChange}
+                placeholder="상세주소를 입력해주세요."
+              ></FormInput>
               <div className={styles["cancel-confirm-buttons"]}>
                 <Button text="취소" className="cancel" />
-                <Button text="수정" className="confirm" />
+                <Button text="수정" className="confirm" onClick={handleEditButton}/>
               </div>
             </div>
           </div>
