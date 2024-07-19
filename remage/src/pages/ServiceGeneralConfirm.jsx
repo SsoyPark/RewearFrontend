@@ -22,16 +22,15 @@ const ServiceGeneralConfirm = () => {
                         {/* 페이지 타이틀 시작 */}
                         <h2 className="section-title">주문하기</h2>
                         <div className="subtitle steps">
-                            <span className="step round"><span>1.<span className="space"></span>주문서 작성</span></span>
+                            <span className="step round primary"><span>1.<span className="space"></span>주문서 작성</span></span>
                             <span className="next"></span>
-                            <span className="step round"><span>2.<span className="space"></span>가상피팅</span><span class="mute"> (선택)</span></span>
+                            <span className="step round"><span>2.<span className="space"></span>가상피팅</span><span className="mute"> (선택)</span></span>
                             <span className="next"></span>
-                            <span className="step round primary"><span>3.<span className="space"></span>주문 확정</span></span>
+                            <span className="step round"><span>3.<span className="space"></span>주문 확정</span></span>
                         </div>
                         {/* 페이지 타이틀 끝 */}
                         <div className="content order-confirm">
                             <form>
-
                                 <h3 className="paragraph-title">주문 내역</h3>
                                 {/* 주문 내역 영역 시작 */}
                                 <div className="order-info">

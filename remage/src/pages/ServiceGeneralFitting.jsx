@@ -14,7 +14,6 @@ const ServiceGeneralFitting = () => {
   const [image, setImage] = useState(null);
   const [resultImageURL, setResultImageURL] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 변수
-
   const handleImageUpload = (imageData) => {
     setImage(imageData);
   };
