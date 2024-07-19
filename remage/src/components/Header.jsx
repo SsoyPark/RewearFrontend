@@ -13,11 +13,12 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { logout } = useAuthStore();
   const isLoggedIn = useAuthStore((state) => state.isAuthenticated);
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
   return (
     <div className="header-container">
       <div className="header-line-2">
       {/* <TextButton id="logo-main-page" text="REMAGE" url="/" /> */}
-      <Link href="/" id="logo-main-page">
+      <Link to={`${baseUrl}/`} id="logo-main-page">
           <img src="/Logo.png" alt="REMAGE Logo" />
       </Link>
       <div className="header-box">
