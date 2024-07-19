@@ -57,6 +57,7 @@
 }
 
 .component.uploader-long {
+    width: 100%;
     height: 100%;
 }
 .component.uploader-long div, .component.uploader-long img, .component.uploader-long input {
@@ -64,4 +65,7 @@
 }
 .component.uploader-long input {
     top: -560px;
+}
+.component.uploader-long span {
+    margin: 0;
 }
