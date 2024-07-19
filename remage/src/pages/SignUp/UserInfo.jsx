@@ -240,7 +240,7 @@ const UserInfo = ({
             emailRecieveChecked
           );
 
-          navigate("/sign-up/complete/", { state: { from: "UserInfo" } });
+          navigate("/sign-up/complete/", { state: { from: "UserInfo", userId: userId, password: password, userType: type } });
         } catch (err) {
           alert(err.message);
         }

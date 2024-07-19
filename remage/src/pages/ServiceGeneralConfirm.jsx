@@ -36,7 +36,7 @@ const ServiceGeneralConfirm = () => {
                                 {/* 주문 내역 영역 시작 */}
                                 <div className="order-info">
                                     {/* 리폼 이미지 영역 */}
-                                    <img src="https://i.imgur.com/m2ad328.png" alt="" />
+                                    <img src="https://i.imgur.com/BM8mG7U.png" alt="" />
                                     <div className="info-wrap">
                                         <p><strong>sweater / polyester / antiquewhite</strong></p>
                                         <p className="mute">round neck / sleeveless</p>
