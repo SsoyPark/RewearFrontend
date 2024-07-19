@@ -1,10 +1,13 @@
 .component {
-    width: 100%;
-    height: 280px;
+    /* width: 100%; */
+    /* height: 588px; */
+    width: 432px;
+    height: 432px;
     border-radius: 10px;
     /* border: 1px solid #CDD3D9; */
     background-color: #F2F4F6;
     overflow: hidden;
+    margin: 0 auto;
 }
 .component div {
     height: 100%;
@@ -12,8 +15,8 @@
 .component span {
     float: left;
     position: relative;
+    top: calc(50% - 30px);
     left: calc(50% - 30px);
-    margin-top: 110px;
     display: block;
     width: 60px;
     height: 60px;
@@ -25,15 +28,15 @@
 }
 .component .preview {
     width: 100%;
-    height: 280px;
+    height: 100%;
 }
 .component input {
     opacity: 0;
     width: 100%;
-    height: 280px;
+    height: 100%;
     border-radius: 10px;
     position: relative;
-    top: -280px;
+    top: -432px;
     cursor: pointer;
 }
 .component label {
@@ -42,7 +45,7 @@
 
 .component img {
     width: 100%;
-    height: 280px;
+    height: 100%;
     object-fit: cover;
     object-position: center;
 }

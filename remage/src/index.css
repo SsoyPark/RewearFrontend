@@ -43,6 +43,9 @@ body,
     height: 100%;
     height: calc(100% - 120px);
 }
+.content {
+    width: 100%;
+}
 
 .sidebar-main-page {
     display: flex;
