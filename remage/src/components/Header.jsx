@@ -8,17 +8,19 @@ import IconButton from "./common/IconButton";
 import TextButton from "./common/TextButton";
 import "./Header.css";
 import SidebarItem from "./SidebarItem";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { logout } = useAuthStore();
   const isLoggedIn = useAuthStore((state) => state.isAuthenticated);
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
   return (
     <div className="header-container">
       <div className="header-line-2">
       {/* <TextButton id="logo-main-page" text="REMAGE" url="/" /> */}
-      <a href="/" id="logo-main-page">
+      <Link to={`${baseUrl}/`} id="logo-main-page">
           <img src="/Logo.png" alt="REMAGE Logo" />
-      </a>
+      </Link>
       <div className="header-box">
         <div className="search-profile-contents">
           {/* <TextButton text="서비스" />
@@ -26,7 +28,7 @@ const Header = () => {
         </div>
         <div className="search-profile-contents">       
           {isLoggedIn &&
-            <TextButton text="마이페이지" />
+            <TextButton text="마이페이지" url="/mypage/main"/>
           }
           {isLoggedIn &&
             <TextButton text="고객센터" />
