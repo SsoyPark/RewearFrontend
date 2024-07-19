@@ -97,7 +97,7 @@ const ServiceGeneralWrite = () => {
     };
 
     // 카테고리
-    const [category, setCategory] = useState("스웨터");
+    const [category, setCategory] = useState("sweater");
 
     // const handleCategoryChange = (e) => {
     //     setCategory(e.target.value);
@@ -110,37 +110,41 @@ const ServiceGeneralWrite = () => {
     // }, []);
 
     const sleeveOptions = [
-        { value: "short", label: "짧은소매" },
-        { value: "long", label: "긴소매" },
-        { value: "sleeveless", label: "민소매" },
+        { value: "short", label: "short sleeved" },
+        { value: "long", label: "long sleeved" },
+        { value: "sleeveless", label: "sleeveless" },
     ];
 
     const necklineOptions = [
-        { value: "collar", label: "카라" },
-        { value: "round", label: "라운드넥" },
-        { value: "vneck", label: "브이넥" },
-        { value: "square", label: "스퀘어넥" },
+        { value: "collar", label: "collar" },
+        { value: "round", label: "round neck" },
+        { value: "vneck", label: "v-neck" },
+        { value: "square", label: "square neck" },
     ];
     // 카테고리 '스웨터'일 때만 '터틀벡', '모크넥' 옵션 추가
-    if (category === "스웨터") {
+    if (category === "sweater") {
         necklineOptions.push(
-            { value: "turtle", label: "터틀넥" },
-            { value: "mock", label: "모크넥" }
+            { value: "turtle", label: "turtle neck" },
+            { value: "mock", label: "mock neck" }
         );
     }
 
     const pocketOptions = [
-        { value: "none", label: "없음" },
-        { value: "left", label: "왼쪽" },
-        { value: "right", label: "오른쪽" },
+        { value: "none", label: "n/a" },
+        { value: "left", label: "left" },
+        { value: "right", label: "right" },
     ];
 
-    const materialOptions = [
-        { value: "none", label: "없음" },
-        { value: "buttons-full", label: "단추 - 풀" },
-        { value: "buttons-half", label: "단추 - 하프" },
-        { value: "zippers-full", label: "지퍼 - 풀" },
-        { value: "zippers-half", label: "지퍼 - 하프" },
+    const buttonOptions = [
+        { value: "none", label: "n/a" },
+        { value: "buttons-full", label: "button (full)" },
+        { value: "buttons-half", label: "button (half)" },
+    ]
+
+    const zipperOptions = [
+        { value: "none", label: "n/a" },
+        { value: "zippers-full", label: "지퍼 (full)" },
+        { value: "zippers-half", label: "지퍼 (half)" },
     ];
 
     const otherOptions = [
@@ -193,13 +197,13 @@ const ServiceGeneralWrite = () => {
                                     <div className="form-item">
                                         <div>
                                             <label>재질</label>
-                                            <div><p>면</p></div>
+                                            <div><p>polyester</p></div>
                                         </div>
                                     </div>
                                     <div className="form-item">
                                         <div>
                                             <label>색상</label>
-                                            <div><p>보라색</p></div>
+                                            <div><p>antiquewhite</p></div>
                                         </div>
                                     </div>
                                 </div>
@@ -227,19 +231,31 @@ const ServiceGeneralWrite = () => {
                                             />
                                         </div>
                                         {
-                                            category === "스웨터" && (
+                                            category === "sweater" && (
                                                 <div className="form-item">
                                                     <SelectField
-                                                        label="부자재 수정"
-                                                        options={materialOptions}
-                                                        placeholder="부자재 선택"
+                                                        label="버튼 수정"
+                                                        options={buttonOptions}
+                                                        placeholder="버튼 선택"
                                                         required
                                                     />
                                                 </div>
                                             )
                                         }
                                         {
-                                            category != "스웨터" && (
+                                            category === "sweater" && (
+                                                <div className="form-item">
+                                                    <SelectField
+                                                        label="지퍼 수정"
+                                                        options={zipperOptions}
+                                                        placeholder="지퍼 선택"
+                                                        required
+                                                    />
+                                                </div>
+                                            )
+                                        }
+                                        {
+                                            category != "sweater" && (
                                                 <div className="form-item">
                                                     <SelectField
                                                         label="주머니 수정"
@@ -285,7 +301,7 @@ const ServiceGeneralWrite = () => {
                                 <h3 className="paragraph-title">리폼 디자인 추천</h3>
                                 <button className="gen-again"/>
                                 {/* <ImageUploader /> */}
-                                <img src="https://i.imgur.com/SL6AKbi.png" alt="" />
+                                <img src="https://i.imgur.com/BM8mG7U.png" alt="" />
                                 {/* <TextButton className="btn-grey" text="다시 추천받기" /> */}
                                 {/* <Button
                                         className="btn-full-width"
