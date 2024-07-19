@@ -299,13 +299,13 @@ const ServiceGeneralWrite = () => {
                                 <Button
                                     text="가상피팅"
                                     className="btn-next btn-white"
-                                    // url="/service/general/write/recommend/"
+                                    url="/service/general/write/fitting/"
                                     // onClick={handleSubmit}
                                 />
                                 <Button
                                     text="주문 진행"
                                     className="btn-next"
-                                    // url="/service/general/write/recommend/"
+                                    url="/service/general/write/confirm/"
                                     // onClick={handleSubmit}
                                 />
                             </div>
