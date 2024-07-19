@@ -135,6 +135,12 @@ const ServiceGeneralWrite = () => {
         { value: "right", label: "right" },
     ];
 
+    const patternOptions = [
+        { value: "cable", label: "cable" },
+        { value: "waffle", label: "waffle" },
+        { value: "plain", label: "plain" },
+    ]
+
     const buttonOptions = [
         { value: "none", label: "n/a" },
         { value: "buttons-full", label: "button (full)" },
@@ -230,6 +236,18 @@ const ServiceGeneralWrite = () => {
                                                 required
                                             />
                                         </div>
+                                        {
+                                            category === "sweater" && (
+                                                <div className="form-item">
+                                                    <SelectField
+                                                        label="패턴"
+                                                        options={patternOptions}
+                                                        placeholder="패턴 입력"
+                                                        required
+                                                    />
+                                                </div>
+                                            )
+                                        }
                                         {
                                             category === "sweater" && (
                                                 <div className="form-item">
