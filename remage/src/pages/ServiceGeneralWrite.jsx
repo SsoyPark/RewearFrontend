@@ -158,11 +158,11 @@ const ServiceGeneralWrite = () => {
                         {/* 페이지 타이틀 시작 */}
                         <h2 className="section-title">주문하기</h2>
                         <div className="subtitle steps">
-                            <span className="step round primary"><span>1.<span className="space"></span>주문서 작성하기</span></span>
+                            <span className="step round primary"><span>1.<span className="space"></span>주문서 작성</span></span>
                             <span className="next"></span>
-                            <span className="step round"><span>2.<span className="space"></span>리폼 디자인 추천받기</span></span>
+                            <span className="step round"><span>2.<span className="space"></span>가상피팅</span><span class="mute"> (선택)</span></span>
                             <span className="next"></span>
-                            <span className="step round"><span>3.<span className="space"></span>주문 완료</span></span>
+                            <span className="step round"><span>3.<span className="space"></span>주문 확정</span></span>
                         </div>
                         {/* 페이지 타이틀 끝 */}
                         <div className="content">
@@ -283,9 +283,10 @@ const ServiceGeneralWrite = () => {
                             {/* 디자인 추천 영역 시작 */}
                             <div className="img-generate-area">
                                 <h3 className="paragraph-title">리폼 디자인 추천</h3>
+                                <button className="gen-again"/>
                                 {/* <ImageUploader /> */}
-                                <img src="https://img.animalplanet.co.kr/thumbnail/2020/05/20/2000/e23u07g3t2a9461ruhm0.jpg" alt="" />
-                                <TextButton className="btn-grey" text="다시 추천받기" />
+                                <img src="https://i.imgur.com/SL6AKbi.png" alt="" />
+                                {/* <TextButton className="btn-grey" text="다시 추천받기" /> */}
                                 {/* <Button
                                         className="btn-full-width"
                                         text="이 이미지 사용하기"

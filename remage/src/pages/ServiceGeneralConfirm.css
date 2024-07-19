@@ -28,6 +28,7 @@ p.mute {
     height: 80px;
     object-fit: cover;
     object-position: center;
+    margin: 0;
 }
 
 /* 배송지 정보 영역 스타일 */

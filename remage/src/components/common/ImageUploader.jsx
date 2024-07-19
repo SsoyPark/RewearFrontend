@@ -29,7 +29,7 @@ const ImageUploader = ({ className, onImageUpload }) => {
   return (
     <div className={componentClass}>
       <div className={styles.preview}>
-        {image ? <img src={image} alt="미리보기" /> : <div className="{styles.emptyPreview}"></div>}
+      {image ? <img src={image} alt="미리보기" /> : <div className="{styles.emptyPreview}"><span></span></div>}
       </div>
       <input
         type="file"
