@@ -15,10 +15,6 @@
     margin: 20px;
 }
 
-.order_number {
-    color: #47c282; /* 주문 번호의 색상을 설정 */
-}
-
 .order_table {
     width: 100%;
     border-bottom: 1px solid black;

@@ -31,10 +31,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-.myorder-count{
-    color:#47c282;
-}
-
 .pagination {
     display: flex;
     justify-content: center;
@@ -49,7 +45,7 @@
 }
 
 .pagination button.active {
-    color: #28a745; /* 초록색 */
+    color: #9D3014; /* 초록색 */
     background-color: white; /* 배경색을 흰색으로 유지 */
     border: 1px solid white;
 }
