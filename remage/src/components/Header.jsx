@@ -15,32 +15,21 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="header-line-2">
-      <TextButton id="logo-main-page" text="REMAGE" url="/" />
+      {/* <TextButton id="logo-main-page" text="REMAGE" url="/" /> */}
+      <a href="/" id="logo-main-page">
+          <img src="/Logo.png" alt="REMAGE Logo" />
+      </a>
       <div className="header-box">
-        <div className="hamburger-logo-contents">
-          {/* <IconButton>
-            <RxHamburgerMenu
-              style={{ fontSize: "30px" }}
-            />
-          </IconButton> */}
-          <TextButton text="서비스" />
-          <TextButton text="고객센터" />
+        <div className="search-profile-contents">
+          {/* <TextButton text="서비스" />
+          <TextButton text="고객센터" /> */}
         </div>
         <div className="search-profile-contents">       
-          {isLoggedIn && (
-            <IconButton>
-              <FaRegBell style={{ fontSize: "24px" }} />
-            </IconButton>
-          )}
-          {isLoggedIn && (
-            <IconButton>
-              <MdOutlineChatBubbleOutline style={{ fontSize: "24px" }} />
-            </IconButton>
-          )}
           {isLoggedIn &&
-            <IconButton url="/mypage/">
-            <FaUser style={{ fontSize: "24px" }} />
-          </IconButton>
+            <TextButton text="마이페이지" />
+          }
+          {isLoggedIn &&
+            <TextButton text="고객센터" />
           }
           {isLoggedIn ? (
             <TextButton
