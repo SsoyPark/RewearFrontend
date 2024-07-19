@@ -69,7 +69,7 @@ const MypageOrderdetail = () => {
                                     <td><span className="status" style={getStatusStyle(order.status)}>{order.status}</span></td>
                                 </tr>
                                 <tr>
-                                    <th>의류원본</th>
+                                    <th>의류카테고리</th>
                                     <td className="order_data">{order.originalClothing}</td>
                                     <th>요청사항</th>
                                     <td>{getReformRequest(order)}</td>
@@ -95,13 +95,13 @@ const MypageOrderdetail = () => {
                 </div>
                 <div className="order_detail_body">
                     <div>
-                        <h3 className="image_title"> 주문 의류 원본 </h3>
+                        <h3 className="image_title"> before </h3>
                         <div className="order_image_container">
                             <img className="image-placeholder" src={order.originalImage} alt="original" />
                         </div>
                     </div>
                     <div>
-                    <h3 className="image_title"> 리폼 레퍼런스 </h3>
+                    <h3 className="image_title"> after </h3>
                     <div className="order_image_container">
                         <img className="image-placeholder" src={order.referenceImage} alt="reference" />
                     </div>

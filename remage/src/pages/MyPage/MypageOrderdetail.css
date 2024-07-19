@@ -73,8 +73,8 @@ tr {
 }
 
 .image-placeholder {
-    width: 150px;
-    height: 150px;
+    width: 280px;
+    height: 280px;
     border-radius: 10px;
     border: 1px solid #ddd;
     object-fit: cover; /* 이미지가 요소 크기에 맞게 조절되도록 함 */

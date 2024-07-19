@@ -137,7 +137,7 @@ const CompanyOrderlist = () => {
                                     <th>번호</th>
                                     <th>주문고객</th>
                                     <th>고객 주문 번호</th>
-                                    <th>주문 의류 원본</th>
+                                    <th>의류 카테고리</th>
                                     <th>주문일자</th>
                                     <th>마감일자</th>
                                     <th>상태</th>
