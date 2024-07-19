@@ -41,7 +41,7 @@ body,
 #root>div {
     width: 100%;
     height: 100%;
-    height: calc(100% - 120px);
+    /* height: calc(100% - 120px); */
 }
 .content {
     width: 100%;
@@ -49,7 +49,7 @@ body,
 
 .sidebar-main-page {
     display: flex;
-    height: 100%;
+    height: auto;
     width: 100%;
     margin-top: 120px;
     /* transition: margin-left 0.3s ease-in-out; */
