@@ -48,7 +48,7 @@ const ServiceGeneralFitting = () => {
                                 <Button
                                     text="다음"
                                     className="btn-next"
-                                    url="/service/general/write/recommend/"
+                                    url="/service/general/write/confirm/"
                                     // onClick={handleSubmit}
                                 />
                             </div>
