@@ -21,7 +21,6 @@ const MypageMain = () => {
           완료 <span>0</span>
         </div>
       </div>
-      <div className="highlighted-section">{/* 강조된 섹션 내용 */}</div>
       <h3 className="section-title">나의 활동</h3>
       <div className="activities-section">
         <div className="activities-grid">
