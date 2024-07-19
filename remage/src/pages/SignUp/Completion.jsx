@@ -15,6 +15,7 @@ const Completion = () => {
   const password = location.state?.password
   const userType = location.state?.userType
   const handleLoginClick = async () => {
+    console.log(password);
     try {
       await loginService(userId, password, navigate, login, userType)
     } catch (err) {
@@ -40,7 +41,6 @@ const Completion = () => {
               악수하는 햄스터 님의 회원가입이 <br /> 성공적으로 완료되었습니다.
             </p>
             <Button
-              url="/"
               text="로그인 하기"
               className="sign-up-complete"
               onClick={handleLoginClick}
