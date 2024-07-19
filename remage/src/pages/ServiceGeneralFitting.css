@@ -38,3 +38,8 @@ p.text-margin-bottom {
 .fitting .order-bottom-btn {
     display: flex;
 }
+
+.fitting .loading {
+    cursor: default;
+}
+
