@@ -144,7 +144,7 @@ const CompanyOrder = () => {
                                     <th>번호</th>
                                     <th>주문고객</th>
                                     <th>고객 주문 번호</th>
-                                    <th>의상카테고리</th>
+                                    <th>의류 카테고리</th>
                                     <th>주문일자</th>
                                     <th>수락여부</th>
                                 </tr>

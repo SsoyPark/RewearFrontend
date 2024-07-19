@@ -71,7 +71,7 @@ tr{
 }
 
 .pagination button.active {
-    color: #28a745; /* 초록색 */
+    color: #9D3014; /* 초록색 */
     background-color: white; /* 배경색을 흰색으로 유지 */
     border: 1px solid white;
 }
@@ -98,6 +98,6 @@ tr{
 }
 
 .decline:hover {
-    background-color: lightcoral; /* 연한 빨강 배경 */
+    background-color: #9D3014; /* 연한 빨강 배경 */
     color: white; /* 하얀색 글씨 */
 }

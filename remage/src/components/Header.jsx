@@ -15,46 +15,43 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="header-line-2">
-        <TextButton id="logo-main-page" text="REMAGE" url="/" />
-        <div className="header-box">
-          <div className="hamburger-logo-contents">
-            {/* <IconButton>
-            <RxHamburgerMenu
-              style={{ fontSize: "30px" }}
-            />
-          </IconButton> */}
-            <TextButton text="서비스" />
+      {/* <TextButton id="logo-main-page" text="REMAGE" url="/" /> */}
+      <a href="/" id="logo-main-page">
+          <img src="/Logo.png" alt="REMAGE Logo" />
+      </a>
+      <div className="header-box">
+        <div className="search-profile-contents">
+          {/* <TextButton text="서비스" />
+          <TextButton text="고객센터" /> */}
+        </div>
+        <div className="search-profile-contents">       
+          {isLoggedIn &&
+            <TextButton text="마이페이지" />
+          }
+          {isLoggedIn &&
             <TextButton text="고객센터" />
-          </div>
-          <div className="search-profile-contents">
-            {isLoggedIn ? (
-              <>
-                <TextButton
-                  className="logout-page-button"
-                  text="프로필"
-                  url="/mypage/main/"
-                />
-                <TextButton
-                  className="logout-page-button"
-                  text="로그아웃"
-                  onClick={logout}
-                />
-              </>
-            ) : (
-              <>
-                <TextButton
-                  className="login-page-button"
-                  url="/login/"
-                  text="로그인"
-                />
-                <TextButton
-                  className="sign-in-page-button"
-                  text="회원가입"
-                  url="/sign-up/"
-                />
-              </>
-            )}
-          </div>
+          }
+          {isLoggedIn ? (
+            <TextButton
+              className="logout-page-button"
+              text="로그아웃"
+              onClick={logout}
+            />
+        ) : (
+          <>
+            <TextButton
+              className="login-page-button"
+              url="/login/"
+              text="로그인"
+            />
+            <TextButton
+              className="sign-in-page-button"
+              text="회원가입"
+              url="/sign-up/"
+            />
+            </>
+        )} 
+        </div>
         </div>
       </div>
     </div>

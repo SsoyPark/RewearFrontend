@@ -84,12 +84,12 @@
 }
 
 .tab-buttons button:hover {
-  color: #47c282;
+  color: #9D3014;
 }
 
 .tab-buttons button.active {
-  color: #47c282;
-  border-bottom: 2px solid #47c282; 
+  color: #9D3014;
+  border-bottom: 2px solid #9D3014; 
 }
 
 .faq-container {

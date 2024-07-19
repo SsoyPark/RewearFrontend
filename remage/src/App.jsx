@@ -5,8 +5,8 @@ import SignUp from "./pages/SignUp/SignUp";
 import Completion from "./pages/SignUp/Completion";
 import ServiceGeneral from "./pages/ServiceGeneral";
 import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
-import ServiceGeneralRecommend from "./pages/ServiceGeneralRecommend";
 import ServiceGeneralComplete from "./pages/ServiceGeneralComplete";
+import ServiceGeneralConfirm from "./pages/ServiceGeneralConfirm";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -17,6 +17,7 @@ import EditProfile from "./pages/MyPage/EditProfile";
 import CompanyOrder from "./pages/CompanyOrder";
 import CompanyOrderList from "./pages/CompanyOrderlist";
 import Fitting from "./pages/Fitting/Fitting";
+import ServiceGeneralFitting from "./pages/ServiceGeneralFitting";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -54,14 +55,14 @@ function App() {
               element={<ServiceGeneralWrite />}
             />
             <Route
-
-              path="/service/general/write/recommend/"
-              element={<ServiceGeneralRecommend />}
+              path="/service/general/write/fitting/"
+              element={<ServiceGeneralFitting />}
             />
             <Route
               path="/service/general/write/complete/"
               element={<ServiceGeneralComplete />}
             />
+            <Route path="/service/general/write/confirm" element={<ServiceGeneralConfirm />} />
             <Route path="/Board/" element={<Board />} />
             <Route path="/service/company/order" element={<CompanyOrder />}/>
             <Route path="/service/company/orderlist" element={<CompanyOrderList />}/>

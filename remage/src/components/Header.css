@@ -35,6 +35,11 @@
     flex-wrap: wrap;
 }
 
+.logo-image {
+    height: '40px';
+    width: '100px'; 
+}
+
 .search-profile-contents {
     /* position: absolute; */
     display: flex;
@@ -45,10 +50,24 @@
     gap: 29px;
 }
 
+.service-functions {
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    margin-right: 10%;
+    /* margin-left: 10%; */
+    gap: 29px;
+}
+
 #logo-main-page{
     font-size: 30px;
     font-weight: 200;
     margin-left: 10%;
+}
+
+#logo-main-page img {
+    height: 25px; /* 원하는 높이로 설정 */
+    width: auto;  /* 비율을 유지하며 너비 자동 설정 */
 }
 
 @media (max-width: 460px) {
