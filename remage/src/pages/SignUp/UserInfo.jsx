@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./UserInfo.module.css";
 import styles2 from "./SignUp.module.css";
-import { Form, UNSAFE_ErrorResponseImpl, useLocation, useNavigate } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import FormInput from "../../components/common/FormInput";
 import Button from "../../components/common/Button";
 import { useState, useEffect } from "react";
@@ -10,7 +13,11 @@ import PostcodeComponent from "./PostcodeComponent";
 import UserInfoNextButton from "./UserInfoNextButton";
 import { signUp, signUpB, duplicationCheck } from "../../api/signup";
 
-const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) => {
+const UserInfo = ({
+  setCurrentStage,
+  emailRecieveChecked,
+  smsRecieveChecked,
+}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -36,18 +43,20 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
   const [password, setPassword] = useState("");
   const [passwordSystemMessage, setPasswordSystemMessage] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(false);
-  
+
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isPasswordConfirmValid, setIsPasswordConfirmValid] = useState(false);
   const [passwordConfirmSystemMessage, setPasswordConfirmSystemMessage] =
-    useState(""); 
-  
+    useState("");
+
   const [businessNumber, setBusinessNumber] = useState("");
-  const [businessNumberSystemMessage, setBusinessNumberSystemMessage] = useState("")
-  const [isBusinessNumberValid, setIsBusinessNumberValid] = useState("")
+  const [businessNumberSystemMessage, setBusinessNumberSystemMessage] =
+    useState("");
+  const [isBusinessNumberValid, setIsBusinessNumberValid] = useState(false);
 
   const [businessName, setBusinessName] = useState("");
-  const [businessNameSystemMessage, setBusinessNameSystemMessage] = useState("");
+  const [businessNameSystemMessage, setBusinessNameSystemMessage] =
+    useState("");
   const [isBusinessNameValid, setIsBusinessNameValid] = useState(false);
 
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -56,14 +65,14 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
 
   const handleUserIdChange = (e) => {
     setUserId(e.target.value);
-    setUserIdSystemMessage("")
-    setIsUserIdValid(false)
+    setUserIdSystemMessage("");
+    setIsUserIdValid(false);
   };
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
-    setNicknameSystemMessage("")
-    setIsNicknameValid(false)
+    setNicknameSystemMessage("");
+    setIsNicknameValid(false);
   };
 
   const handlePasswordChange = (e) => {
@@ -96,18 +105,18 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
       setPasswordConfirmSystemMessage("비밀번호가 일치합니다.");
     }
   };
-  const handleBusinessNumberChange = (e) =>{
+  const handleBusinessNumberChange = (e) => {
     const newBusinessNumber = e.target.value;
     setBusinessNumber(newBusinessNumber);
-    setBusinessNumberSystemMessage("")
-    setIsBusinessNumberValid(false)
+    setBusinessNumberSystemMessage("");
+    setIsBusinessNumberValid(false);
   };
-  const handleBusinessNameChange=(e)=>{
+  const handleBusinessNameChange = (e) => {
     const newBusinessName = e.target.value;
     setBusinessName(newBusinessName);
-    setBusinessNameSystemMessage("")
-    setIsBusinessNameValid(false)
-  }
+    setBusinessNameSystemMessage("");
+    setIsBusinessNameValid(false);
+  };
   const handleAddressChange = (e) => {
     setAddress(e.target.value);
   };
@@ -115,29 +124,22 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
     setAddressDetail(e.target.value);
   };
 
-  const checkUserId = (userId) => {
+  const checkValue = async (value, type) => {
     // 실제 서버와의 통신 로직이 여기에 필요합니다.
     // 여기서는 예시로 임의의 로직을 사용합니다.
-    return userId !== "중복";
+    try {
+      const response = await duplicationCheck(value, type);
+      const result = response.data.available;
+      console.log(`중복검사 결과 : ${result}`);
+      return result
+    } catch (err) {
+      alert(err.message);
+    }
   };
-  const checkNickname = (nickname) => {
-    // 실제 서버와의 통신 로직이 여기에 필요합니다.
-    // 여기서는 예시로 임의의 로직을 사용합니다.
-    return nickname !== "중복";
-  };
-
   const checkBusinessNumber = (businessNumber) => {
-    return businessNumber !== "중복"
-  }
-
-  const checkDuplication = async (type) => {
-    
-  }
-
-  const checkBusinessName = (businessName) =>{
-    return businessName !== "중복"
-  }
-  const handleUserIdCheck = () => {
+    return businessNumber !== "중복";
+  };
+  const handleUserIdCheck = async () => {
     if (!userId) {
       setIsUserIdValid(false);
       setUserIdSystemMessage("아이디를 입력해 주세요");
@@ -145,7 +147,8 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
     }
     // 아이디 중복 확인 로직 구현
     // 예를 들어, 서버에 요청하여 중복 확인을 수행할 수 있습니다.
-    const isValid = checkUserId(userId);
+    const isValid = await checkValue(userId, "username");
+    
     setIsUserIdValid(isValid);
     if (isValid) {
       setUserIdSystemMessage("사용 가능한 아이디입니다.");
@@ -154,8 +157,7 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
     }
   };
 
-
-  const handleNicknameCheck = () => {
+  const handleNicknameCheck = async () => {
     if (!nickname) {
       setIsNicknameValid(false);
       setNicknameSystemMessage("닉네임을 입력해 주세요");
@@ -163,7 +165,7 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
     }
     // 아이디 중복 확인 로직 구현
     // 예를 들어, 서버에 요청하여 중복 확인을 수행할 수 있습니다.
-    const isValid = checkNickname(nickname);
+    const isValid = await checkValue(nickname, "nickname");
     setIsNicknameValid(isValid);
     if (isValid) {
       setNicknameSystemMessage("사용 가능한 닉네임입니다.");
@@ -171,45 +173,41 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
       setNicknameSystemMessage("이미 사용중인 닉네임입니다.");
     }
   };
-  
-  
 
-  const handleBusinessNumberCheck=()=>{
+  const handleBusinessNumberCheck = async () => {
     if (!businessNumber) {
-      setIsBusinessNumberValid(false)
-      setBusinessNumberSystemMessage("사업자등록번호를 입력해주세요.")
-      return
+      setIsBusinessNumberValid(false);
+      setBusinessNumberSystemMessage("사업자등록번호를 입력해주세요.");
+      return;
     }
-    const isValid = checkBusinessNumber(businessNumber)
-    setIsBusinessNumberValid(isValid)
+    const isValid = checkBusinessNumber(businessNumber);
+    setIsBusinessNumberValid(isValid);
     if (isValid) {
-      setBusinessNumberSystemMessage("유효한 사업자등록번호 입니다.")
+      setBusinessNumberSystemMessage("유효한 사업자등록번호 입니다.");
     } else {
-      setBusinessNumberSystemMessage("유효하지 않은 사업자 등록번호 입니다.")
+      setBusinessNumberSystemMessage("유효하지 않은 사업자 등록번호 입니다.");
     }
-  }
+  };
 
-  const handleBusinessNameCheck=()=>{
+  const handleBusinessNameCheck = () => {
     if (!businessName) {
-      setIsBusinessNameValid(false)
-      setBusinessNameSystemMessage("회사명을 입력해주세요.")
-      return
+      setIsBusinessNameValid(false);
+      setBusinessNameSystemMessage("회사명을 입력해주세요.");
+      return;
     }
-      const isValid = checkBusinessName(businessName)
-      setIsBusinessNameValid(isValid)
+    const isValid = checkValue(businessName, "companyName");
+    setIsBusinessNameValid(isValid);
     if (isValid) {
-      setBusinessNameSystemMessage("유효한 회사명 입니다.")
+      setBusinessNameSystemMessage("유효한 회사명 입니다.");
     } else {
-      setBusinessNameSystemMessage("유효하지 않은 회사명입니다.")
+      setBusinessNameSystemMessage("유효하지 않은 회사명입니다.");
     }
-  } 
-  
+  };
 
-
-  const handlePhoneNumberChange=(e)=>{
-    const newPhoneNumber = e.target.value
-    setPhoneNumber(newPhoneNumber)
-  }
+  const handlePhoneNumberChange = (e) => {
+    const newPhoneNumber = e.target.value;
+    setPhoneNumber(newPhoneNumber);
+  };
 
   const handleRegisterButton = async () => {
     if (
@@ -220,21 +218,53 @@ const UserInfo = ({ setCurrentStage, emailRecieveChecked, smsRecieveChecked }) =
         isNicknameValid &&
         address &&
         addressDetail &&
-        (type === "general" || (isBusinessNameValid&&isBusinessNumberValid))
+        (type === "general" || (isBusinessNameValid && isBusinessNumberValid))
       )
     ) {
       alert("입력이 유효하지 않습니다.");
     } else {
-      if (type==="general") {
+      if (type === "general") {
         console.log(emailRecieveChecked);
-        try {const response = await signUp(userId,nickname, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailRecieveChecked)
-          
-          navigate("/sign-up/complete/", { state: { from: "UserInfo" } }); 
-      }catch(err){alert(err.message)};
+        try {
+          const response = await signUp(
+            userId,
+            nickname,
+            password,
+            passwordConfirm,
+            phoneNumber,
+            address,
+            addressDetail,
+            true,
+            true,
+            smsRecieveChecked,
+            emailRecieveChecked
+          );
+
+          navigate("/sign-up/complete/", { state: { from: "UserInfo" } });
+        } catch (err) {
+          alert(err.message);
+        }
       } else {
-        try {const response = await signUpB(userId,nickname,businessNumber, businessName, password, passwordConfirm, phoneNumber, address, addressDetail, true, true, smsRecieveChecked, emailRecieveChecked)
-          navigate("/sign-up/complete/", { state: { from: "UserInfo" } }); 
-      }catch(err){alert(err.message)};
+        try {
+          const response = await signUpB(
+            userId,
+            nickname,
+            businessNumber,
+            businessName,
+            password,
+            passwordConfirm,
+            phoneNumber,
+            address,
+            addressDetail,
+            true,
+            true,
+            smsRecieveChecked,
+            emailRecieveChecked
+          );
+          navigate("/sign-up/complete/", { state: { from: "UserInfo" } });
+        } catch (err) {
+          alert(err.message);
+        }
       }
     }
   };
