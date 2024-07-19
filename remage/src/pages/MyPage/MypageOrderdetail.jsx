@@ -3,48 +3,29 @@ import "./MypageOrderdetail.css";
 import Button from "../../components/common/Button";
 import { useNavigate } from "react-router-dom";
 
-const order = [
-    {
-        orderNumber: "C20240530001",
-        status: "주문 완료",
-        originalClothing: "셔츠",
-        desiredOutcome: "크롭 셔츠",
-        orderDate: "2024.5.30",
-        orderCompany: "업체A", // 주문 업체
-        originalImage: "https://cdn.hankyung.com/photo/202206/99.30338841.1.jpg",
-        referenceImage: "https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/2aa6/db65d8c60f42ea40d90fa21083b7750fb1f3a0f201458e2205b166abcd0b.jpg"
-    },
-    {
-        orderNumber: "A20487560301",
-        status: "주문 대기",
-        originalClothing: "셔츠",
-        desiredOutcome: "크롭 셔츠",
-        orderDate: "2024.5.30",
-        orderCompany: "업체B", // 주문 업체
-        originalImage: "https://cdn.hankyung.com/photo/202206/99.30338841.1.jpg",
-        referenceImage: "https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/2aa6/db65d8c60f42ea40d90fa21083b7750fb1f3a0f201458e2205b166abcd0b.jpg"
-    },
-    {
-        orderNumber: "C483475214768",
-        status: "주문 수락",
-        originalClothing: "셔츠",
-        desiredOutcome: "크롭 셔츠",
-        orderDate: "",
-        orderCompany: "업체C", // 주문 업체
-        originalImage: "https://cdn.hankyung.com/photo/202206/99.30338841.1.jpg",
-        referenceImage: "https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/2aa6/db65d8c60f42ea40d90fa21083b7750fb1f3a0f201458e2205b166abcd0b.jpg"
-    }
-]
+const order = {
+    orderNumber: "C20240530001",
+    status: "주문 거절",
+    originalClothing: "shirt",
+    orderDate: "2024.5.30",
+    orderCompany: "업체A",
+    address: "경기도 수원시 영통구 원천동",
+    detailaddress: "103동 1206호",
+    sleeve_length: "long-sleeved",
+    neck_line: "collar neck",
+    pocket: "n/a",
+    zip: "half",
+    button: "half",
+    additional_requests: "crop",
+    originalImage: "https://cdn.hankyung.com/photo/202206/99.30338841.1.jpg",
+    referenceImage: "https://thumbnail10.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/2aa6/db65d8c60f42ea40d90fa21083b7750fb1f3a0f201458e2205b166abcd0b.jpg"
+};
 
 const MypageOrderdetail = () => {
     const navigate = useNavigate();
     const handleBack = () => {
         navigate("/mypage/orderlist");
     };
-    const handleOrder = () => {
-        navigate("/service/general/write/");
-    };
-    const currentOrder = order[1];
 
     const getStatusStyle = (status) => {
         switch (status) {
@@ -61,45 +42,69 @@ const MypageOrderdetail = () => {
         }
     };
 
+    const getReformRequest = (order) => {
+        const requests = [];
+        if (order.sleeve_length !== "n/a") requests.push(order.sleeve_length);
+        if (order.neck_line !== "n/a") requests.push(order.neck_line);
+        if (order.pocket !== "n/a") requests.push(order.pocket);
+        if (order.zip !== "n/a") requests.push(`${order.zip} zip`);
+        if (order.button !== "n/a") requests.push(`${order.button} button`);
+        if (order.additional_requests !== "n/a") requests.push(order.additional_requests);
+        return requests.join(", ");
+    };
+
     return (
         <div className="wrap">
             <div className="order_detail">
                 <div className="order_detail_head">
                     <h3 className="order_title">주문 상세</h3>
-                    <div className="order_subtitle"> 서비스 / 나의 주문관리 / <span className="order_number">{currentOrder.orderNumber}</span> </div>
+                    <div className="order_subtitle"> 서비스 / 나의 주문관리 / <span className="order_number">{order.orderNumber}</span> </div>
                     <div className="order_table">
                         <table>
                             <tbody>
                                 <tr>
-                                    <th>고객 주문 번호</th>
-                                    <td className="order_data">{currentOrder.orderNumber}</td>
+                                    <th>주문번호</th>
+                                    <td className="order_data">{order.orderNumber}</td>
                                     <th>상태</th>
-                                    <td><span className="status" style={getStatusStyle(currentOrder.status)}>{currentOrder.status}</span></td>
+                                    <td><span className="status" style={getStatusStyle(order.status)}>{order.status}</span></td>
                                 </tr>
                                 <tr>
-                                    <th>주문 의류 원본</th>
-                                    <td className="order_data">{currentOrder.originalClothing}</td>
-                                    <th>희망 의류 결과</th>
-                                    <td>{currentOrder.desiredOutcome}</td>
+                                    <th>의류원본</th>
+                                    <td className="order_data">{order.originalClothing}</td>
+                                    <th>요청사항</th>
+                                    <td>{getReformRequest(order)}</td>
                                 </tr>
                                 <tr>
                                     <th>주문일자</th>
-                                    <td className="order_data">{currentOrder.orderDate}</td>
-                                    <th>주문 업체</th> {/* 변경된 부분 */}
-                                    <td>{currentOrder.orderCompany}</td> {/* 변경된 부분 */}
+                                    <td className="order_data">{order.orderDate}</td>
+                                    <th>주문업체</th> 
+                                    <td>{order.orderCompany}</td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr className="address-line" />
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>주소</th>
+                                    <td colSpan="3">{order.address} {order.detailaddress}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div className="order_detail_body">
-                    <h3 className="image_title"> 주문 의류 원본 </h3>
-                    <div className="order_image_container">
-                        <img className="image-placeholder" src={currentOrder.originalImage} alt="original" />
+                    <div>
+                        <h3 className="image_title"> 주문 의류 원본 </h3>
+                        <div className="order_image_container">
+                            <img className="image-placeholder" src={order.originalImage} alt="original" />
+                        </div>
                     </div>
+                    <div>
                     <h3 className="image_title"> 리폼 레퍼런스 </h3>
                     <div className="order_image_container">
-                        <img className="image-placeholder" src={currentOrder.referenceImage} alt="reference" />
+                        <img className="image-placeholder" src={order.referenceImage} alt="reference" />
+                    </div>
                     </div>
                 </div>
                 <div className="button_position">

@@ -1,48 +1,47 @@
 import React, { useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import "./MypageOrderlist.css";
-import "./Mypage.css";
 import { Link } from "react-router-dom";
 
 const orders = [
   {
     orderId: "C20240530001",
-    category: "의류",
+    category: "티셔츠",
     orderDate: "2024.05.30",
     companyName: "업체A",
     status: "주문 완료"
   },
   {
     orderId: "A20487560301",
-    category: "가전",
+    category: "티셔츠",
     orderDate: "2024.06.15",
     companyName: "업체B",
     status: "주문 대기"
   },
   {
     orderId: "C483475214768",
-    category: "가구",
+    category: "스웨터",
     orderDate: "2024.07.01",
     companyName: "업체C",
     status: "주문 수락"
   },
   {
     orderId: "B30298562345",
-    category: "생활용품",
+    category: "티셔츠",
     orderDate: "2024.08.10",
     companyName: "업체D",
     status: "주문 거절"
   },
   {
     orderId: "D20487560322",
-    category: "주방용품",
+    category: "셔츠",
     orderDate: "2024.09.05",
     companyName: "업체E",
     status: "주문 완료"
   },
   {
     orderId: "E20487560367",
-    category: "문구류",
+    category: "셔츠",
     orderDate: "2024.10.20",
     companyName: "업체F",
     status: "주문 대기"
@@ -50,32 +49,33 @@ const orders = [
   // 추가적인 빈 데이터 예시
   {
     orderId: "C20240530002",
-    category: "의류",
+    category: "티셔츠",
     orderDate: "2024.06.30",
     companyName: "업체G",
     status: "주문 완료"
   },
   {
     orderId: "A20487560302",
-    category: "가전",
+    category: "셔츠",
     orderDate: "2024.07.15",
     companyName: "업체H",
     status: "주문 대기"
   },
   {
     orderId: "C483475214769",
-    category: "가구",
+    category: "티셔츠",
     orderDate: "2024.08.01",
     companyName: "업체I",
     status: "주문 수락"
   },
   {
     orderId: "B30298562346",
-    category: "생활용품",
+    category: "스웨터",
     orderDate: "2024.09.10",
     companyName: "업체J",
     status: "주문 거절"
-  }
+  },
+  {},
 ];
 
 const MypageOrderlist = () => {
@@ -134,9 +134,9 @@ const MypageOrderlist = () => {
         </select>
       </div>
       <div className="order-table">
-        <table>
+        <table className="table_4756">
           <thead>
-            <tr className="tr">
+            <tr className="table_head_4756">
               <th>번호</th>
               <th>고객 주문 번호</th>
               <th>카테고리</th>

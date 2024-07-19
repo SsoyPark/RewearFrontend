@@ -4,17 +4,17 @@ import styles from "./CompanyOrder.module.css";
 import { Link } from 'react-router-dom';
 
 const orders = [
-    { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.1.30", dueDate: "2024.2.18", status: true },
-    { customer: "박수치는헬스터", orderNumber: "C20240530081", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.2.30", dueDate: "2024.3.19", status: true },
-    { customer: "악수하는헬스터", orderNumber: "C20240530051", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.3.30", dueDate: "2024.4.15", status: true },
-    { customer: "박수치는헬스터", orderNumber: "C20240530041", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.30", dueDate: "2024.5.10", status: true },
-    { customer: "악수하는헬스터", orderNumber: "C20240530031", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.28", dueDate: "", status: false },
-    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.25", dueDate: "2024.6.10", status: true },
-    { customer: "박수치는헬스터", orderNumber: "C20240530234", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.6.30", dueDate: "2024.7.05", status: true },
-    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.28", dueDate: "2024.6.05", status: true },
-    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.7.30", dueDate: "", status: false },
-    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.5.02", dueDate: "2024.6.15", status: true },
-    { customer: "악수하는헬스터", orderNumber: "C20240530011", category: "청바지", original: "청바지", result: "앞치마", orderDate: "2024.4.18", dueDate: "2024.5.01", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", original: "청바지",  orderDate: "2024.1.30", dueDate: "2024.2.18", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530081", category: "청바지", original: "청바지",  orderDate: "2024.2.30", dueDate: "2024.3.19", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530051", category: "청바지", original: "청바지",  orderDate: "2024.3.30", dueDate: "2024.4.15", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530041", category: "청바지", original: "청바지",  orderDate: "2024.4.30", dueDate: "2024.5.10", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530031", category: "청바지", original: "청바지",  orderDate: "2024.7.28", dueDate: "", status: false },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지",  orderDate: "2024.5.25", dueDate: "2024.6.10", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530234", category: "청바지", original: "청바지",  orderDate: "2024.6.30", dueDate: "2024.7.05", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530203", category: "청바지", original: "청바지",  orderDate: "2024.5.28", dueDate: "2024.6.05", status: true },
+    { customer: "박수치는헬스터", orderNumber: "C20240530202", category: "청바지", original: "청바지",  orderDate: "2024.7.30", dueDate: "", status: false },
+    { customer: "악수하는헬스터", orderNumber: "C20240530021", category: "청바지", original: "청바지",  orderDate: "2024.5.02", dueDate: "2024.6.15", status: true },
+    { customer: "악수하는헬스터", orderNumber: "C20240530011", category: "청바지", original: "청바지",  orderDate: "2024.4.18", dueDate: "2024.5.01", status: true },
 ];
 
 const CompanyOrderlist = () => {
@@ -23,17 +23,16 @@ const CompanyOrderlist = () => {
     const [searchFilter, setSearchFilter] = useState("orderNumber");
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredOrders, setFilteredOrders] = useState(orders);
-    const [sortOrder, setSortOrder] = useState('orderDate'); // 초기 정렬 기준을 orderDate로 설정
+    const [sortOrder, setSortOrder] = useState('orderDate');
+    const [sortDirection, setSortDirection] = useState('desc'); // 초기 정렬 방향을 내림차순으로 설정
     const itemsPerPage = 10;
 
     const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
 
-    // 현재 페이지의 아이템들 가져오기
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentOrders = filteredOrders.slice(indexOfFirstItem, indexOfLastItem);
 
-    // 페이지 변경 핸들러
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
@@ -55,8 +54,8 @@ const CompanyOrderlist = () => {
         setCurrentPage(1);
     };
 
-    const handleSortChange = (e) => {
-        setSortOrder(e.target.value);
+    const handleSortDirectionChange = (e) => {
+        setSortDirection(e.target.value);
         setCurrentPage(1);
     };
 
@@ -66,18 +65,22 @@ const CompanyOrderlist = () => {
                 return order.customer.includes(searchQuery);
             } else if (searchFilter === "orderNumber") {
                 return order.orderNumber.includes(searchQuery);
-            } 
+            }
             return false;
         });
 
         filtered = filtered.sort((a, b) => {
             const dateA = new Date(a[sortOrder]);
             const dateB = new Date(b[sortOrder]);
-            return dateB - dateA; // 내림차순 정렬
+            if (sortDirection === 'desc') {
+                return dateB - dateA;
+            } else {
+                return dateA - dateB;
+            }
         });
 
         setFilteredOrders(filtered);
-    }, [searchQuery, searchFilter, sortOrder]);
+    }, [searchQuery, searchFilter, sortOrder, sortDirection]);
 
     return (
         <div className="page company_order">
@@ -123,9 +126,9 @@ const CompanyOrderlist = () => {
                             <p className={styles["order-sub-title"]}>
                                 <span className="myorder-count">{filteredOrders.length}건</span>의 주문이 검색되었습니다.
                             </p>
-                            <select className={styles["search-sort-method"]} value={sortOrder} onChange={handleSortChange}>
-                                <option value='orderDate'>주문일자 순 (내림차순)</option>
-                                <option value='dueDate'>마감일자 순 (내림차순)</option>
+                            <select className={styles["search-sort-method"]} value={sortDirection} onChange={handleSortDirectionChange}>
+                                <option value='desc'>주문일자 (내림차순)</option>
+                                <option value='asc'>주문일자 (오름차순)</option>
                             </select>
                         </div>
                         <table className={styles["table"]}>
@@ -135,7 +138,6 @@ const CompanyOrderlist = () => {
                                     <th>주문고객</th>
                                     <th>고객 주문 번호</th>
                                     <th>주문 의류 원본</th>
-                                    <th>희망 결과</th>
                                     <th>주문일자</th>
                                     <th>마감일자</th>
                                     <th>상태</th>
@@ -148,7 +150,6 @@ const CompanyOrderlist = () => {
                                         <td>{order.customer}</td>
                                         <td>{order.orderNumber}</td>
                                         <td>{order.original}</td>
-                                        <td>{order.result}</td>
                                         <td>{order.orderDate}</td>
                                         <td>{order.dueDate}</td>
                                         <td>{order.status ? "완료" : "진행중"}</td>

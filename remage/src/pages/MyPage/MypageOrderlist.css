@@ -20,22 +20,19 @@
     max-width: 120px;
     padding: 5px;
 }
+
+.table_4756{
+    border-collapse: collapse;
+}
   
+.table_head_4756{
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ddd;
+}
+
 .myorder-count{
     color:#47c282;
-}
-
-table {
-    width: 100%;
-}
-
-th, td {
-    padding: 15px;
-    text-align: center;
-}
-
-.tr{
-    border-bottom: 1px solid #767676;
 }
 
 .pagination {
