@@ -40,6 +40,11 @@ const ServiceGeneralFitting = () => {
                                 {/* <img src="https://i.imgur.com/Ll28AZT.png" alt="사용자 사진" /> */}
                                 <img src="https://i.imgur.com/oKOesax.jpeg" alt="가상피팅 사진" />
                             </div>
+                            <Button
+                                    text="가상피팅 실행하기"
+                                    className="btn-full-width btn-white"
+                                    // onClick={handleSubmit}
+                                />
                             {/* 하단 버튼 영역 시작 */}
                             <div className="order-bottom-btn">
                                 {/* <Button
