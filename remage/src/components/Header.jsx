@@ -24,7 +24,6 @@ const Header = () => {
             />
           </IconButton> */}
           <TextButton text="서비스" />
-          <TextButton text="갤러리" />
           <TextButton text="고객센터" />
         </div>
         <div className="search-profile-contents">       
