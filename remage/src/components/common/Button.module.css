@@ -18,7 +18,7 @@
     width: 135px;
     font-size: 12px;
     font-weight: bold;
-    background-color: #47c282;
+    background-color: #9d3014;
     color: white;
     cursor: pointer;
     display: flex;
@@ -105,7 +105,7 @@
 
 .confirm {
     color: white;
-    background-color: #47C282;
+    background-color: #9d3014;
 }
 
 .btn-white {
