@@ -1,12 +1,11 @@
 import React from "react";
 import { useState } from "react";
 // import ImageUploader from "../components/common/ImageUploader";
-import TextButton from "../components/common/TextButton";
 import Button from "../components/common/Button";
 import { useNavigate } from "react-router-dom";
 import "./ServiceGeneralWrite.css";
 import "./ServiceGeneralFitting.css";
-import HoverImage from "../components/common/HoverImage";
+import ImageUploader from "../components/common/ImageUploader";
 
 const ServiceGeneralFitting = () => {
     const navigate = useNavigate();
@@ -27,24 +26,25 @@ const ServiceGeneralFitting = () => {
                         </div>
                         <div className="content fitting">
                             <h3 className="paragraph-title">가상피팅</h3>
-                            {/* <ImageUploader /> */}
                             <div className="text-wrap">
                                 <p className="text-margin-bottom">아래 주의사항을 참고해 피팅 서비스를 받을 고객님의 사진을 업로드해주세요.</p>
                                 <p>얼굴과 발을 포함한 전신이 사진에 보이도록 해주세요.</p>
                                 <p className="text-margin-bottom">양손이 사진에 드러나되 상의를 가리지 않아야 합니다.</p>
-                                <HoverImage hoverText="이 곳" imgUrl="https://i.imgur.com/Ll28AZT.png" imgAlt="가상피팅을 위한 사진 촬영 예시"/><p>에 마우스를 올리면 예시 사진을 확인할 수 있습니다.</p>
+                                {/* <HoverImage hoverText="이 곳" imgUrl="https://i.imgur.com/Ll28AZT.png" imgAlt="가상피팅을 위한 사진 촬영 예시"/><p>에 마우스를 올리면 예시 사진을 확인할 수 있습니다.</p> */}
                             </div>
                             <div className="img-container">
                                 {/* <img src="https://img.animalplanet.co.kr/thumbnail/2020/05/20/2000/e23u07g3t2a9461ruhm0.jpg" alt="" /> */}
-                                <img src="https://i.imgur.com/oKOesax.jpeg" alt="" />
+                                <ImageUploader className="uploader-long" />
+                                {/* <img src="https://i.imgur.com/Ll28AZT.png" alt="사용자 사진" /> */}
+                                <img src="https://i.imgur.com/oKOesax.jpeg" alt="가상피팅 사진" />
                             </div>
                             {/* 하단 버튼 영역 시작 */}
                             <div className="order-bottom-btn">
-                                <Button
+                                {/* <Button
                                     text="건너뛰기"
                                     className="btn-next btn-white"
                                     url="/service/general/write/confirm/"
-                                />
+                                /> */}
                                 <Button
                                     text="다음"
                                     className="btn-next"

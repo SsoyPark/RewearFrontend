@@ -1,7 +1,10 @@
 .service-general-fitting .img-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
     /* w:h 768:1024 -> 588:784 */
-    /* width: 100%; */
-    width: 420px;
+    width: 100%;
+    /* width: 420px; */
     height: 560px;
     margin: 0 auto;
     border-radius: 10px;

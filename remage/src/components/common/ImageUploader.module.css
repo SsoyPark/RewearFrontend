@@ -2,9 +2,26 @@
     width: 100%;
     height: 280px;
     border-radius: 10px;
-    border: 1px solid #CDD3D9;
+    /* border: 1px solid #CDD3D9; */
     background-color: #F2F4F6;
     overflow: hidden;
+}
+.component div {
+    height: 100%;
+}
+.component span {
+    float: left;
+    position: relative;
+    left: calc(50% - 30px);
+    margin-top: 110px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: url(https://i.imgur.com/OEeofL5.png) no-repeat;
+    background-size: cover;
+}
+.component.uploader-long span {
+    margin: calc(100% - 60px) auto;
 }
 .component .preview {
     width: 100%;
@@ -28,4 +45,20 @@
     height: 280px;
     object-fit: cover;
     object-position: center;
+}
+
+.component p {
+    font-size: 14px;
+    color: #495057;
+    text-align: center;
+}
+
+.component.uploader-long {
+    height: 100%;
+}
+.component.uploader-long div, .component.uploader-long img, .component.uploader-long input {
+    height: 100%;
+}
+.component.uploader-long input {
+    top: -560px;
 }
