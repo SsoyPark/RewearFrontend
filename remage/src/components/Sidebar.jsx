@@ -13,11 +13,6 @@ const Sidebar = ({ isOpen, shutDownSidebar }) => {
           <MdOutlineClose style={{ fontSize: "28px" }} />
         </IconButton>
       </div> */}
-      <div id="sidebar-items">
-        <SidebarItem text="서비스" />
-        <SidebarItem text="갤러리" />
-        <SidebarItem text="고객센터" />
-      </div>
     </div>
   );
 };

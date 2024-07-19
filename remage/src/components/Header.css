@@ -1,15 +1,3 @@
-.header-line-1 {
-    /* 임시 영역 */
-    background-color: white;
-    display: flex;
-    width: 100%;
-    height: 50px;
-    top: 0px;
-    align-items: center;
-    position: fixed;
-    z-index: 1000;
-}
-
 .header-line-2 {
     background-color: white;
     display: flex;
@@ -17,30 +5,53 @@
     align-items: center;
     border-bottom: 1px solid #ddd;
     position: fixed;
-    top: 50px;
+    top: 0px;
     z-index: 1000;
     width: 100%;
 }
 
 
-.login-logout-buttons {
+/* .login-logout-buttons {
     position: absolute;
     display: flex;
     gap: 19px;
     right: 10%;
+} */
+
+.header-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 310px;
 }
 
 .hamburger-logo-contents {
-    position: absolute;
+    /* position: absolute; */
     display: flex;
-    left: 10%;
-    gap: 50px
+    margin-left: 10%;
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
 .search-profile-contents {
-    position: absolute;
+    /* position: absolute; */
     display: flex;
     align-items: center;
-    right: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
     gap: 29px;
+}
+
+#logo-main-page{
+    font-size: 30px;
+    font-weight: 200;
+    margin-left: 10%;
+}
+
+@media (max-width: 460px) {
+    .header-box {
+        justify-content: center;
+    }
 }
