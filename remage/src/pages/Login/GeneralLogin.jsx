@@ -6,7 +6,6 @@ import FormCheckbox from "../../components/common/FormCheckbox";
 import TextButton from "../../components/common/TextButton";
 import Button from "../../components/common/Button";
 import styles from "./GeneralLogin.module.css";
-import { loginUser } from "../../api/auth";
 import useAuthStore from "../../stores/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../../service/user";
