@@ -47,9 +47,12 @@ p.text-margin-bottom {
     background-color: #F2F4F6;
     border-radius: 10px;
 }
+
 .no-result .result-wrap {
-    margin: calc(100% - 100px) 0;
+    width: 144px;
+    margin: calc(100% - 100px) auto;
 }
+
 .no-result span {
     position: relative;
     top: calc(50% - 82px);
@@ -73,4 +76,89 @@ p.text-margin-bottom {
     color: #CDD3D9;
     font-size: 14px;
     line-height: 20px;
+}
+
+/* .spinner {
+    position: relative;
+    left: 10px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1.4s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  } */
+
+.ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    /* 텍스트와 간격을 둡니다 */
+}
+
+.ellipsis div {
+    position: absolute;
+    top: calc(50% - 2px);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #CDD3D9;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.ellipsis div:nth-child(1) {
+    left: 2px;
+    animation: ellipsis1 0.6s infinite;
+}
+
+.ellipsis div:nth-child(2) {
+    left: 2px;
+    animation: ellipsis2 0.6s infinite;
+}
+
+.ellipsis div:nth-child(3) {
+    left: 8px;
+    animation: ellipsis2 0.6s infinite;
+}
+
+.ellipsis div:nth-child(4) {
+    left: 14px;
+    animation: ellipsis3 0.6s infinite;
+}
+
+@keyframes ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(6px, 0);
+    }
+}
+
+@keyframes ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
 }
