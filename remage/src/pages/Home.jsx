@@ -22,10 +22,10 @@ const Home = () => {
   return (
     <div className="home-page">
       <div className="main-text">
-        <h1>UPCYCLE</h1>
-        <h2>YOUR</h2>
-        <h2>CLOTHING</h2>
-        <button className="shop-now-button">Try Our Service</button>
+        <p className="red">UPCYCLE</p>
+        <p className="black">YOUR</p>
+        <p className="black">CLOTHING</p>
+        <Button className="try-button" text="Try Our Service" ></Button>
       </div>
       <Banner />
     </div>

@@ -2,39 +2,44 @@
     background-color: aliceblue;
 }
 
-.home-page {
+/* .home-page {
     text-align: center;
     padding: 2rem 0;
-  }
+  } */
   
   .main-text {
+    text-align: center;
+    padding: 2rem 0;
     margin-bottom: 2rem;
   }
   
-  .main-text h1 {
+  .main-text .red {
     font-size: 3rem;
-    color: #9d3014; /* 브라운 색상 */
+    font-weight: 700;
+    color: #9d3014; 
     margin: 0;
   }
   
-  .main-text h2 {
-    font-size: 2.5rem;
-    color: #333333; /* 다크 그레이 색상 */
+  .main-text .black {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333333; 
     margin: 0;
   }
   
-  .shop-now-button {
-    margin-top: 1rem;
+  .try-button {
+    margin-top: 1.5rem;
     padding: 0.5rem 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: white;
     background-color: #333333; /* 다크 그레이 색상 */
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 10px;
   }
   
-  .shop-now-button:hover {
+  .try-button:hover {
     background-color: #555555; /* 약간 밝은 그레이 색상 */
   }
   
