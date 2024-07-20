@@ -37,9 +37,9 @@ const ServiceGeneralConfirm = () => {
                                     {/* 리폼 이미지 영역 */}
                                     <img src="https://i.imgur.com/BM8mG7U.png" alt="" />
                                     <div className="info-wrap">
-                                        <p><strong>카테고리 / 재질 / 색상</strong></p>
-                                        <p className="mute">넥라인 / 소매길이</p>
-                                        <p className="mute">부자재 / 주머니 / 기타사항</p>
+                                        <p><strong>sweater / polyester / antiquewhite</strong></p>
+                                        <p className="mute">round neck / sleeveless</p>
+                                        <p className="mute">crop</p>
                                     </div>
                                 </div>
                                 {/* 주문 내역 영역 끝 */}
@@ -47,9 +47,9 @@ const ServiceGeneralConfirm = () => {
                                 <h3 className="paragraph-title">배송지 정보</h3>
                                 <div className="delivery-info">
                                     <div className="info-wrap">
-                                        <p><strong>이름</strong></p>
-                                        <p className="mute">전화번호</p>
-                                        <p className="mute">주소</p>
+                                        <p><strong>이름: 박소영</strong></p>
+                                        <p className="mute">전화번호: 010-0000-0000</p>
+                                        <p className="mute">주소지: KT 본사 301호</p>
                                     </div>
                                 </div>
                                 <Textarea
