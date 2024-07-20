@@ -134,3 +134,20 @@
     font-weight: bold;
     margin-left: 4px;
 }
+
+.try-button {
+    margin: 20px auto 0;
+    white-space: nowrap;
+    padding: 12px 36px;
+    font-size: 14px;
+    color: white;
+    background-color: #333333; /* 다크 그레이 색상 */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+  
+.try-button:hover {
+    background-color: #555555; /* 약간 밝은 그레이 색상 */
+}

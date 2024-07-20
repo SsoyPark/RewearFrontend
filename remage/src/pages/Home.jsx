@@ -25,7 +25,7 @@ const Home = () => {
         <p className="red">UPCYCLE</p>
         <p className="black">YOUR</p>
         <p className="black">CLOTHING</p>
-        <Button className="try-button" text="Try Our Service" ></Button>
+        <Button className="try-button" text="Try Our Service"></Button>
       </div>
       <Banner />
     </div>
