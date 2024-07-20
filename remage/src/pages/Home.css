@@ -1,3 +1,45 @@
 .home-container {
     background-color: aliceblue;
 }
+
+/* .home-page {
+    text-align: center;
+    padding: 2rem 0;
+  } */
+  
+  .main-text {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+  
+  .main-text .red {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #9d3014; 
+    margin: 0;
+  }
+  
+  .main-text .black {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333333; 
+    margin: 0;
+  }
+  
+  .try-button {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #333333; /* 다크 그레이 색상 */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .try-button:hover {
+    background-color: #555555; /* 약간 밝은 그레이 색상 */
+  }
+  

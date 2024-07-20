@@ -64,12 +64,9 @@ const MypageSidebar = () => {
           url="/mypage/edit/"
           className="editprofile-button"
         />
-        <button className="logout-button" onClick={handleLogoutClick}>
-          로그아웃
-        </button>
-      </div>
+      </div> 
       <div className="spacer"></div>
-      <button className="delete-account-button">회원 탈퇴</button>
+      {/* <button className="delete-account-button">회원 탈퇴</button> */}
       <Modal
         show={showModal}
         handleClose={handleCloseModal}

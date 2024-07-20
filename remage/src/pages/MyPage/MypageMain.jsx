@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MypageMain = () => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/mypage/orderlist");
+  };
+
   return (
     <main className="main-content">
-      <button className="section-title-button">
+      <button className="section-title-button" onClick={handleButtonClick}>
         <h3 className="section-title">주문 내역</h3>
         <span className="material-icons arrow-icon">chevron_right</span>
       </button>
@@ -50,7 +57,7 @@ const MypageMain = () => {
           </div>
         </div>
       </div>
-      <button className="section-title-button">
+      {/* <button className="section-title-button">
         <h3 className="section-title">공지사항</h3>
         <span className="material-icons arrow-icon">chevron_right</span>
       </button>
@@ -60,7 +67,7 @@ const MypageMain = () => {
           <li className="notice-item">공지사항 2</li>
           <li className="notice-item">공지사항 3</li>
         </ul>
-      </div>
+      </div> */}
     </main>
   );
 };

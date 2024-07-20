@@ -56,15 +56,15 @@
 
 .navigation-button.active {
     color: white;
-    background-color: #47c282;
+    background-color: #9d3014;
 }
 
 .user-info-button {
     width: 100px;
     height: 40px;
     background-color: white;
-    color: #47C282;
-    border: solid 1px #47C282;
+    color: #9d3014;
+    border: solid 1px #9d3014;
 }
 
 .sign-up-complete {
@@ -74,19 +74,19 @@
     border: solid 1px #CDD3D9;
 }
 
-.editprofile-button,
-.logout-button,
-.delete-account-button {
-    margin-top: 10px;
-    padding: 10px;
-    width: 100%;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    cursor: pointer;
-    color: black;
-    font-weight: 300;
+.editprofile-button {
+    width: 90%;
+    background-color: #9d3014;
+    border: 1px solid #9d3014;
+    margin: 20px auto 0;
+    white-space: nowrap;
+    padding: 12px 0;
     font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    font-weight: 500;
 }
 
 .cancel,
@@ -133,6 +133,23 @@
     font-size: 14px;
     font-weight: bold;
     margin-left: 4px;
+}
+
+.try-button {
+    margin: 20px auto 0;
+    white-space: nowrap;
+    padding: 12px 36px;
+    font-size: 14px;
+    color: white;
+    background-color: #333333; /* 다크 그레이 색상 */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+  
+.try-button:hover {
+    background-color: #555555; /* 약간 밝은 그레이 색상 */
 }
 
 .loading {

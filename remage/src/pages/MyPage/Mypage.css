@@ -13,12 +13,12 @@
     width: 300px;
     /* 사이드바 너비 조정 */
     /* background-color: #f5f5f5; */
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    /* 화면 높이에 맞춤 */
+    margin-top: 20px;
+    margin-right: 30px;
 }
 
 
@@ -79,12 +79,13 @@
 
 .main-content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 10px;
+    margin-top: 40px;
 }
 
 .section-title {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 
@@ -102,13 +103,13 @@
 
 .arrow-icon {
     font-size: 24px;
-    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
 .order-summary {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     height: 170px;
     background-color: #f0f0f0;
     border-radius: 10px;
@@ -193,7 +194,7 @@
     right: 10%
 }
 
-.notices-section {
+/* .notices-section {
     width: 100%;
     text-align: left;
 }
@@ -209,5 +210,5 @@
     border: 1px solid #ddd;
     border-left: #fff;
     border-right: #fff;
-    /* width: 100%; */
-}
+    
+} */
