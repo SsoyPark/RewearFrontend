@@ -27,6 +27,7 @@
   width: 50%;
   height: auto;
   display: block;
+  max-width: 300px; /* 이미지의 최대 너비 설정 */
 }
 
 .banner-text {
@@ -43,4 +44,11 @@
 .banner-text p {
   font-size: 1rem;
   margin: 0;
+}
+
+.banner-images {
+  display: flex;
+  gap: 1rem; /* 이미지 사이 간격 */
+  width: 50%;
+  justify-content: center;
 }
