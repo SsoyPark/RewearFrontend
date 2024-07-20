@@ -31,7 +31,7 @@ const Header = () => {
             <TextButton text="마이페이지" url="/mypage/main"/>
           }
           {isLoggedIn &&
-            <TextButton text="고객센터" />
+            <TextButton text="고객센터" url="/Board"/>
           }
           {isLoggedIn ? (
             <TextButton
