@@ -56,15 +56,15 @@
 
 .navigation-button.active {
     color: white;
-    background-color: #47c282;
+    background-color: #9d3014;
 }
 
 .user-info-button {
     width: 100px;
     height: 40px;
     background-color: white;
-    color: #47C282;
-    border: solid 1px #47C282;
+    color: #9d3014;
+    border: solid 1px #9d3014;
 }
 
 .sign-up-complete {
