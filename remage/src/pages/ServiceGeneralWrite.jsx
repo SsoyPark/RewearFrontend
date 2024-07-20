@@ -135,6 +135,12 @@ const ServiceGeneralWrite = () => {
         { value: "right", label: "right" },
     ];
 
+    const patternOptions = [
+        { value: "cable", label: "cable" },
+        { value: "waffle", label: "waffle" },
+        { value: "plain", label: "plain" },
+    ]
+
     const buttonOptions = [
         { value: "none", label: "n/a" },
         { value: "buttons-full", label: "button (full)" },
@@ -164,7 +170,7 @@ const ServiceGeneralWrite = () => {
                         <div className="subtitle steps">
                             <span className="step round primary"><span>1.<span className="space"></span>주문서 작성</span></span>
                             <span className="next"></span>
-                            <span className="step round"><span>2.<span className="space"></span>가상피팅</span><span class="mute"> (선택)</span></span>
+                            <span className="step round"><span>2.<span className="space"></span>가상피팅</span><span className="mute"> (선택)</span></span>
                             <span className="next"></span>
                             <span className="step round"><span>3.<span className="space"></span>주문 확정</span></span>
                         </div>
@@ -215,7 +221,7 @@ const ServiceGeneralWrite = () => {
                                     <div className="reform-info form-container">
                                         <div className="form-item">
                                             <SelectField
-                                                label="소매길이 수정"
+                                                label="소매길이"
                                                 options={sleeveOptions}
                                                 placeholder="소매길이 선택"
                                                 onChange={handleSelectChange}
@@ -224,7 +230,7 @@ const ServiceGeneralWrite = () => {
                                         </div>
                                         <div className="form-item">
                                             <SelectField
-                                                label="넥라인 변경"
+                                                label="넥라인"
                                                 options={necklineOptions}
                                                 placeholder="넥라인 선택"
                                                 required
@@ -234,7 +240,19 @@ const ServiceGeneralWrite = () => {
                                             category === "sweater" && (
                                                 <div className="form-item">
                                                     <SelectField
-                                                        label="버튼 수정"
+                                                        label="패턴"
+                                                        options={patternOptions}
+                                                        placeholder="패턴 입력"
+                                                        required
+                                                    />
+                                                </div>
+                                            )
+                                        }
+                                        {
+                                            category === "sweater" && (
+                                                <div className="form-item">
+                                                    <SelectField
+                                                        label="버튼"
                                                         options={buttonOptions}
                                                         placeholder="버튼 선택"
                                                         required
@@ -246,7 +264,7 @@ const ServiceGeneralWrite = () => {
                                             category === "sweater" && (
                                                 <div className="form-item">
                                                     <SelectField
-                                                        label="지퍼 수정"
+                                                        label="지퍼"
                                                         options={zipperOptions}
                                                         placeholder="지퍼 선택"
                                                         required
@@ -258,7 +276,7 @@ const ServiceGeneralWrite = () => {
                                             category != "sweater" && (
                                                 <div className="form-item">
                                                     <SelectField
-                                                        label="주머니 수정"
+                                                        label="주머니"
                                                         options={pocketOptions}
                                                         placeholder="주머니 선택"
                                                         required

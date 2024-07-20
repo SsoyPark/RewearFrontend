@@ -18,56 +18,50 @@ import CompanyOrder from "./pages/CompanyOrder";
 import CompanyOrderList from "./pages/CompanyOrderlist";
 import Fitting from "./pages/Fitting/Fitting";
 import ServiceGeneralFitting from "./pages/ServiceGeneralFitting";
+import Footer from "./components/Footer"; // Footer 컴포넌트 불러오기
+import './App.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // const toggleSidebar = () => {
-  //   setIsSidebarOpen(!isSidebarOpen);
-  // };
-  // const shutDownSidebar = () => {
-  //   setIsSidebarOpen(false);
-  // };
-
   return (
     <BrowserRouter>
-      <div>
-        <Header 
-        // toggleSidebar={toggleSidebar} 
-        />
+      <div className="app-container">
+        <Header />
         <div className={`sidebar-main-page ${isSidebarOpen ? "shift" : ""}`}>
-          {/* <Sidebar isOpen={isSidebarOpen} shutDownSidebar={shutDownSidebar} /> */}
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login/*" element={<Login />} />
-            <Route path="/sign-up/*" element={<SignUp />} />
-            <Route path="/sign-up/complete" element={<Completion />} />
-            <Route path="/mypage/*" element={<Mypage />} />
-            <Route path="/mypage/edit" element={<EditProfile />} />
-            <Route path="/fitting" element={<Fitting/>} />
-            {/* <Route path="/mypage/orderlist" element={<Mypageorderlist/>}/> */}
-            {/* <Route path="/login/general/" element={<LoginGeneral />} />
-            <Route path="/login/company/" element={<LoginCompany />} /> */}
-            <Route path="/service/" />
-            <Route path="/service/general/" element={<ServiceGeneral />} />
-            <Route
-              path="/service/general/write/"
-              element={<ServiceGeneralWrite />}
-            />
-            <Route
-              path="/service/general/write/fitting/"
-              element={<ServiceGeneralFitting />}
-            />
-            <Route
-              path="/service/general/write/complete/"
-              element={<ServiceGeneralComplete />}
-            />
-            <Route path="/service/general/write/confirm" element={<ServiceGeneralConfirm />} />
-            <Route path="/Board/" element={<Board />} />
-            <Route path="/service/company/order" element={<CompanyOrder />}/>
-            <Route path="/service/company/orderlist" element={<CompanyOrderList />}/>
-          </Routes>
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login/*" element={<Login />} />
+              <Route path="/sign-up/*" element={<SignUp />} />
+              <Route path="/sign-up/complete" element={<Completion />} />
+              <Route path="/mypage/*" element={<Mypage />} />
+              <Route path="/mypage/edit" element={<EditProfile />} />
+              <Route path="/fitting" element={<Fitting />} />
+              <Route path="/service/general/" element={<ServiceGeneral />} />
+              <Route
+                path="/service/general/write/"
+                element={<ServiceGeneralWrite />}
+              />
+              <Route
+                path="/service/general/write/fitting/"
+                element={<ServiceGeneralFitting />}
+              />
+              <Route
+                path="/service/general/write/complete/"
+                element={<ServiceGeneralComplete />}
+              />
+              <Route
+                path="/service/general/write/confirm"
+                element={<ServiceGeneralConfirm />}
+              />
+              <Route path="/Board/" element={<Board />} />
+              <Route path="/service/company/order" element={<CompanyOrder />} />
+              <Route path="/service/company/orderlist" element={<CompanyOrderList />} />
+            </Routes>
+          </div>
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );

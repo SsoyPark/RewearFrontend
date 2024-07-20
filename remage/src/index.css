@@ -41,7 +41,7 @@ body,
 #root>div {
     width: 100%;
     height: 100%;
-    height: calc(100% - 120px);
+    /* height: calc(100% - 120px); */
 }
 .content {
     width: 100%;
@@ -49,7 +49,7 @@ body,
 
 .sidebar-main-page {
     display: flex;
-    height: 100%;
+    height: auto;
     width: 100%;
     margin-top: 120px;
     /* transition: margin-left 0.3s ease-in-out; */
@@ -91,6 +91,10 @@ h2.section-title {
 
 /* 페이지 및 섹션 부제목 스타일 */
 .subtitle {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 32px;
+    gap: 24px;
     height: 32px;
     line-height: 32px;
     font-size: 14px;
@@ -100,7 +104,10 @@ h2.section-title {
 
 /* step이 있는 부제목 스타일 */
 .steps>span {
-    margin-left: 24px;
+    display: flex;
+    /* margin-left: 24px; */
+    align-items: center;
+    justify-content: center;
 }
 
 .steps>span:first-of-type {
@@ -111,10 +118,12 @@ h2.section-title {
     padding: 8px 16px;
     color: #495057;
 }
+.step>span {
+    line-height: 32px;
+}
 
 .step.primary {
     background-color: #9d3014;
-    /* 브랜드컬러 변수 */
     color: #fff;
     font-weight: bold;
 }
@@ -124,8 +133,13 @@ h2.section-title {
 }
 
 .steps .next {
-    color: #CDD3D9;
-    font-weight: bold;
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background: url(https://i.imgur.com/0gMereZ.png) no-repeat;
+    background-size: cover;
+    /* color: #CDD3D9;
+    font-weight: bold; */
     /* 이미지로 변경할 경우 삭제 */
 }
 

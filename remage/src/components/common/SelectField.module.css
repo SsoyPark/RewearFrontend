@@ -25,3 +25,7 @@
     box-sizing: border-box;
     font-size: 12px;
 }
+
+.component select option {
+    color: #000;
+}
