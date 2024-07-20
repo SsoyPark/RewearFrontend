@@ -95,19 +95,34 @@ const ServiceGeneralFitting = () => {
                   className="uploader-long"
                   onImageUpload={handleImageUpload}
                 />
-                {resultImageURL && (
+                {resultImageURL ? (
                   <img src={resultImageURL} alt="가상피팅 사진" />
+                ) : (
+                    <div className="no-result">
+                        <div className="result-wrap">
+                            <span></span>
+                            <p>가상피팅 완료 시<br/>이곳에 결과가 나타납니다.</p>
+                            <Button
+                                text={isLoading ? "가상피팅 실행 중..." : "가상피팅 실행"}
+                                className={`${
+                                isLoading ? "loading" : ""
+                                } btn-white`}
+                                onClick={handleSubmit}
+                                disabled={isLoading} // 로딩 중이면 버튼 비활성화
+                            />
+                        </div>
+                    </div>
                 )}
                 {isLoading && <div className="loading-spinner">Loading...</div>}
               </div>
-              <Button
+              {/* <Button
                 text={isLoading ? "가상피팅 실행 중..." : "가상피팅 실행하기"}
                 className={`${
                   isLoading ? "loading" : ""
                 } btn-full-width btn-white`}
                 onClick={handleSubmit}
                 disabled={isLoading} // 로딩 중이면 버튼 비활성화
-              />
+              /> */}
               <div className="order-bottom-btn">
                 <Button
                   text="다음"

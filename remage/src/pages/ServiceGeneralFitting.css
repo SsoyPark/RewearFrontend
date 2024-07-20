@@ -43,3 +43,34 @@ p.text-margin-bottom {
     cursor: default;
 }
 
+.no-result {
+    background-color: #F2F4F6;
+    border-radius: 10px;
+}
+.no-result .result-wrap {
+    margin: calc(100% - 100px) 0;
+}
+.no-result span {
+    position: relative;
+    top: calc(50% - 82px);
+    left: calc(50% - 60px);
+    display: block;
+    width: 120px;
+    height: 120px;
+    /* margin: 100% auto; */
+    background: url(https://i.imgur.com/b5OcHOj.png) no-repeat;
+    background-size: cover;
+}
+.no-result button {
+    margin: 0 auto;
+    background-color: #fff;
+    margin-top: 12px;
+}
+.no-result p {
+    position: relative;
+    top: calc(50% - 78px);
+    text-align: center;
+    color: #CDD3D9;
+    font-size: 14px;
+    line-height: 20px;
+}
