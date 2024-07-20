@@ -8,12 +8,13 @@ import Banner from '../components/Banner';
 const Home = () => {
   const navigate = useNavigate();
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const { login, logout } = useAuthStore();
 
   const handleButtonClick = () => {
     if (isAuthenticated) {
       navigate("/service/general/write/");
     } else {
-      navigate("/login/*");
+      navigate("/login");
     }
   };
 
@@ -32,8 +33,15 @@ const Home = () => {
         />
       </div>
       <Banner />
+      <div className="home-container">
+        <h1>Home</h1>
+        <h1>{isAuthenticated ? "Authenticated" : "Not Authenticated"}</h1>
+        <h1>{isAuthenticated ? "Authenticated" : "Not Authenticated"}</h1>
+        <Button text={isAuthenticated?"임시 로그아웃":"임시로그인"} onClick={isAuthenticated?logout:()=>login("sample", "sample")}/>
+      </div>
     </div>
   );
 };
 
 export default Home;
+
