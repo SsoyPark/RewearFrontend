@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 25px;
+    margin-bottom: 60px;
 }
 
 .terms-of-services-content {
@@ -27,6 +27,8 @@
 
 .terms-of-services-text {
     width: 500px;
+    height: 150px;
+    overflow-y: scroll;
     border: solid 1px #ddd;
     padding: 10px;
     box-sizing: border-box;
@@ -57,4 +59,8 @@
     display: flex;
     justify-content: end;
     gap: 10px;
+}
+
+.terms-of-services-content h2 {
+    margin-bottom: 8px;
 }
