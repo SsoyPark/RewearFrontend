@@ -18,8 +18,8 @@ const UserInfo = ({
   emailRecieveChecked,
   smsRecieveChecked,
 }) => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const type = queryParams.get("type");
   const [isValidAccess, setIsValidAccess] = useState(false);

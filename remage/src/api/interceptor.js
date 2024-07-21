@@ -1,8 +1,9 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000',
-  timeout: 10000,
+  baseURL: "http://localhost:8000",
+  timeout: 20000,
+  withCredentials: true
 });
 
 axiosInstance.interceptors.request.use(
@@ -10,7 +11,7 @@ axiosInstance.interceptors.request.use(
     const authStorage = JSON.parse(localStorage.getItem("auth-storage"));
     const accessToken = authStorage?.state?.accessToken;
     if (accessToken) {
-      config.headers['Authorization'] = 'Bearer ' + accessToken;
+      config.headers["Authorization"] = "Bearer " + accessToken;
     }
     return config;
   },
@@ -33,22 +34,29 @@ axiosInstance.interceptors.response.use(
       // console.log(refreshToken);
       if (refreshToken) {
         try {
-          const response = await axiosInstance.post('/users/reissue/', {
-            refresh: refreshToken,
-          },{
-            headers: {
-              "Refresh-Token" : refreshToken
-          }});
-          
-          console.log(`토큰 만료. 다음 토큰 재생성${response.headers['authorization']}`);
-          const newToken = response.headers['authorization']
+          const response = await axiosInstance.post(
+            "/users/reissue/",
+            {
+              refresh: refreshToken,
+            },
+            {
+              headers: {
+                "Refresh-Token": refreshToken,
+              },
+            }
+          );
+
+          console.log(
+            `토큰 만료. 다음 토큰 재생성${response.headers["authorization"]}`
+          );
+          const newToken = response.headers["authorization"];
           authStorage.state.accessToken = newToken;
           localStorage.setItem("auth-storage", JSON.stringify(authStorage));
-          axiosInstance.defaults.headers.common['Authorization'] =
-            'Bearer ' + newToken;
+          axiosInstance.defaults.headers.common["Authorization"] =
+            "Bearer " + newToken;
           return axiosInstance(originalRequest);
         } catch (err) {
-          console.error('Refresh token expired or invalid.');
+          console.error("Refresh token expired or invalid.");
           localStorage.removeItem("auth-storage");
           // Redirect to login page or show an error message
         }

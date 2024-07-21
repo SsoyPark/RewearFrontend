@@ -7,37 +7,38 @@ import Textarea from "../components/common/Textarea";
 import SelectField from "../components/common/SelectField";
 import { useNavigate } from "react-router-dom";
 import "./ServiceGeneralWrite.css";
-import { postImageAnalyze } from "../api/service";
+import { postDalleRequest, postImageAnalyze } from "../api/service";
 import { base64ToBlob } from "../utils";
 import { postReformRequest } from "../api/service";
+import useServiceGeneralWriteStore from "../stores/ServiceGeneralWriteStore";
 
 const ServiceGeneralWrite = () => {
   const navigate = useNavigate();
-  const [selectedUserType, setSelectedUserType] = useState("general");
-  const [formData, setFormData] = useState({
-    selectField: "",
-    otherOption: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-  const [imageError, setImageError] = useState("");
-  const [isInfoAreaVisible, setIsInfoAreaVisible] = useState(false);
-  const [buttonClass, setButtonClass] = useState("inactive");
-  // 이미지 업로드 상태
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [analysisInfo, setAnalysisInfo] = useState({
-    category: "",
-    material: "",
-    color: "",
-  });
-  const [reformForm, setReformForm] = useState({
-    neck_line: "",
-    sleeve_length: "",
-    pattern: "",
-    pocket: "",
-    zip: "",
-    button: "",
-    addt_design: "",
-  });
+  const {
+    selectedUserType,
+    setSelectedUserType,
+    formData,
+    setFormData,
+    errorMessage,
+    setErrorMessage,
+    imageError,
+    setImageError,
+    isInfoAreaVisible,
+    setIsInfoAreaVisible,
+    isImageCreated,
+    setIsImageCreated,
+    buttonClass,
+    setButtonClass,
+    uploadedImage,
+    setUploadedImage,
+    analysisInfo,
+    setAnalysisInfo,
+    reformForm,
+    setReformForm,
+    createdImageUrl,
+    setCreatedImageUrl,
+  } = useServiceGeneralWriteStore();
+  
   // select 필드 상태 관리
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
@@ -82,9 +83,11 @@ const ServiceGeneralWrite = () => {
       formData.append("upload", true);
       formData.append("image", blob, "imagedata.png");
       try {
-        const { data } = await postImageAnalyze(formData);
-        console.log(data);
-        const { category, material, color } = data;
+        const response = await postImageAnalyze(formData);
+        console.log(response);
+        const {
+          data: { category, material, color },
+        } = response;
         setAnalysisInfo({
           category,
           material,
@@ -92,8 +95,7 @@ const ServiceGeneralWrite = () => {
         });
         setIsInfoAreaVisible(true);
       } catch (err) {
-        alert("이미지 분석 도중 에러가 발생했습니다.");
-        throw Error(err);
+        alert("이미지 분석 도중 에러가 발생했습니다." + err);
       }
       // console.log(response.data);
       // const infoAreaDiv = document.querySelector(".info-area");
@@ -105,7 +107,10 @@ const ServiceGeneralWrite = () => {
   };
 
   // [디자인 추천받기] 버튼 클릭 시 동작
-  const handleGenImage = async () => {
+  const handleGenImage = async (test) => {
+    if (test === true) {
+      setIsImageCreated(true);
+    }
     // '기타 (선택)' 필드에서 '그 외' 선택 시 요청사항 입력이 없을 때
     if (
       //   formData.otherOption === "others" &&
@@ -128,14 +133,21 @@ const ServiceGeneralWrite = () => {
         }
         const response = await postReformRequest(formData);
         console.log(response);
+        console.log("요청사항입력완료");
+        console.log("이미지 생성중...");
+        const dalleResponse = await postDalleRequest();
+        console.log(dalleResponse);
+        const {
+          data: { dalle_image_url },
+        } = dalleResponse;
+        const newImageUrl = dalle_image_url;
+        setCreatedImageUrl(newImageUrl);
       } catch (err) {
         alert("요청사항을 보내는 도중에 에러가 발생했습니다.\n" + err);
+        return;
       }
-      return;
-      //   const genAreaDiv = document.querySelector(".img-generate-area");
-      //   const bottomBtn = document.querySelector(".order-bottom-btn");
-      //   genAreaDiv.style.display = "block";
-      //   bottomBtn.style.display = "flex";
+      //이미지 영역 생성
+      setIsImageCreated(true);
     }
     // required가 true인 필드만 검사
     // const isAllRequiredFilled = Object.entries(formData).every(([key, { value, required }]) =>
@@ -152,8 +164,6 @@ const ServiceGeneralWrite = () => {
   };
 
   // 카테고리
-  const [category, setCategory] = useState("sweater");
-
   // const handleCategoryChange = (e) => {
   //     setCategory(e.target.value);
   // };
@@ -177,7 +187,7 @@ const ServiceGeneralWrite = () => {
     { value: "square", label: "square neck" },
   ];
   // 카테고리 '스웨터'일 때만 '터틀벡', '모크넥' 옵션 추가
-  if (category === "sweater") {
+  if (analysisInfo.category === "sweater") {
     necklineOptions.push(
       { value: "turtle", label: "turtle neck" },
       { value: "mock", label: "mock neck" }
@@ -353,7 +363,7 @@ const ServiceGeneralWrite = () => {
                         />
                       </div>
                     )}
-                    {analysisInfo.category != "sweater" && (
+                    {analysisInfo.category !== "sweater" && (
                       <div className="form-item">
                         <SelectField
                           name="pocket"
@@ -392,18 +402,21 @@ const ServiceGeneralWrite = () => {
                     type="button"
                     className="btn-full-width"
                     text="디자인 추천받기"
-                    onClick={handleGenImage}
+                    onClick={() => handleGenImage(true)}
                   />
                 </div>
                 {/* 리폼 요청사항 입력 폼 끝 */}
               </div>
 
               {/* 디자인 추천 영역 시작 */}
-              <div className="img-generate-area">
+              <div
+                className="img-generate-area"
+                style={{ display: isImageCreated ? "block" : "none" }}
+              >
                 <h3 className="paragraph-title">리폼 디자인 추천</h3>
                 <button className="gen-again" />
                 {/* <ImageUploader /> */}
-                <img src="https://i.imgur.com/BM8mG7U.png" alt="" />
+                <img src={createdImageUrl} alt="" />
                 {/* <TextButton className="btn-grey" text="다시 추천받기" /> */}
                 {/* <Button
                                         className="btn-full-width"
@@ -414,7 +427,10 @@ const ServiceGeneralWrite = () => {
               {/* 디자인 추천 영역 끝 */}
 
               {/* 하단 버튼 영역 시작 */}
-              <div className="order-bottom-btn">
+              <div
+                className="order-bottom-btn"
+                style={{ display: isImageCreated ? "flex" : "none" }}
+              >
                 <Button
                   text="가상피팅"
                   className="btn-next btn-white"

@@ -1,11 +1,13 @@
 import axios from "axios";
 import { axiosInstance } from "./interceptor";
+import { json } from "react-router-dom";
 
 const baseURL = process.env.REACT_APP_API_BACKEND_URL;
 const formDataHeaders = {
-  headers: {
-    "Content-Type": "multipart/form-data",
-  },
+  "Content-Type": "multipart/form-data",
+};
+const jsonDataHeaders = {
+  "Content-Type": "application/json",
 };
 
 export const virtualFitting = async (imageForm) => {
@@ -14,11 +16,10 @@ export const virtualFitting = async (imageForm) => {
       `http://34.47.76.146:8000/analysis/predict`,
       imageForm,
       {
-        formDataHeaders,
+        headers: formDataHeaders,
         responseType: "blob",
       }
     );
-
     return response;
   } catch (error) {
     console.error("Error in virtualFitting:", error); // 에러 로그를 추가합니다.
@@ -31,7 +32,7 @@ export const postImageAnalyze = async (formData) => {
     const response = await axiosInstance.post(
       `${baseURL}/analyze/upload/`,
       formData,
-      { ...formDataHeaders, timeout: 20000 }
+      { headers: { ...formDataHeaders }, timeout: 20000 }
     );
     return response;
   } catch (error) {
@@ -44,18 +45,67 @@ export const postReformRequest = async (formData) => {
   try {
     const response = await axiosInstance.post(
       `${baseURL}/analyze/request/`,
-      formData
+      formData,
+      { headers: formDataHeaders }
     );
     return response;
   } catch (error) {
     if (error.response) {
-      // 서버가 응답을 반환했지만 상태 코드는 2xx 범위 밖입니다.
       throw new Error(error.response.data.error || "리폼 요청 실패");
     } else if (error.request) {
-      // 요청이 만들어졌지만 응답을 받지 못했습니다.
       throw new Error("No response received from server");
     } else {
-      // 요청을 설정하는 중에 문제가 발생했습니다.
+      throw new Error(error.message);
+    }
+  }
+};
+
+export const postDalleRequest = async () => {
+  try {
+    const response = await axiosInstance.post(
+      `${baseURL}/analyze/dalle_result/`
+    );
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "리폼 요청 실패");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
+export const postRequestConfirm = async (jsonData) => {
+  try {
+    const response = await axiosInstance.post(
+      `${baseURL}/order/order/`,
+      jsonData,
+      { headers: jsonDataHeaders }
+    );
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "리폼요청등록실패");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
+export const getMyOrders = async () => {
+  try {
+    const response = await axiosInstance.get(`${baseURL}/order/user/orders/`);
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "response failed");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
       throw new Error(error.message);
     }
   }
