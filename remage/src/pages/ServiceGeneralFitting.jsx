@@ -35,9 +35,13 @@ const ServiceGeneralFitting = () => {
       formData.append("file2", blob);
 
       try {
-        const response = await virtualFitting(formData);
-        const imageUrl = URL.createObjectURL(response.data);
-        setResultImageURL(imageUrl);
+        // const response = await virtualFitting(formData);
+        // const imageUrl = URL.createObjectURL(response.data);
+        // setResultImageURL(imageUrl);
+        // 테스트
+        const testImageUrl = "https://i.imgur.com/oKOesax.jpg"; // 테스트 이미지 URL
+        await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 지연 시뮬레이션
+        setResultImageURL(testImageUrl);
       } catch (error) {
         console.error(
           "There was a problem with the virtual fitting request:",
@@ -95,19 +99,35 @@ const ServiceGeneralFitting = () => {
                   className="uploader-long"
                   onImageUpload={handleImageUpload}
                 />
-                {resultImageURL && (
+                {resultImageURL ? (
                   <img src={resultImageURL} alt="가상피팅 사진" />
+                ) : (
+                    <div className="no-result">
+                        <div className="result-wrap">
+                            <span></span>
+                            <p>가상피팅 완료 시<br/>이곳에 결과가 나타납니다.</p>
+                            <Button
+                                text={isLoading ?
+                                    <>
+                                        가상피팅 실행 중
+                                        <div className="ellipsis">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </> 
+                                    : "가상피팅 실행"}
+                                className={`${
+                                isLoading ? "loading" : ""
+                                } btn-white`}
+                                onClick={handleSubmit}
+                                disabled={isLoading} // 로딩 중이면 버튼 비활성화
+                            />
+                        </div>
+                    </div>
                 )}
-                {isLoading && <div className="loading-spinner">Loading...</div>}
               </div>
-              <Button
-                text={isLoading ? "가상피팅 실행 중..." : "가상피팅 실행하기"}
-                className={`${
-                  isLoading ? "loading" : ""
-                } btn-full-width btn-white`}
-                onClick={handleSubmit}
-                disabled={isLoading} // 로딩 중이면 버튼 비활성화
-              />
               <div className="order-bottom-btn">
                 <Button
                   text="다음"

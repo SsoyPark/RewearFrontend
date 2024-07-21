@@ -151,3 +151,7 @@
 .try-button:hover {
     background-color: #555555; /* 약간 밝은 그레이 색상 */
 }
+
+.loading {
+    color: #CDD3D9;
+}
