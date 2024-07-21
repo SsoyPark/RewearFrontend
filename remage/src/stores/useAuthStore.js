@@ -22,6 +22,7 @@ const useAuthStore = create(
           isAuthenticated: false,
           accessToken: null,
           refreshToken: null,
+          userType: null,
         }),
     }),
     {
