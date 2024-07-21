@@ -199,7 +199,6 @@ const ServiceGeneralConfirm = () => {
                   options={companyNames}
                   onChange={handleCompanySelect}
                 />
-
                 {/* 업체 선택 영역 시작 */}
                 {/* 하단 버튼 영역 시작 */}
                 <div className="order-bottom-btn">
