@@ -23,9 +23,9 @@ const ServiceGeneralComplete = () => {
                             <span className="step round primary"><span>3.<span className="space"></span>주문 완료</span></span>
                         </div>
                         <div className="content">
-                            <h3>문의 등록 완료</h3>
+                            <h3>주문 완료</h3>
                             <div>
-                                <p>악수하는햄스터 님의<br/>문의가 정상적으로 등록되었습니다.</p>
+                                <p>약수하는햄스터 님의<br/>주문이 정상적으로 완료되었습니다.</p>
                             </div>
                             <Button className="btn-white btn-go-home" text="홈으로 돌아가기" url="/" />
                         </div>
