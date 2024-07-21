@@ -16,10 +16,9 @@ import Board from "./pages/Board";
 import EditProfile from "./pages/MyPage/EditProfile";
 import CompanyOrder from "./pages/CompanyOrder";
 import CompanyOrderList from "./pages/CompanyOrderlist";
-import Fitting from "./pages/Fitting/Fitting";
 import ServiceGeneralFitting from "./pages/ServiceGeneralFitting";
 import Footer from "./components/Footer"; // Footer 컴포넌트 불러오기
-import './App.css';
+import "./App.css";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -37,7 +36,6 @@ function App() {
               <Route path="/sign-up/complete" element={<Completion />} />
               <Route path="/mypage/*" element={<Mypage />} />
               <Route path="/mypage/edit" element={<EditProfile />} />
-              <Route path="/fitting" element={<Fitting />} />
               <Route path="/service/general/" element={<ServiceGeneral />} />
               <Route
                 path="/service/general/write/"
@@ -57,7 +55,10 @@ function App() {
               />
               <Route path="/Board/" element={<Board />} />
               <Route path="/service/company/order" element={<CompanyOrder />} />
-              <Route path="/service/company/orderlist" element={<CompanyOrderList />} />
+              <Route
+                path="/service/company/orderlist"
+                element={<CompanyOrderList />}
+              />
             </Routes>
           </div>
         </div>

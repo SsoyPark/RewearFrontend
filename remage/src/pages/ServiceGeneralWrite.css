@@ -115,9 +115,6 @@ select {
 div.new-line {
     display: none;
 }
-.img-generate-area, .order-bottom-btn {
-    display: none;
-}
 
 .order-notice {
     width: 100%;

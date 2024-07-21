@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Button from "../components/common/Button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./ServiceGeneralWrite.css";
 import "./ServiceGeneralFitting.css";
 import ImageUploader from "../components/common/ImageUploader";
@@ -9,6 +9,9 @@ import { virtualFitting } from "../api/service";
 import { base64ToBlob } from "../utils";
 
 const ServiceGeneralFitting = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const fittingImage = queryParams.get("fittingImage");
   const navigate = useNavigate();
   const [selectedUserType, setSelectedUserType] = useState("general");
   const [image, setImage] = useState(null);
@@ -83,7 +86,7 @@ const ServiceGeneralFitting = () => {
               <div className="text-wrap">
                 <p className="text-margin-bottom">
                   아래 주의사항을 참고해 피팅 서비스를 받을 고객님의 사진을
-                  업로드해주세요.
+                  업로드해주세요.{fittingImage}
                 </p>
                 <p>얼굴과 발을 포함한 전신이 사진에 보이도록 해주세요.</p>
                 <p className="text-margin-bottom">
