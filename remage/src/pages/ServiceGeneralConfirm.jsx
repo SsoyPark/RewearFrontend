@@ -12,6 +12,31 @@ import useServiceGeneralWriteStore from "../stores/ServiceGeneralWriteStore";
 import { getUserProfile, getCompanyNames } from "../api/auth";
 import { postRequestConfirm } from "../api/service";
 
+const lookupTable = {
+  short: "short sleeved",
+  long: "long sleeved",
+  sleeveless: "sleeveless",
+  collar: "collar",
+  round: "round neck",
+  vneck: "v-neck",
+  square: "square neck",
+  turtle: "turtle neck", // sweater 카테고리일 때 추가
+  mock: "mock neck", // sweater 카테고리일 때 추가
+  none: "n/a",
+  left: "pocket left",
+  right: "pocket right",
+  cable: "pattern cable",
+  waffle: "pattern waffle",
+  plain: "pattern plain",
+  "buttons-full": "button (full)",
+  "buttons-half": "button (half)",
+  "zippers-full": "지퍼 (full)",
+  "zippers-half": "지퍼 (half)",
+  crop: "크롭",
+  resize: "폼 줄이기",
+  others: "그 외",
+};
+
 const ServiceGeneralConfirm = () => {
   const navigate = useNavigate();
   const [selectedUserType, setSelectedUserType] = useState("general");
@@ -34,7 +59,7 @@ const ServiceGeneralConfirm = () => {
     // setAnalysisInfo,
     reformForm,
     // setReformForm,
-    // createdImageUrl,
+    createdImageUrl,
     // setCreatedImageUrl,
     resetState,
   } = useServiceGeneralWriteStore();
@@ -63,7 +88,7 @@ const ServiceGeneralConfirm = () => {
       });
       console.log(response);
       navigate("/service/general/write/complete/");
-      resetState()
+      resetState();
     } catch (err) {
       alert("리폼 등록에 실패했습니다." + err);
     }
@@ -128,7 +153,7 @@ const ServiceGeneralConfirm = () => {
                 {/* 주문 내역 영역 시작 */}
                 <div className="order-info">
                   {/* 리폼 이미지 영역 */}
-                  <img src="https://i.imgur.com/BM8mG7U.png" alt="" />
+                  <img src={createdImageUrl} alt="" />
                   <div className="info-wrap">
                     <p>
                       <strong>
@@ -137,16 +162,16 @@ const ServiceGeneralConfirm = () => {
                       </strong>
                     </p>
                     <p className="mute">
-                      {reformForm.neck_line} /{" "}
-                      {reformForm.button && reformForm.button + "/"}{" "}
-                      {reformForm.sleeve_length}
+                      {lookupTable[reformForm.neck_line]} /{" "}
+                      {lookupTable[reformForm.button] && lookupTable[reformForm.button] + "/"}{" "}
+                      {lookupTable[reformForm.sleeve_length]}
                     </p>
                     <p className="mute">
                       {analysisInfo.category === "sweater"
-                        ? reformForm.zip
-                        : reformForm.pocket}{" "}
-                      / {reformForm.pattern && reformForm.pattern + "/"}{" "}
-                      {reformForm.addt_design}
+                        ? lookupTable[reformForm.zip]
+                        : lookupTable[reformForm.pocket]}{" "}
+                      / {lookupTable[reformForm.pattern] && lookupTable[reformForm.pattern] + "/"}{" "}
+                      {lookupTable[reformForm.addt_design]}
                     </p>
                   </div>
                 </div>

@@ -402,7 +402,7 @@ const ServiceGeneralWrite = () => {
                     type="button"
                     className="btn-full-width"
                     text="디자인 추천받기"
-                    onClick={() => handleGenImage(true)}
+                    onClick={() => handleGenImage(false)}
                   />
                 </div>
                 {/* 리폼 요청사항 입력 폼 끝 */}

@@ -168,7 +168,6 @@ const MypageOrderlist = () => {
           <thead>
             <tr className="table_head_4756">
               <th>번호</th>
-              <th>고객 주문 번호</th>
               <th>의류 카테고리</th>
               <th>주문 날짜</th>
               <th>주문 업체명</th>
@@ -184,7 +183,6 @@ const MypageOrderlist = () => {
                     (currentPage - 1) * itemsPerPage -
                     index}
                 </td>
-                <td>{order.orderId}</td>
                 <td>{order.category}</td>
                 <td>{order.orderDate}</td>
                 <td>{order.companyName}</td>
