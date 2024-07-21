@@ -15,7 +15,8 @@
 .banner-content {
   display: flex;
   align-items: center;
-  width: 80%;
+  justify-content: space-between; /* 좌우 공간을 균등하게 배분 */
+  width: 100%;
   max-width: 1200px; /* 컨텐츠 최대 너비 설정 */
 }
 
@@ -27,28 +28,41 @@
   width: 50%;
   height: auto;
   display: block;
-  max-width: 300px; /* 이미지의 최대 너비 설정 */
+  max-width: none; /* 이미지의 최대 너비를 해제 */
+  flex: 1; /* 이미지를 가능한 한 크게 */
 }
 
 .banner-text {
   text-align: center;
   width: 50%;
   padding: 1rem;
+  font-size: 35px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.banner-text h2 {
-  font-size: 1.5rem;
+.banner-text .title {
+  align-items: center;
   margin-bottom: 0.5rem;
+  color: #9D3014;
 }
 
-.banner-text p {
-  font-size: 1rem;
+.banner-text .content {
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: black;
   margin: 0;
 }
 
 .banner-images {
   display: flex;
   gap: 1rem; /* 이미지 사이 간격 */
-  width: 50%;
   justify-content: center;
+  width: 70%;
+}
+
+.banner-images .resize{
+  width: 40%;
+  height: 40%;
 }
