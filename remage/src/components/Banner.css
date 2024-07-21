@@ -41,7 +41,7 @@
   white-space: nowrap;
 }
 
-.banner-text .title {
+.banner-text h3 {
   align-items: center;
   margin-bottom: 0.5rem;
   color: #9D3014;
@@ -51,7 +51,7 @@
   align-items: center;
   text-align: center;
   font-size: 25px;
-  color: black;
+  color: #333333;
   margin: 0;
 }
 
