@@ -110,3 +110,69 @@ export const getMyOrders = async () => {
     }
   }
 };
+
+export const getCompanyOrders = async () => {
+  try {
+    const response = await axiosInstance.get(`${baseURL}/order/requests/`);
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "response failed");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
+export const getAcceptedOrders = async () => {
+  try {
+    const response = await axiosInstance.get(
+      `${baseURL}/order/accepted-orders/`
+    );
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "response failed");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
+export const updateAcceptOrder = async (orderId) => {
+  try {
+    const response = await axiosInstance.patch(
+      `${baseURL}/order/order-accept/${orderId}/`
+    );
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "response failed");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
+export const updateDeclineOrder = async (orderId) => {
+  try {
+    const response = await axiosInstance.patch(
+      `${baseURL}/order/order-reject/${orderId}/`
+    );
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "response failed");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};

@@ -77,6 +77,7 @@ const ServiceGeneralConfirm = () => {
   const handleSubmit = async () => {
     if (!selectedCompanyName) {
       alert("업체를 선택해주세요.");
+      return;
     }
     const userConfirmation = window.confirm("주문을 확정하시겠습니까?");
     if (!userConfirmation) {
@@ -162,16 +163,16 @@ const ServiceGeneralConfirm = () => {
                       </strong>
                     </p>
                     <p className="mute">
-                      {lookupTable[reformForm.neck_line]} /{" "}
-                      {lookupTable[reformForm.button] && lookupTable[reformForm.button] + "/"}{" "}
-                      {lookupTable[reformForm.sleeve_length]}
+                      {[reformForm.neck_line]} /{" "}
+                      {[reformForm.button] && [reformForm.button] + "/"}{" "}
+                      {[reformForm.sleeve_length]}
                     </p>
                     <p className="mute">
                       {analysisInfo.category === "sweater"
-                        ? lookupTable[reformForm.zip]
-                        : lookupTable[reformForm.pocket]}{" "}
-                      / {lookupTable[reformForm.pattern] && lookupTable[reformForm.pattern] + "/"}{" "}
-                      {lookupTable[reformForm.addt_design]}
+                        ? [reformForm.zip]
+                        : [reformForm.pocket]}{" "}
+                      / {[reformForm.pattern] && [reformForm.pattern] + "/"}{" "}
+                      {[reformForm.addt_design]}
                     </p>
                   </div>
                 </div>
