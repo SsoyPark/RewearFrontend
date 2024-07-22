@@ -195,7 +195,7 @@ const EditProfile = () => {
                 placeholder="상세주소를 입력해주세요."
               ></FormInput>
               <div className={styles["cancel-confirm-buttons"]}>
-                <Button text="취소" className="cancel" />
+                <Button text="취소" className="cancel" url="/mypage/main"/>
                 <Button text="수정" className="confirm" onClick={handleEditButton}/>
               </div>
             </div>
