@@ -3,6 +3,10 @@
     color: #495057;
 }
 
+.service-general-complete h2 {
+    margin-bottom:20px;
+}
+
 .service-general-complete .content h3 {
     font-size: 20px;
     margin: 60px 0 20px;
