@@ -38,13 +38,13 @@ const ServiceGeneralFitting = () => {
       formData.append("file2", blob);
 
       try {
-        // const response = await virtualFitting(formData);
-        // const imageUrl = URL.createObjectURL(response.data);
-        // setResultImageURL(imageUrl);
+        const response = await virtualFitting(formData);
+        const imageUrl = URL.createObjectURL(response.data);
+        setResultImageURL(imageUrl);
         // 테스트
-        const testImageUrl = "https://i.imgur.com/oKOesax.jpg"; // 테스트 이미지 URL
-        await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 지연 시뮬레이션
-        setResultImageURL(testImageUrl);
+        // const testImageUrl = "https://i.imgur.com/oKOesax.jpg"; // 테스트 이미지 URL
+        // await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 지연 시뮬레이션
+        // setResultImageURL(testImageUrl);
       } catch (error) {
         console.error(
           "There was a problem with the virtual fitting request:",
