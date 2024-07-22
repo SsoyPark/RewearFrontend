@@ -7,6 +7,20 @@ import "./ServiceGeneralFitting.css";
 import ImageUploader from "../components/common/ImageUploader";
 import { virtualFitting } from "../api/service";
 import { base64ToBlob } from "../utils";
+import useServiceGeneralWriteStore from "../stores/ServiceGeneralWriteStore";
+
+async function urlToBlob(imageUrl) {
+  try {
+    const response = await fetch(imageUrl);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const blob = await response.blob();
+    return blob;
+  } catch (error) {
+    console.error("There has been a problem with your fetch operation:", error);
+  }
+}
 
 const ServiceGeneralFitting = () => {
   const location = useLocation();
@@ -17,6 +31,8 @@ const ServiceGeneralFitting = () => {
   const [image, setImage] = useState(null);
   const [resultImageURL, setResultImageURL] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 변수
+
+  const { createdImageUrl } = useServiceGeneralWriteStore();
   const handleImageUpload = (imageData) => {
     setImage(imageData);
   };
@@ -33,9 +49,11 @@ const ServiceGeneralFitting = () => {
       setIsLoading(true); // 로딩 시작
       console.log("이미지를 제출합니다.");
       const formData = new FormData();
-      const blob = base64ToBlob(image, "image/png");
-      formData.append("file1", blob);
-      formData.append("file2", blob);
+      
+      const blob1 = await urlToBlob(createdImageUrl)
+      const blob2 = base64ToBlob(image, "image/png");
+      formData.append("file1", blob1);
+      formData.append("file2", blob2);
 
       try {
         const response = await virtualFitting(formData);
@@ -87,7 +105,7 @@ const ServiceGeneralFitting = () => {
             </div>
             <div className="image-container">
               <div className="image-box">
-                <img src="/mnt/data/image.png" alt="이미지" />
+                <img src={createdImageUrl} alt="이미지" />
               </div>
             </div>
             <div className="content fitting">
@@ -110,30 +128,35 @@ const ServiceGeneralFitting = () => {
                 {resultImageURL ? (
                   <img src={resultImageURL} alt="가상피팅 사진" />
                 ) : (
-                    <div className="no-result">
-                        <div className="result-wrap">
-                            <span></span>
-                            <p>가상피팅 완료 시<br/>이곳에 결과가 나타납니다.</p>
-                            <Button
-                                text={isLoading ?
-                                    <>
-                                        가상피팅 실행 중
-                                        <div className="ellipsis">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </> 
-                                    : "가상피팅 실행"}
-                                className={`${
-                                isLoading ? "loading" : ""
-                                } btn-white`}
-                                onClick={handleSubmit}
-                                disabled={isLoading} // 로딩 중이면 버튼 비활성화
-                            />
-                        </div>
+                  <div className="no-result">
+                    <div className="result-wrap">
+                      <span></span>
+                      <p>
+                        가상피팅 완료 시<br />
+                        이곳에 결과가 나타납니다.
+                      </p>
+                      <Button
+                        text={
+                          isLoading ? (
+                            <>
+                              가상피팅 실행 중
+                              <div className="ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                              </div>
+                            </>
+                          ) : (
+                            "가상피팅 실행"
+                          )
+                        }
+                        className={`${isLoading ? "loading" : ""} btn-white`}
+                        onClick={handleSubmit}
+                        disabled={isLoading} // 로딩 중이면 버튼 비활성화
+                      />
                     </div>
+                  </div>
                 )}
               </div>
               <div className="order-bottom-btn">

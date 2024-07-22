@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useAuthStore from "../../stores/useAuthStore";
 
 const MypageMain = () => {
+  const { userType } = useAuthStore();
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/mypage/orderlist");
+    if (userType === "company") {
+      navigate("/service/company/orderlist");
+    } else {
+      navigate("/mypage/orderlist");
+    }
   };
 
   return (

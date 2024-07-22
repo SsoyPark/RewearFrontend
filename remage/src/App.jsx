@@ -20,6 +20,7 @@ import ServiceGeneralFitting from "./pages/ServiceGeneralFitting";
 import Footer from "./components/Footer"; // Footer 컴포넌트 불러오기
 import "./App.css";
 
+
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
