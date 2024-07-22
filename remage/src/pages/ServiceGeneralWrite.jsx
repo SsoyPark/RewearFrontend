@@ -175,27 +175,27 @@ const ServiceGeneralWrite = () => {
   // }, []);
 
   const sleeveOptions = [
-    { value: "short", label: "short sleeved" },
-    { value: "long", label: "long sleeved" },
+    { value: "short-sleeved", label: "short-sleeved" },
+    { value: "long-sleeved", label: "long-sleeved" },
     { value: "sleeveless", label: "sleeveless" },
   ];
 
   const necklineOptions = [
     { value: "collar", label: "collar" },
-    { value: "round", label: "round neck" },
-    { value: "vneck", label: "v-neck" },
-    { value: "square", label: "square neck" },
+    { value: "round neck", label: "round neck" },
+    { value: "v-neck", label: "v-neck" },
+    { value: "square neck", label: "square neck" },
   ];
   // 카테고리 '스웨터'일 때만 '터틀벡', '모크넥' 옵션 추가
   if (analysisInfo.category === "sweater") {
     necklineOptions.push(
-      { value: "turtle", label: "turtle neck" },
-      { value: "mock", label: "mock neck" }
+      { value: "turtle neck", label: "turtle neck" },
+      { value: "mock neck", label: "mock neck" }
     );
   }
 
   const pocketOptions = [
-    { value: "none", label: "n/a" },
+    { value: "n/a", label: "n/a" },
     { value: "left", label: "left" },
     { value: "right", label: "right" },
   ];
@@ -207,24 +207,23 @@ const ServiceGeneralWrite = () => {
   ];
 
   const buttonOptions = [
-    { value: "none", label: "n/a" },
-    { value: "buttons-full", label: "button (full)" },
-    { value: "buttons-half", label: "button (half)" },
+    { value: "n/a", label: "n/a" },
+    { value: "full", label: "button (full)" },
+    { value: "half", label: "button (half)" },
   ];
 
   const zipperOptions = [
-    { value: "none", label: "n/a" },
-    { value: "zippers-full", label: "지퍼 (full)" },
-    { value: "zippers-half", label: "지퍼 (half)" },
+    { value: "n/a", label: "n/a" },
+    { value: "full", label: "지퍼 (full)" },
+    { value: "half", label: "지퍼 (half)" },
   ];
 
   const otherOptions = [
-    { value: "none", label: "없음" },
+    { value: "n/a", label: "없음" },
     { value: "crop", label: "크롭" },
-    { value: "resize", label: "폼 줄이기" },
-    { value: "others", label: "그 외" },
+    { value: "fit", label: "폼 줄이기" },
+    { value: "etc", label: "그 외" },
   ];
-
   return (
     <div className="page service-general-write">
       <section>

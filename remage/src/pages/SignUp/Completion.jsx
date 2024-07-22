@@ -15,6 +15,7 @@ const Completion = () => {
   const password = location.state?.password
   const userType = location.state?.userType
   const handleLoginClick = async () => {
+    console.log(userId);
     console.log(password);
     try {
       await loginService(userId, password, navigate, login, userType)
