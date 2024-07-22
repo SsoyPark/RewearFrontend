@@ -58,7 +58,7 @@ const MypageSidebar = () => {
         <div className="user-avatar" onClick={handleAvatarClick}>
           <span className="material-icons user-avatar-icons">person</span>
         </div>
-        <div className="user-name">약수하는햄스터님</div>
+        <div className="user-name">악수하는햄스터 님</div>
         <Button
           text="회원정보 수정"
           url="/mypage/edit/"

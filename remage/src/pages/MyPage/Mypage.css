@@ -83,9 +83,8 @@
     margin-top: 40px;
 }
 
-.section-title {
+.my-page .section-title {
     font-size: 18px;
-    margin-bottom: 36px;
 }
 
 
@@ -97,13 +96,13 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
+    margin-bottom: 12px;
     /* padding: 10px; */
     /* margin-top: 10px; */
 }
 
 .arrow-icon {
     font-size: 24px;
-    margin-bottom: 8px;
 }
 
 .order-summary {
