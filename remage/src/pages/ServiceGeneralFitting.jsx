@@ -85,6 +85,11 @@ const ServiceGeneralFitting = () => {
                 </span>
               </span>
             </div>
+            <div className="image-container">
+              <div className="image-box">
+                <img src="/mnt/data/image.png" alt="이미지" />
+              </div>
+            </div>
             <div className="content fitting">
               <h3 className="paragraph-title">가상피팅</h3>
               <div className="text-wrap">
