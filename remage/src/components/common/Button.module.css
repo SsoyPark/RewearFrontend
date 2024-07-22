@@ -75,10 +75,10 @@
 }
 
 .editprofile-button {
-    width: 90%;
+    width: 100%;
     background-color: #fff;
     border: 1px solid #CDD3D9;
-    margin: 20px auto 0;
+    margin-top: 20px;
     white-space: nowrap;
     padding: 12px 0;
     font-size: 14px;
