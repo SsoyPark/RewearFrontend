@@ -136,16 +136,17 @@
 }
 
 .try-button {
+    width: 180px;
     margin: 20px auto 0;
     white-space: nowrap;
-    padding: 12px 36px;
-    font-size: 14px;
+    padding: 20px 40px;
+    font-size: 18px;
     color: white;
     background-color: #333333; /* 다크 그레이 색상 */
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 10px;
+    border-radius: 20px;
 }
   
 .try-button:hover {

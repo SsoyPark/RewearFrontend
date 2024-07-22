@@ -41,7 +41,7 @@ const Mypage = () => {
               }
             />
             <Route
-              path="orderdetail"
+              path="orderdetail/:orderid"
               element={
                 <ProtectedRoute>
                   <MypageOrderdetail />
