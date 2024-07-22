@@ -132,7 +132,7 @@ const MypageOrderlist = () => {
         } = await getMyOrders();
         console.log(results);
         const newOrders = results.map((item) => ({
-          orderId: encodeOrderNum(item.id),
+          orderId: item.id,
           orderDate: formatDateString(item.created_at),
           category: item.category,
           status: item.status_display,
@@ -188,7 +188,7 @@ const MypageOrderlist = () => {
                 <td>{order.companyName}</td>
                 <td>{order.status}</td>
                 <td>
-                  <Link to={`/mypage/orderdetail/`}>
+                  <Link to={`/mypage/orderdetail/${order.orderId}`}>
                     <div className="view_order_details">
                       주문상세보기 <FaChevronRight />
                     </div>
