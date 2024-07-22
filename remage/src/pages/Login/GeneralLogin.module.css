@@ -8,3 +8,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
+input#general-user-checkbox {
+    margin-right: 4px;
+}

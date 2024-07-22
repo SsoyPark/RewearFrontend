@@ -136,7 +136,19 @@ const TermsOfServices = ({
       <p>1. 회사와 회원 간에 발생한 분쟁에 관한 소송은 회사의 본사 소재지를 관할하는 법원을 전속 관할 법원으로 합니다.</p>
       <p>2. 회사와 회원 간에 제기된 전자상거래 소송에는 대한민국 법을 적용합니다.</p></p>
   const personalInformationText =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus varius condimentum nisl. Fusce eget dui dolor. Pellentesque condimentum libero sed justo maximus, vel frin gilla arcu egestas. Proin consequat ex vel mattis rhoncus. Vestibulum odio erat, vehicula semper pulvinar vel, molestie non quam. Vestibulum pulvinar, ex ac gravida suscipit, odio urna rhoncus orci, id sodales quam felis vitae nulla. Vestibulum sodales luctus velit, ut commodo est hendrerit ac. Nullam eleifend scelerisque facilisis. Phasellus interdum erat nec metus consequat consequat. Nullam fermentum congue lacus et suscipit. Aenean vitae lobortis nisl. Nunc rutrum velit quis augue feugiat varius. Nam accumsan pretium enim non rutrum. Vivamus sed metus ac libero eleifend efficitur. Maecenas sagittis justo sit amet augue iaculis molestie. ";
+    <p>Re:WEAR는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.<br/>
+    <br/>
+    <strong>제 1조(개인정보의 처리목적)</strong> Re:WEAR는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는  「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.<br/>
+    <br/>
+    1. 홈페이지 회원 가입 및 관리<br/>
+    회원 가입의사 확인, 회원제 서비스 제공에 따른 본인 식별·인증, 회원자격 유지·관리, 서비스 부정이용 방지, 만 14세 미만 아동의 개인정보 처리 시 법정 대리인의 동의여부 확인, 각종 고지·통지, 고충처리 목적으로 개인정보를 처리합니다.<br/>
+    2. 재화 또는 서비스 제공<br/>
+    물품배송, 서비스 제공, 계약서·청구서 발송, 콘텐츠 제공, 맞춤서비스 제공, 본인인증, 연령인증, 요금결제·정산, 채권추심을 목적으로 개인정보를 처리합니다.
+    3. 고충처리<br/>
+    민원인의 신원 확인, 민원사항 확인, 사실조사를 위한 연락·통지, 처리결과 통보의 목적으로 개인정보를 처리합니다.<br/>
+    
+    
+    </p>;
   const [termsOfServiceChecked, setTermsOfServiceChecked] = useState(false);
   const [userInfoChecked, setUserInfoChecked] = useState(false);
   const [termsOfServiceError, setTermsOfServiceError] = useState("");
@@ -175,14 +187,14 @@ const TermsOfServices = ({
       {termsOfServiceError && <InputError errorMessage={termsOfServiceError} />}
       <TermsOfServicesContent
         title="개인정보 수집 및 이용 동의"
-        text={termsOfServicesText}
+        text={personalInformationText}
         confirmationText="개인정보 수집 및 이용 동의 (필수)"
         id="terms-checkbox-2"
         handleChange={() => setUserInfoChecked(!userInfoChecked)}
       />
       {userInfoError && <InputError errorMessage={userInfoError} />}
       <div className={styles["selective-checkbox-contents"]}>
-        <FormCheckbox
+        {/* <FormCheckbox
           label="SMS 수신 동의 (선택)"
           id="terms-checkbox-3"
           onChange={() => setSmsRecieveChecked(!smsRecieveChecked)}
@@ -191,7 +203,7 @@ const TermsOfServices = ({
           label="이메일 수신 동의 (선택)"
           id="terms-checkbox-4"
           onChange={() => setEmailRecieveChecked(!emailRecieveChecked)}
-        />
+        /> */}
       </div>
       <div className={styles["next-button"]}>
         <div className={styles["terms-of-services-next-button"]}>

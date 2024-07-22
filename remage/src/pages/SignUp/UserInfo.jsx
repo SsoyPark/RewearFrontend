@@ -78,9 +78,15 @@ const UserInfo = ({
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-    if (newPassword.length < 6) {
+    if (newPassword.length < 8) {
       setIsPasswordValid(false);
-      setPasswordSystemMessage("유효하지 않은 비밀번호 입니다.");
+      setPasswordSystemMessage("비밀번호는 최소 8글자 이상이어야 합니다.");
+    } else if (!/[a-zA-Z]/.test(newPassword)) {
+      setIsPasswordValid(false);
+      setPasswordSystemMessage("비밀번호에는 최소 하나의 영문자가 포함되어야 합니다.");
+    } else if (!/[!@#$%^&*(),.?":{}`~<>]/.test(newPassword)) {
+      setIsPasswordValid(false);
+      setPasswordSystemMessage("비밀번호에는 최소 하나의 특수문자가 포함되어야 합니다.");
     } else {
       setIsPasswordValid(true);
       setPasswordSystemMessage("유효한 비밀번호 입니다.");
