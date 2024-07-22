@@ -111,6 +111,23 @@ export const getMyOrders = async () => {
   }
 };
 
+export const getMyOrder = async (orderId) => {
+  try {
+    const response = await axiosInstance.get(
+      `${baseURL}/order/user/orders/${orderId}/`
+    );
+    return response;
+  } catch (error) {
+    if (error.response) {
+      throw new Error(error.response.data.error || "response failed");
+    } else if (error.request) {
+      throw new Error("No response received from server");
+    } else {
+      throw new Error(error.message);
+    }
+  }
+};
+
 export const getCompanyOrders = async () => {
   try {
     const response = await axiosInstance.get(`${baseURL}/order/requests/`);
