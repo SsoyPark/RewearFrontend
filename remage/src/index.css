@@ -44,7 +44,8 @@ body,
     /* height: calc(100% - 120px); */
 }
 .content {
-    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .sidebar-main-page {
