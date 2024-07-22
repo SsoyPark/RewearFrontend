@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import styles from "./CompanyOrder.module.css";
 import { Link } from "react-router-dom";
-import { getCompanyOrders, updateAcceptOrder, updateDeclineOrder } from "../api/service";
+import {
+  getCompanyOrders,
+  updateAcceptOrder,
+  updateDeclineOrder,
+} from "../api/service";
 import { formatDateString, encodeOrderNum } from "../utils";
 
 // const orders = [
@@ -19,6 +23,17 @@ import { formatDateString, encodeOrderNum } from "../utils";
 //   { customer: "악수하는헬스터", orderNumber: "C20240530091", category: "청바지", orderDate: "2024.5.30" },
 // ];
 
+const mapOrders = (orders) => {
+    return orders.map((item) => ({
+      orderNumber: encodeOrderNum(item.id),
+      customer: item.user_nickname,
+      orderDate: formatDateString(item.created_at),
+      category: item.category,
+      status: item.status_display,
+      orderId: item.id,
+    }));
+  };
+
 const CompanyOrder = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,6 +43,7 @@ const CompanyOrder = () => {
   const [filteredOrders, setFilteredOrders] = useState(orders);
   const itemsPerPage = 10;
   const [sortOrder, setSortOrder] = useState("desc");
+  const [refresh, setRefresh] = useState(0);
 
   const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
 
@@ -64,25 +80,31 @@ const CompanyOrder = () => {
     setCurrentPage(1);
   };
   const handleAccept = async (orderId) => {
+    const confirmReject = window.confirm("정말 이 주문을 수락하시겠습니까?");
+    if (!confirmReject) {
+      return;
+    }
     console.log(`다음 주문 수락 : ${orderId}`);
     try {
-        const response = await updateAcceptOrder(orderId)
-        console.log(response);
-    }catch(err){
-        alert(err + "주문 수락 요청에 실패했습니다.")
+      const response = await updateAcceptOrder(orderId);
+      console.log(response);
+      setRefresh((prev) => prev + 1); // 상태 갱신
+    } catch (err) {
+      alert(err + "주문 수락 요청에 실패했습니다.");
     }
   };
   const handleReject = async (orderId) => {
     console.log(`다음 주문 거절 : ${orderId}`);
     const confirmReject = window.confirm("정말 이 주문을 거절하시겠습니까?");
     if (!confirmReject) {
-        return;
+      return;
     }
     try {
-        const response = await updateDeclineOrder(orderId)
-        console.log(response);
-    }catch(err){
-        alert(err + "주문 거절 요청에 실패했습니다.")
+      const response = await updateDeclineOrder(orderId);
+      console.log(response);
+      setRefresh((prev) => prev + 1); // 상태 갱신
+    } catch (err) {
+      alert(err + "주문 거절 요청에 실패했습니다.");
     }
   };
   useEffect(() => {
@@ -92,14 +114,7 @@ const CompanyOrder = () => {
           data: { results },
         } = await getCompanyOrders();
         console.log(results);
-        const newOrders = results.map((item) => ({
-          orderNumber: encodeOrderNum(item.id),
-          customer: item.user_nickname,
-          orderDate: formatDateString(item.created_at),
-          category: item.category,
-          status: item.status_display,
-          orderId: item.id,
-        }));
+        const newOrders = mapOrders(results);
         setOrders(newOrders);
       } catch (err) {
         alert(err + "주문 내역을 불러오는데 실패했습니다.");
@@ -107,7 +122,7 @@ const CompanyOrder = () => {
     };
     fetchMyOrders();
     return () => {};
-  }, []);
+  }, [refresh]);
   useEffect(() => {
     let filtered = orders.filter((order) => {
       if (searchFilter === "customer") {
