@@ -51,6 +51,11 @@
 .user-name {
     margin-top: 20px;
     font-size: 18px;
+    color: #495057;
+    font-weight: bold;
+}
+.user-name span {
+    font-weight: 300;
 }
 
 .editprofile-button,
@@ -85,6 +90,7 @@
 
 .my-page .section-title {
     font-size: 18px;
+    color: #495057;
 }
 
 
@@ -149,27 +155,28 @@
 
 
 .activities-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 320px 320px;
+    column-gap: 24px;
     justify-content: space-between;
     /* 두 열 사이의 공간을 동일하게 분배 */
 }
 
 
 .activity-item {
-    flex: 1 1 45%;
+    flex: 1 1 50%;
     /* 두 개의 아이템이 한 줄에 배치되도록 설정 */
-    margin: 10px 10px;
-    padding: 10px;
+    /* margin: 10px 10px; */
+    padding: 16px 0;
     background-color: #fff;
     /* border: 1px solid #ddd; */
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     /* 아이템 간의 공간을 동일하게 분배 */
     align-items: center;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
 }
 
 .full-width {

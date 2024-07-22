@@ -76,13 +76,13 @@
 
 .editprofile-button {
     width: 90%;
-    background-color: #9d3014;
-    border: 1px solid #9d3014;
+    background-color: #fff;
+    border: 1px solid #CDD3D9;
     margin: 20px auto 0;
     white-space: nowrap;
     padding: 12px 0;
     font-size: 14px;
-    color: white;
+    color: #495057;
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 10px;
