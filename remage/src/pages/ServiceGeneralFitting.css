@@ -133,6 +133,31 @@ p.text-margin-bottom {
     animation: ellipsis3 0.6s infinite;
 }
 
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .image-box {
+    width:470.4px; /* 박스 너비 */
+    height: 450px; /* 박스 높이 */
+    border: 2px dashed #cccccc; /* 테두리 스타일 */
+    background-color: #f9f9f9; /* 배경 색상 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:40px;
+    border-radius:10px;
+  }
+  
+  .image-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+
 @keyframes ellipsis1 {
     0% {
         transform: scale(0);
