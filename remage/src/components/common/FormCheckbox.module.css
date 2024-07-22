@@ -6,6 +6,10 @@
     font-weight: medium;
 }
 
+.component input {
+    margin-right: 4px;
+}
+
 .form-checkbox input[type="checkbox"] {
     /* 기본 체크박스를 숨깁니다 */
     position: absolute;

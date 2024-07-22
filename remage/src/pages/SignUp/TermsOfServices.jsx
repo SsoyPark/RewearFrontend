@@ -101,7 +101,7 @@ const TermsOfServices = ({
       />
       {userInfoError && <InputError errorMessage={userInfoError} />}
       <div className={styles["selective-checkbox-contents"]}>
-        <FormCheckbox
+        {/* <FormCheckbox
           label="SMS 수신 동의 (선택)"
           id="terms-checkbox-3"
           onChange={() => setSmsRecieveChecked(!smsRecieveChecked)}
@@ -110,7 +110,7 @@ const TermsOfServices = ({
           label="이메일 수신 동의 (선택)"
           id="terms-checkbox-4"
           onChange={() => setEmailRecieveChecked(!emailRecieveChecked)}
-        />
+        /> */}
       </div>
       <div className={styles["next-button"]}>
         <div className={styles["terms-of-services-next-button"]}>
