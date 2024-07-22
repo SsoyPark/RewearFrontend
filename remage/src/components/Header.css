@@ -24,7 +24,9 @@
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    min-width: 310px;
+    min-width: 238px;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .hamburger-logo-contents {
@@ -45,8 +47,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-right: 10%;
-    margin-left: 10%;
     gap: 29px;
 }
 
@@ -62,7 +62,6 @@
 #logo-main-page{
     font-size: 30px;
     font-weight: 200;
-    margin-left: 10%;
 }
 
 #logo-main-page img {

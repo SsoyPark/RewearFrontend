@@ -18,10 +18,10 @@ const Header = () => {
     <div className="header-container">
       <div className="header-line-2">
         {/* <TextButton id="logo-main-page" text="REMAGE" url="/" /> */}
-        <Link to={`${baseUrl}/`} id="logo-main-page">
-          <img src="/Logo.png" alt="REMAGE Logo" />
-        </Link>
         <div className="header-box">
+          <Link to={`${baseUrl}/`} id="logo-main-page">
+            <img src="/Logo.png" alt="REMAGE Logo" />
+          </Link>
           <div className="search-profile-contents">
             {/* <TextButton text="서비스" />
           <TextButton text="고객센터" /> */}
