@@ -13,7 +13,7 @@ const jsonDataHeaders = {
 export const virtualFitting = async (imageForm) => {
   try {
     const response = await axios.post(
-      `http://34.47.76.146:8000/analysis/predict`,
+      `http://34.47.70.117:8000/analysis/predict`,
       imageForm,
       {
         headers: formDataHeaders,
