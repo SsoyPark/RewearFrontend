@@ -4,33 +4,40 @@
   }
   
   .tab-item:hover {
-      background-color: #ccc; /* 회색 배경 */
+      background-color: #F2F4F6; /* 회색 배경 */
   }
   
   .active-tab {
-      background-color: #ccc; /* 현재 페이지와 같은 탭의 회색 배경 */
+      background-color: #F2F4F6; /* 현재 페이지와 같은 탭의 회색 배경 */
       padding: 14px;
       margin-bottom: 10px;
+      font-weight: bold;
   }
 
 .order-sub-title{
     font-size: 18px;
 }
+.order-sub-title span {
+    font-weight: bold;
+}
 
 .list-head{
     margin-top:35px;
     display: flex;
-    padding-bottom : 5px;
-    border-bottom: 1px solid #767676; /* 아랫부분에 밑줄 추가 */
+    padding-bottom : 4px;
+    border-bottom: 1px solid #000;
     justify-content: space-between;
     width:100%
 }
 
 .search-sort-method{
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #CDD3D9;
     max-width: 120px;
-    padding: 5px;
+    padding: 4px;
+    color: #495057;
+    font-size: 12px;
+    outline: none;
 }
 
 .table{
@@ -39,7 +46,11 @@
 }
 
 tr{
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #F2F4F6;
+}
+
+.table thead {
+    background-color: #F2F4F6;
 }
 
 .table thead th:first-child {
@@ -53,7 +64,6 @@ tr{
 }
 
 .table th {
-    background-color: #f2f2f2;
     border-bottom: 1px solid white;
 }
 

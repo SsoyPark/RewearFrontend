@@ -169,7 +169,7 @@ const CompanyOrder = () => {
               <input
                 type="text"
                 className="search-input"
-                placeholder="알고싶은 내용을 검색해보세요."
+                placeholder="검색할 내용을 입력해주세요."
                 value={searchTerm}
                 onChange={handleSearchChange}
                 onKeyPress={(e) => {
