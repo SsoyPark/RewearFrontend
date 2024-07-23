@@ -1,8 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../../stores/useAuthStore";
+import { useEffect, useState } from "react";
+import { getMyOrders } from "../../api/service";
+import { formatDateString } from "../../utils";
 
 const MypageMain = () => {
+  const [orders, setOrders] = useState([]);
+  const [counts, setCounts] = useState({});
   const { userType } = useAuthStore();
   const navigate = useNavigate();
 
@@ -13,17 +18,43 @@ const MypageMain = () => {
       navigate("/mypage/orderlist");
     }
   };
-
+  useEffect(() => {
+    const fetchMyOrders = async () => {
+      try {
+        const {
+          data: { results },
+        } = await getMyOrders();
+        console.log(results);
+        const newOrders = results.map((item) => ({
+          orderId: item.id,
+          orderDate: formatDateString(item.created_at),
+          category: item.category,
+          status: item.status_display,
+          companyName: item.company_name,
+        }));
+        setOrders(newOrders);
+        const statusCount = newOrders.reduce((acc, order) => {
+          acc[order.status] = (acc[order.status] || 0) + 1;
+          return acc;
+        }, {});
+        console.log(statusCount);
+      } catch (err) {
+        alert(err + "주문 정보를 불러오는데 실패했습니다.");
+      }
+    };
+    fetchMyOrders();
+    return () => {};
+  }, []);
   return (
     <main className="main-content">
       <button className="section-title-button" onClick={handleButtonClick}>
         <h3 className="section-title">주문 내역</h3>
+        {orders.map((item) => (
+          <p>{item.status}</p>
+        ))}
         <span className="material-icons arrow-icon">chevron_right</span>
       </button>
       <div className="order-summary">
-        <div className="order-item">
-          임시저장 <span>3</span>
-        </div>
         <div className="order-item">
           요청 검토 중 <span>1</span>
         </div>
