@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Mypage.css";
-import Button from "../../components/common/Button";
 import MypageSidebar from "./MypageSidebar";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import MypageMain from "./MypageMain";
@@ -14,7 +13,10 @@ const Mypage = () => {
     <div className="page my-page">
       <section>
         <div className="inner">
-          {currentLocation.pathname !== "/mypage/orderlist" && currentLocation.pathname !== "/mypage/orderdetail/" && <MypageSidebar />}
+          {currentLocation.pathname !== "/mypage/orderlist" &&
+            currentLocation.pathname !== "/mypage/orderdetail/" && (
+              <MypageSidebar />
+            )}
           <Routes>
             <Route
               path="/"
