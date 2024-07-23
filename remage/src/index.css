@@ -44,7 +44,7 @@ body,
     /* height: calc(100% - 120px); */
 }
 .content {
-    max-width: 80%;
+    width: 80%;
     margin: 0 auto;
 }
 
