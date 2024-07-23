@@ -63,6 +63,11 @@
 .component.uploader-long div, .component.uploader-long img, .component.uploader-long input {
     height: 100%;
 }
+.component.uploader-long img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 .component.uploader-long input {
     top: -560px;
 }
