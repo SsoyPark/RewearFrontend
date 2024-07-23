@@ -146,3 +146,7 @@ button.gen-again {
     border: none;
     margin-top: 0;
 }
+
+.service-general-write .ellipsis div {
+    background-color: #fff;
+}
