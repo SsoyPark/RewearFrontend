@@ -126,7 +126,7 @@ const ServiceGeneralFitting = () => {
                   onImageUpload={handleImageUpload}
                 />
                 {resultImageURL ? (
-                  <img src={resultImageURL} alt="가상피팅 사진" />
+                  <img className="dalle-result" src={resultImageURL} alt="가상피팅 결과" />
                 ) : (
                   <div className="no-result">
                     <div className="result-wrap">

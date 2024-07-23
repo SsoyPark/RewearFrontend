@@ -1,3 +1,10 @@
+.service-general-write .wrap {
+    width: 60%;
+}
+.service-general-write .content {
+    width: 100%;
+}
+
 .wrap {
     min-width: 588px;
     width: 49%;
