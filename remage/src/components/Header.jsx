@@ -14,6 +14,14 @@ const Header = () => {
   const { logout } = useAuthStore();
   const isLoggedIn = useAuthStore((state) => state.isAuthenticated);
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
+
+  const handleLogoutClick = () => {
+    const confirmed = window.confirm('정말 로그아웃 하시겠습니까?');
+    if (confirmed) {
+      logout();
+    }
+  };
+
   return (
     <div className="header-container">
       <div className="header-line-2">
@@ -33,7 +41,7 @@ const Header = () => {
               <TextButton
                 className="logout-page-button"
                 text="로그아웃"
-                onClick={logout}
+                onClick={handleLogoutClick}
               />
             ) : (
               <>
