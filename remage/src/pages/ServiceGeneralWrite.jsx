@@ -39,6 +39,10 @@ const ServiceGeneralWrite = () => {
     setCreatedImageUrl,
   } = useServiceGeneralWriteStore();
 
+    // 로딩 상태 관리
+    const [analyzeLoading, setAnalyzeLoading] = useState(false);
+    const [designLoading, setDesignLoading] = useState(false);
+  
   // select 필드 상태 관리
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
@@ -83,6 +87,7 @@ const ServiceGeneralWrite = () => {
       formData.append("upload", true);
       formData.append("image", blob, "imagedata.png");
       try {
+        setAnalyzeLoading(true); // 로딩 시작
         const response = await postImageAnalyze(formData);
         console.log(response);
         const {
@@ -96,6 +101,8 @@ const ServiceGeneralWrite = () => {
         setIsInfoAreaVisible(true);
       } catch (err) {
         alert("이미지 분석 도중 에러가 발생했습니다." + err);
+      } finally {
+        setAnalyzeLoading(false);
       }
       // console.log(response.data);
       // const infoAreaDiv = document.querySelector(".info-area");
@@ -125,14 +132,12 @@ const ServiceGeneralWrite = () => {
       }
     } else {
       try {
+        setDesignLoading(true); // 추천 디자인 생성 로딩 시작
         console.log("리폼 요청 입력중...");
         console.log(reformForm);
         const formData = new FormData();
         for (const key in reformForm) {
           formData.append(key, reformForm[key]);
-        }
-        for (const [key, value] of formData.entries()) {
-          console.log(key, value);
         }
         const response = await postReformRequest(formData);
         console.log(response);
@@ -148,6 +153,8 @@ const ServiceGeneralWrite = () => {
       } catch (err) {
         alert("요청사항을 보내는 도중에 에러가 발생했습니다.\n" + err);
         return;
+      } finally {
+        setDesignLoading(false);
       }
       //이미지 영역 생성
       setIsImageCreated(true);
@@ -262,10 +269,25 @@ const ServiceGeneralWrite = () => {
                 <h3 className="paragraph-title">리폼할 의류 사진</h3>
                 <ImageUploader onImageUpload={handleImageUpload} />
                 <Button
+                  text={
+                    analyzeLoading ? (
+                        <>
+                            이미지 분석 중
+                            <div className="ellipsis">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                              </div>
+                        </>
+                    ) : (
+                        "이미지 분석하기"
+                    )
+                  }
                   type="button"
                   className="btn-image-analyze"
-                  text="이미지 분석하기"
                   onClick={handleImageAnalyze}
+                  disabled={analyzeLoading}
                 />
               </div>
 
@@ -403,7 +425,21 @@ const ServiceGeneralWrite = () => {
                   <Button
                     type="button"
                     className="btn-full-width"
-                    text="디자인 추천받기"
+                    text={
+                        designLoading ? (
+                            <>
+                                추천 디자인 생성 중
+                                <div className="ellipsis">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </>
+                        ) : (
+                            "디자인 추천받기"
+                        )
+                    }
                     onClick={() => handleGenImage(false)}
                   />
                 </div>
