@@ -101,11 +101,11 @@ const CompanyOrderlist = () => {
         <div className="inner">
           <div className="tab-container">
             <h3 className="tab-title">서비스</h3>
-            <div className={styles["active-tab"]}>
-              <Link to="/service/company/orderlist">받은 주문관리</Link>
-            </div>
             <div className={styles["tab-item"]}>
               <Link to="/service/company/order">주문 받기</Link>
+            </div>
+            <div className={styles["active-tab"]}>
+              <Link to="/service/company/orderlist">받은 주문관리</Link>
             </div>
           </div>
           <div className="qnatabs">

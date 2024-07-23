@@ -23,7 +23,7 @@ const MypageMain = () => {
 
   const handleButtonClick = () => {
     if (userType === "company") {
-      navigate("/service/company/orderlist");
+      navigate("/service/company/order");
     } else {
       navigate("/mypage/orderlist");
     }
@@ -55,7 +55,7 @@ const MypageMain = () => {
         alert(err + "주문 정보를 불러오는데 실패했습니다.");
       }
     };
-    const fetchCompanyOrsers = async () => {
+    const fetchCompanyOrders = async () => {
       try {
         const {
           data: { results },
@@ -86,6 +86,7 @@ const MypageMain = () => {
     };
     if (userType === "company") {
       fetchAcceptedOrders();
+      fetchCompanyOrders();
     } else {
       fetchMyOrders();
     }

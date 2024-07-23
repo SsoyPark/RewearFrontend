@@ -37,12 +37,13 @@ const ServiceGeneralWrite = () => {
     setReformForm,
     createdImageUrl,
     setCreatedImageUrl,
+    resetState,
   } = useServiceGeneralWriteStore();
 
-    // 로딩 상태 관리
-    const [analyzeLoading, setAnalyzeLoading] = useState(false);
-    const [designLoading, setDesignLoading] = useState(false);
-  
+  // 로딩 상태 관리
+  const [analyzeLoading, setAnalyzeLoading] = useState(false);
+  const [designLoading, setDesignLoading] = useState(false);
+
   // select 필드 상태 관리
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
@@ -271,17 +272,17 @@ const ServiceGeneralWrite = () => {
                 <Button
                   text={
                     analyzeLoading ? (
-                        <>
-                            이미지 분석 중
-                            <div className="ellipsis">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                              </div>
-                        </>
+                      <>
+                        이미지 분석 중
+                        <div className="ellipsis">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                      </>
                     ) : (
-                        "이미지 분석하기"
+                      "이미지 분석하기"
                     )
                   }
                   type="button"
@@ -426,19 +427,19 @@ const ServiceGeneralWrite = () => {
                     type="button"
                     className="btn-full-width"
                     text={
-                        designLoading ? (
-                            <>
-                                추천 디자인 생성 중
-                                <div className="ellipsis">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </>
-                        ) : (
-                            "디자인 추천받기"
-                        )
+                      designLoading ? (
+                        <>
+                          추천 디자인 생성 중
+                          <div className="ellipsis">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                          </div>
+                        </>
+                      ) : (
+                        "디자인 추천받기"
+                      )
                     }
                     onClick={() => handleGenImage(false)}
                   />

@@ -24,15 +24,15 @@ import { formatDateString, encodeOrderNum } from "../utils";
 // ];
 
 const mapOrders = (orders) => {
-    return orders.map((item) => ({
-      orderNumber: encodeOrderNum(item.id),
-      customer: item.user_nickname,
-      orderDate: formatDateString(item.created_at),
-      category: item.category,
-      status: item.status_display,
-      orderId: item.id,
-    }));
-  };
+  return orders.map((item) => ({
+    orderNumber: encodeOrderNum(item.id),
+    customer: item.user_nickname,
+    orderDate: formatDateString(item.created_at),
+    category: item.category,
+    status: item.status_display,
+    orderId: item.id,
+  }));
+};
 
 const CompanyOrder = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -148,11 +148,11 @@ const CompanyOrder = () => {
         <div className="inner">
           <div className="tab-container">
             <h3 className="tab-title">서비스</h3>
-            <div className={styles["tab-item"]}>
-              <Link to="/service/company/orderlist">받은 주문관리</Link>
-            </div>
             <div className={styles["active-tab"]}>
               <Link to="/service/company/order">주문 받기</Link>
+            </div>
+            <div className={styles["tab-item"]}>
+              <Link to="/service/company/orderlist">받은 주문관리</Link>
             </div>
           </div>
           <div className="qnatabs">

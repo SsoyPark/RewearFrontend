@@ -9,14 +9,14 @@ import MypageOrderdetail from "./MypageOrderdetail";
 
 const Mypage = () => {
   const currentLocation = useLocation();
+  const hideSidebar =
+    currentLocation.pathname === "/mypage/orderlist" ||
+    /^\/mypage\/orderdetail\/\d+$/.test(currentLocation.pathname);
   return (
     <div className="page my-page">
       <section>
         <div className="inner">
-          {(currentLocation.pathname !== "/mypage/orderlist" ||
-            currentLocation.pathname !== "/mypage/orderdetail/:orderid") && (
-            <MypageSidebar />
-          )}
+          {!hideSidebar && <MypageSidebar />}
           <Routes>
             <Route
               path="/"
