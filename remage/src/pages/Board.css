@@ -46,7 +46,7 @@
   border: none;
   background-color: transparent;
   font-size: 14px;
-  border: 1px solid #ddd;
+  border: 1px solid #E9ECEF;
   border-radius: 10px;
   padding: 12px 16px;
   margin-right: 10px;
@@ -96,9 +96,7 @@
 .faq-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 20px 16px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -107,7 +105,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px 16px;
-  width: calc(50% - 20px);
+  width: calc(50% - 6px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   line-height: 20px;
