@@ -1,6 +1,6 @@
 import axios from "axios";
 import { axiosInstance } from "./interceptor";
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 const BASE_URL = process.env.REACT_APP_API_BACKEND_URL;
 // const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const defaultHeaders = {

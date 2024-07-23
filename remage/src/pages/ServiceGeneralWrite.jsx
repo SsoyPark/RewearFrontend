@@ -38,7 +38,7 @@ const ServiceGeneralWrite = () => {
     createdImageUrl,
     setCreatedImageUrl,
   } = useServiceGeneralWriteStore();
-  
+
   // select 필드 상태 관리
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
@@ -130,6 +130,9 @@ const ServiceGeneralWrite = () => {
         const formData = new FormData();
         for (const key in reformForm) {
           formData.append(key, reformForm[key]);
+        }
+        for (const [key, value] of formData.entries()) {
+          console.log(key, value);
         }
         const response = await postReformRequest(formData);
         console.log(response);

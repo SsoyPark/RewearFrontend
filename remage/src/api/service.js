@@ -1,7 +1,7 @@
 import axios from "axios";
 import { axiosInstance } from "./interceptor";
 import { json } from "react-router-dom";
-
+axios.defaults.withCredentials = true;
 const baseURL = process.env.REACT_APP_API_BACKEND_URL;
 const formDataHeaders = {
   "Content-Type": "multipart/form-data",
@@ -46,7 +46,7 @@ export const postReformRequest = async (formData) => {
     const response = await axiosInstance.post(
       `${baseURL}/analyze/request/`,
       formData,
-      { headers: formDataHeaders }
+      { headers: { ...formDataHeaders }, timeout: 20000, withCredentials: true }
     );
     return response;
   } catch (error) {
