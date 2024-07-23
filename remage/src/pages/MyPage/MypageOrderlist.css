@@ -1,8 +1,11 @@
-.order-main-content {
-    flex-grow: 1;
-    padding: 10px;
+.my-page .inner > .order_content_4536 {
+    grid-column: 1 / -1;
+    display: block; /* 또는 inline-block */
+}
+
+.order_content_4536 {
     margin-top: 40px;
-    width: 588;
+    width:100%;
 }
 
 .list-head{

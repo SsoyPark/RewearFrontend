@@ -1,10 +1,7 @@
 import React from "react";
 import styles from "./UserInfo.module.css";
 import styles2 from "./SignUp.module.css";
-import {
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FormInput from "../../components/common/FormInput";
 import Button from "../../components/common/Button";
 import { useState, useEffect } from "react";
@@ -83,10 +80,14 @@ const UserInfo = ({
       setPasswordSystemMessage("비밀번호는 최소 8글자 이상이어야 합니다.");
     } else if (!/[a-zA-Z]/.test(newPassword)) {
       setIsPasswordValid(false);
-      setPasswordSystemMessage("비밀번호에는 최소 하나의 영문자가 포함되어야 합니다.");
+      setPasswordSystemMessage(
+        "비밀번호에는 최소 하나의 영문자가 포함되어야 합니다."
+      );
     } else if (!/[!@#$%^&*(),.?":{}`~<>]/.test(newPassword)) {
       setIsPasswordValid(false);
-      setPasswordSystemMessage("비밀번호에는 최소 하나의 특수문자가 포함되어야 합니다.");
+      setPasswordSystemMessage(
+        "비밀번호에는 최소 하나의 특수문자가 포함되어야 합니다."
+      );
     } else {
       setIsPasswordValid(true);
       setPasswordSystemMessage("유효한 비밀번호 입니다.");
@@ -137,7 +138,7 @@ const UserInfo = ({
       const response = await duplicationCheck(value, type);
       const result = response.data.available;
       console.log(`중복검사 결과 : ${result}`);
-      return result
+      return result;
     } catch (err) {
       alert(err.message);
     }
@@ -154,7 +155,7 @@ const UserInfo = ({
     // 아이디 중복 확인 로직 구현
     // 예를 들어, 서버에 요청하여 중복 확인을 수행할 수 있습니다.
     const isValid = await checkValue(userId, "username");
-    
+
     setIsUserIdValid(isValid);
     if (isValid) {
       setUserIdSystemMessage("사용 가능한 아이디입니다.");
@@ -171,12 +172,18 @@ const UserInfo = ({
     }
     // 아이디 중복 확인 로직 구현
     // 예를 들어, 서버에 요청하여 중복 확인을 수행할 수 있습니다.
-    const isValid = await checkValue(nickname, "nickname");
-    setIsNicknameValid(isValid);
-    if (isValid) {
-      setNicknameSystemMessage("사용 가능한 닉네임입니다.");
-    } else {
-      setNicknameSystemMessage("이미 사용중인 닉네임입니다.");
+    try {
+      const isValid = await checkValue(nickname, "nickname");
+      setIsNicknameValid(isValid);
+      if (isValid) {
+        setNicknameSystemMessage("사용 가능한 닉네임입니다.");
+      } else {
+        setNicknameSystemMessage("이미 사용중인 닉네임입니다.");
+      }
+    } catch (err) {
+      alert(err + "중복확인중에 네트워크 에러가 발생했습니다.");
+      setIsNicknameValid(false);
+      setNicknameSystemMessage("에러가 발생했습니다. 잠시후에 다시 시도해주세요.");
     }
   };
 
@@ -246,7 +253,14 @@ const UserInfo = ({
             emailRecieveChecked
           );
 
-          navigate("/sign-up/complete/", { state: { from: "UserInfo", userId: userId, password: password, userType: type } });
+          navigate("/sign-up/complete/", {
+            state: {
+              from: "UserInfo",
+              userId: userId,
+              password: password,
+              userType: type,
+            },
+          });
         } catch (err) {
           alert(err.message);
         }

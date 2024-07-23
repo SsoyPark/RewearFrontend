@@ -148,7 +148,7 @@ const MypageOrderlist = () => {
   }, []);
 
   return (
-    <main className="order-main-content">
+    <div className="order_content_4536">
       <h2 className="h2 title">주문내역</h2>
       <div className="list-head">
         <p className="order-sub-title">
@@ -210,7 +210,7 @@ const MypageOrderlist = () => {
           </button>
         ))}
       </div>
-    </main>
+    </div>
   );
 };
 

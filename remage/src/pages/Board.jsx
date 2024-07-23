@@ -143,10 +143,6 @@ const Board = () => {
     <div className="page board">
       <section>
         <div className="inner">
-          <div className="tab-container">
-            <h3 className="tab-title">고객 센터</h3>
-            <div className="tab-item">자주 묻는 질문</div>
-          </div>
           <div className="qnatabs">
             <h2 className="section-title">자주 묻는 질문</h2>
             <div className="tab-buttons">
