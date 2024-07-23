@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 60px;
+    margin: 20px auto 60px;
 }
 
 .terms-of-services-content {

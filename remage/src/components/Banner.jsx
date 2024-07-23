@@ -23,7 +23,7 @@ const Banner = () => {
               <h3>Virtual Fitting</h3>
               <p className="banner-text content">선택한 리폼 디자인으로 가상피팅 해보세요</p>
             </div>
-            <img src="/human2.png" alt="Banner 2" className="banner-image resize" />
+            <img src="/human3.png" alt="Banner 2" className="banner-image resize" />
           </div>
         </div>
       </div>
