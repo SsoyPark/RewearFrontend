@@ -131,7 +131,6 @@ const ServiceGeneralWrite = () => {
         for (const key in reformForm) {
           formData.append(key, reformForm[key]);
         }
-        console.log(formData);
         const response = await postReformRequest(formData);
         console.log(response);
         console.log("요청사항입력완료");
