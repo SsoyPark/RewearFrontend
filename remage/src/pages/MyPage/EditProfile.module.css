@@ -4,6 +4,14 @@
     gap: 18px;
 }
 
+.user-info-stage h2 {
+    margin-bottom: 40px;
+}
+
+.user-info-stage > div:nth-of-type(6) {
+    margin-top: -16px;
+}
+
 .sub-title {
     width: 500px;
     padding-bottom: 10px;
@@ -37,10 +45,11 @@
     /* justify-content: center; */
     /* background-color: beige; */
     border-bottom: 1px solid #CDD3D9;
+    color: #CDD3D9;
 }
 
 .cancel-confirm-buttons {
     margin-top: 30px;
     display: flex;
-    gap: 20px;
+    gap: 12px;
 }
