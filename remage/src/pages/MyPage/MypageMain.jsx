@@ -33,10 +33,13 @@ const MypageMain = () => {
           companyName: item.company_name,
         }));
         setOrders(newOrders);
+
+        // 요청 상태 정보 카운팅
         const statusCount = newOrders.reduce((acc, order) => {
           acc[order.status] = (acc[order.status] || 0) + 1;
           return acc;
         }, {});
+        setCounts(statusCount);
         console.log(statusCount);
       } catch (err) {
         alert(err + "주문 정보를 불러오는데 실패했습니다.");
@@ -49,20 +52,17 @@ const MypageMain = () => {
     <main className="main-content">
       <button className="section-title-button" onClick={handleButtonClick}>
         <h3 className="section-title">주문 내역</h3>
-        {orders.map((item) => (
-          <p>{item.status}</p>
-        ))}
         <span className="material-icons arrow-icon">chevron_right</span>
       </button>
       <div className="order-summary">
         <div className="order-item">
-          요청 검토 중 <span>1</span>
+          요청 검토 중 <span>{counts?.대기 ?? 0}</span>
         </div>
         <div className="order-item">
-          진행 중 <span>1</span>
+          진행 중 <span>{counts?.수락 ?? 0+ counts?.거절 ?? 0}</span>
         </div>
         <div className="order-item">
-          완료 <span>0</span>
+          완료 <span>{counts?.완료 ?? 0}</span>
         </div>
       </div>
       <h3 className="section-title">나의 활동</h3>
