@@ -183,7 +183,9 @@ const UserInfo = ({
     } catch (err) {
       alert(err + "중복확인중에 네트워크 에러가 발생했습니다.");
       setIsNicknameValid(false);
-      setNicknameSystemMessage("에러가 발생했습니다. 잠시후에 다시 시도해주세요.");
+      setNicknameSystemMessage(
+        "에러가 발생했습니다. 잠시후에 다시 시도해주세요."
+      );
     }
   };
 
@@ -259,6 +261,7 @@ const UserInfo = ({
               userId: userId,
               password: password,
               userType: type,
+              nickname: nickname,
             },
           });
         } catch (err) {

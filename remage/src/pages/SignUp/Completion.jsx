@@ -5,20 +5,22 @@ import styles from "./Completion.module.css";
 import Button from "../../components/common/Button";
 import useAuthStore from "../../stores/useAuthStore";
 import { loginService } from "../../service/user";
+import { getUserProfile } from "../../api/auth";
 
 const Completion = () => {
   const { login } = useAuthStore();
   const [isValidAccess, setIsValidAccess] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const userId = location.state?.userId
-  const password = location.state?.password
-  const userType = location.state?.userType
+  const userId = location.state?.userId;
+  const password = location.state?.password;
+  const userType = location.state?.userType;
+  const nickname = location.state?.nickname;
   const handleLoginClick = async () => {
     console.log(userId);
     console.log(password);
     try {
-      await loginService(userId, password, navigate, login, userType)
+      await loginService(userId, password, navigate, login, userType);
     } catch (err) {
       alert(err.message);
     }
@@ -39,7 +41,7 @@ const Completion = () => {
             <FiCheckCircle fontSize="40px" color="#495057" />
             <h3 className={`${styles["title"]}`}>회원가입 완료</h3>
             <p className={`${styles["guide-text"]} text-center`}>
-              악수하는 햄스터 님의 회원가입이 <br /> 성공적으로 완료되었습니다.
+              {nickname} 님의 회원가입이 <br /> 성공적으로 완료되었습니다.
             </p>
             <Button
               text="로그인 하기"

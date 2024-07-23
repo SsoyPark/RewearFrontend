@@ -10,7 +10,7 @@ import InputError from "../../components/common/InputError";
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [userId, setUserId] = useState("");
   const [nickname, setNickname] = useState("");
@@ -66,9 +66,12 @@ const EditProfile = () => {
       setNicknameSystemMessage("유효하지 않은 닉네임입니다.");
       return;
     }
-    const isValid = await duplicationCheck(nickname, "nickname");
-    setIsNicknameValid(isValid);
-    if (isValid) {
+    const {
+      data: { available },
+    } = await duplicationCheck(nickname, "nickname");
+    console.log(available);
+    setIsNicknameValid(available);
+    if (available) {
       setNicknameSystemMessage("사용 가능한 닉네임입니다.");
     } else {
       setNicknameSystemMessage("이미 사용중인 닉네임입니다.");
@@ -89,6 +92,11 @@ const EditProfile = () => {
   };
 
   const handleEditButton = async () => {
+    const isConfirmed = window.confirm("정말로 수정하시겠습니까?");
+
+    if (!isConfirmed) {
+      return;
+    }
     try {
       const response = await patchProfile("general", {
         username: userId,
@@ -100,7 +108,7 @@ const EditProfile = () => {
     } catch (err) {
       alert(err.message);
     } finally {
-      navigate('/mypage/main')
+      navigate("/mypage/main");
     }
   };
 
@@ -195,8 +203,12 @@ const EditProfile = () => {
                 placeholder="상세주소를 입력해주세요."
               ></FormInput>
               <div className={styles["cancel-confirm-buttons"]}>
-                <Button text="취소" className="cancel" url="/mypage/main"/>
-                <Button text="수정" className="confirm" onClick={handleEditButton}/>
+                <Button text="취소" className="cancel" url="/mypage/main" />
+                <Button
+                  text="수정"
+                  className="confirm"
+                  onClick={handleEditButton}
+                />
               </div>
             </div>
           </div>

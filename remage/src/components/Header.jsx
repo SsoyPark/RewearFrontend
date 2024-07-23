@@ -9,16 +9,18 @@ import TextButton from "./common/TextButton";
 import "./Header.css";
 import SidebarItem from "./SidebarItem";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { logout } = useAuthStore();
   const isLoggedIn = useAuthStore((state) => state.isAuthenticated);
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
-
+  const navigate = useNavigate();
   const handleLogoutClick = () => {
-    const confirmed = window.confirm('정말 로그아웃 하시겠습니까?');
+    const confirmed = window.confirm("정말 로그아웃 하시겠습니까?");
     if (confirmed) {
       logout();
+      navigate("/");
     }
   };
 

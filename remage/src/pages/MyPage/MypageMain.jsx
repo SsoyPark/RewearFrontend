@@ -2,12 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../../stores/useAuthStore";
 import { useEffect, useState } from "react";
-import { getMyOrders } from "../../api/service";
+import {
+  getAcceptedOrders,
+  getCompanyOrders,
+  getMyOrders,
+} from "../../api/service";
 import { formatDateString } from "../../utils";
 
 const MypageMain = () => {
   const [orders, setOrders] = useState([]);
+  // 일반 사용자 주문 개수 정보
   const [counts, setCounts] = useState({});
+  // 기업 사용자 수락 안한 주문 개수
+  const [pendingOrderCount, setPendingOrderCount] = useState(0);
+  // 기업 사용자 완료 한 주문 개수
+  const [completedOrderCount, setCompletedOrderCount] = useState(0);
+  const [unCompletedOrderCount, setUnCompletedOrderCount] = useState(0);
   const { userType } = useAuthStore();
   const navigate = useNavigate();
 
@@ -45,7 +55,40 @@ const MypageMain = () => {
         alert(err + "주문 정보를 불러오는데 실패했습니다.");
       }
     };
-    fetchMyOrders();
+    const fetchCompanyOrsers = async () => {
+      try {
+        const {
+          data: { results },
+        } = await getCompanyOrders();
+        const newPendingOrderCount = results.length;
+        setPendingOrderCount(newPendingOrderCount);
+      } catch (err) {
+        alert(err + "주문 정보를 불러오는데 실패했습니다.");
+      }
+    };
+    const fetchAcceptedOrders = async () => {
+      try {
+        const {
+          data: { results },
+        } = await getAcceptedOrders();
+        console.log(results);
+        const completedTasksCount = results.filter(
+          (result) => result.is_completed
+        ).length;
+        const unCompletedTasksCount = results.filter(
+          (result) => !result.is_completed
+        ).length;
+        setCompletedOrderCount(completedTasksCount);
+        setUnCompletedOrderCount(unCompletedTasksCount);
+      } catch (err) {
+        alert(err + "주문 정보를 불러오는데 실패했습니다.");
+      }
+    };
+    if (userType === "company") {
+      fetchAcceptedOrders();
+    } else {
+      fetchMyOrders();
+    }
     return () => {};
   }, []);
   return (
@@ -56,13 +99,24 @@ const MypageMain = () => {
       </button>
       <div className="order-summary">
         <div className="order-item">
-          요청 검토 중 <span>{counts?.대기 ?? 0}</span>
+          {userType === "company" ? "주문 대기 중" : "요청 검토 중"}{" "}
+          <span>
+            {userType === "company" ? pendingOrderCount : counts?.대기 ?? 0}
+          </span>
         </div>
         <div className="order-item">
-          진행 중 <span>{(counts?.수락 ?? 0) + (counts?.거절 ?? 0)}</span>
+          진행 중{" "}
+          <span>
+            {userType === "company"
+              ? unCompletedOrderCount
+              : (counts?.수락 ?? 0) + (counts?.거절 ?? 0)}
+          </span>
         </div>
         <div className="order-item">
-          완료 <span>{counts?.완료 ?? 0}</span>
+          완료{" "}
+          <span>
+            {userType === "company" ? completedOrderCount : counts?.완료 ?? 0}
+          </span>
         </div>
       </div>
       <h3 className="section-title">나의 활동</h3>

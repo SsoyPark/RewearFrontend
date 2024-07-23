@@ -13,7 +13,10 @@ const Mypage = () => {
     <div className="page my-page">
       <section>
         <div className="inner">
-          {currentLocation.pathname !== "/mypage/orderlist" && currentLocation.pathname !== "/mypage/orderdetail/:orderid" && <MypageSidebar />}
+          {(currentLocation.pathname !== "/mypage/orderlist" ||
+            currentLocation.pathname !== "/mypage/orderdetail/:orderid") && (
+            <MypageSidebar />
+          )}
           <Routes>
             <Route
               path="/"

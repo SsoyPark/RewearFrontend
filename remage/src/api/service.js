@@ -32,7 +32,7 @@ export const postImageAnalyze = async (formData) => {
     const response = await axiosInstance.post(
       `${baseURL}/analyze/upload/`,
       formData,
-      { headers: { ...formDataHeaders }, timeout: 20000 }
+      { headers: { ...formDataHeaders }, timeout: 30000 }
     );
     return response;
   } catch (error) {
