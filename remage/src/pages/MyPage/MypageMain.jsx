@@ -59,7 +59,7 @@ const MypageMain = () => {
           요청 검토 중 <span>{counts?.대기 ?? 0}</span>
         </div>
         <div className="order-item">
-          진행 중 <span>{counts?.수락 ?? 0+ counts?.거절 ?? 0}</span>
+          진행 중 <span>{counts?.수락 ?? 0 + counts?.거절 ?? 0}</span>
         </div>
         <div className="order-item">
           완료 <span>{counts?.완료 ?? 0}</span>
