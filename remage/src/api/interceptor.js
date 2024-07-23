@@ -3,7 +3,7 @@ import axios from "axios";
 export const axiosInstance = axios.create({
   baseURL: "http://localhost:8000",
   timeout: 20000,
-  withCredentials: true
+  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
@@ -49,11 +49,10 @@ axiosInstance.interceptors.response.use(
           console.log(
             `토큰 만료. 다음 토큰 재생성${response.headers["authorization"]}`
           );
-          const newToken = response.headers["authorization"];
+          const newToken = response.headers["authorization"].split(" ")[1];
           authStorage.state.accessToken = newToken;
           localStorage.setItem("auth-storage", JSON.stringify(authStorage));
-          axiosInstance.defaults.headers.common["Authorization"] =
-            "Bearer " + newToken;
+          axiosInstance.defaults.headers.common["Authorization"] = newToken;
           return axiosInstance(originalRequest);
         } catch (err) {
           console.error("Refresh token expired or invalid.");

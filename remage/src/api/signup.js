@@ -6,6 +6,7 @@ const defaultHeaders = {
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 };
 export const signUp = async (
   username,
@@ -40,11 +41,7 @@ export const signUp = async (
     const response = await axios.post(
       `${BASE_URL}/users/register/`,
       requestBody,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      defaultHeaders
     );
     console.log(response);
     return response;
@@ -97,11 +94,7 @@ export const signUpB = async (
     const response = await axios.post(
       `${BASE_URL}/users/register/b/`,
       requestBody,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      defaultHeaders
     );
     console.log(response);
     return response;
@@ -140,7 +133,7 @@ export const duplicationCheck = async (value, type) => {
       requestBody,
       defaultHeaders
     );
-    return response
+    return response;
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 반환했지만 상태 코드는 2xx 범위 밖입니다.
