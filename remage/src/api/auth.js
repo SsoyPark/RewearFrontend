@@ -3,6 +3,12 @@ import { axiosInstance } from "./interceptor";
 // axios.defaults.withCredentials = true;
 const BASE_URL = process.env.REACT_APP_API_BACKEND_URL;
 // const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const defaultHeaders = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
+};
 export const loginUser = async (username, password, userType) => {
   try {
     const response = await axios.post(
@@ -11,11 +17,7 @@ export const loginUser = async (username, password, userType) => {
         username,
         password,
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+      defaultHeaders
     );
     console.log(response.headers["authorization"]);
     return response;

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Mypage.css";
-import Button from "../../components/common/Button";
 import MypageSidebar from "./MypageSidebar";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import MypageMain from "./MypageMain";
