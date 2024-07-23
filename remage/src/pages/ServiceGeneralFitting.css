@@ -10,10 +10,13 @@
     border-radius: 10px;
 }
 
+.service-general-fitting img {
+    margin: 0;
+}
 .fitting img {
     margin: 0;
 }
-.img-container img {
+.image-container img {
     width: inherit;
     height: inherit;
     object-fit: cover;

@@ -50,11 +50,10 @@ body,
 
 .sidebar-main-page {
     display: flex;
-    height: auto;
     width: 100%;
     margin-top: 70px;
     /* transition: margin-left 0.3s ease-in-out; */
-    min-height: calc(100% - 166px)
+    min-height: 100vh;
 }
 
 .page {
