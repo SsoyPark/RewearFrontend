@@ -106,6 +106,7 @@ const MypageOrderdetail = () => {
   }, [orderid]);
 
   return (
+    <div className="order_content_4536">
     <div className="wrap">
       <div className="order_detail">
         <div className="order_detail_head">
@@ -184,6 +185,7 @@ const MypageOrderdetail = () => {
           <Button text="닫기" onClick={handleBack} />
         </div>
       </div>
+    </div>
     </div>
   );
 };
