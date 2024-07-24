@@ -39,13 +39,13 @@ const Home = () => {
       </div>
       <Banner />
       <div className="home-container">
-        <h1>Home {userType}</h1>
+        {/* <h1>Home {userType}</h1>
         <h1>{isAuthenticated ? "Authenticated" : "Not Authenticated"}</h1>
         <h1>{isAuthenticated ? "Authenticated" : "Not Authenticated"}</h1>
         <Button
           text={isAuthenticated ? "임시 로그아웃" : "임시로그인"}
           onClick={isAuthenticated ? logout : () => login("sample", "sample")}
-        />
+        /> */}
       </div>
     </div>
   );

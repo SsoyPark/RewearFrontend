@@ -60,6 +60,7 @@ const MypageSidebar = () => {
     try {
       const response = await deleteUser();
       alert("회원 탈퇴가 완료되었습니다.");
+      logout();
       navigate("/");
     } catch (err) {
       alert(err);
