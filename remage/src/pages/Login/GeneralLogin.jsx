@@ -32,9 +32,15 @@ const GeneralLogin = ({ userType }) => {
     // console.log(usernameInput);
     // console.log(passwordInput);
     try {
-      await loginService(usernameInput, passwordInput, navigate, login, userType)
+      await loginService(
+        usernameInput,
+        passwordInput,
+        navigate,
+        login,
+        userType
+      );
     } catch (err) {
-      alert(err.message);
+      alert("로그인에 실패했습니다. " + err);
     }
   };
   return (

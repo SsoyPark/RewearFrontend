@@ -4,7 +4,7 @@ import useAuthStore from "../../stores/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "./Modal";
-import { getUserProfile } from "../../api/auth";
+import { deleteUser, getUserProfile } from "../../api/auth";
 
 const MypageSidebar = () => {
   const navigate = useNavigate();
@@ -52,6 +52,19 @@ const MypageSidebar = () => {
       }
     }
   };
+  const handleUserDelete = async () => {
+    const isConfirmed = window.confirm("정말로 회원탈퇴를 하시겠습니까?");
+    if (!isConfirmed) {
+      return;
+    }
+    try {
+      const response = await deleteUser();
+      alert("회원 탈퇴가 완료되었습니다.");
+      navigate("/");
+    } catch (err) {
+      alert(err);
+    }
+  };
   const [nickname, setNickname] = useState("");
   useEffect(() => {
     const fetchProfile = async () => {
@@ -81,7 +94,9 @@ const MypageSidebar = () => {
         />
       </div>
       <div className="spacer"></div>
-      {/* <button className="delete-account-button">회원 탈퇴</button> */}
+      <button className="delete-account-button" onClick={handleUserDelete}>
+        회원 탈퇴
+      </button>
       <Modal
         show={showModal}
         handleClose={handleCloseModal}
