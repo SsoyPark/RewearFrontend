@@ -235,6 +235,13 @@ const ServiceGeneralWrite = () => {
     { value: "fit", label: "폼 줄이기" },
     { value: "etc", label: "그 외" },
   ];
+
+  // 스크롤 조정 함수
+  const handleButtonClick = () => {
+    window.scrollTo(0, 0); // 수직 스크롤을 맨 위로 설정
+    navigate("/service/general/write/confirm/");
+  };
+
   return (
     <div className="page service-general-write">
       <section>
@@ -479,8 +486,7 @@ const ServiceGeneralWrite = () => {
                 <Button
                   text="주문 진행"
                   className="btn-next"
-                  url="/service/general/write/confirm/"
-                  // onClick={handleSubmit}
+                  onClick={handleButtonClick}
                 />
               </div>
               {/* 하단 버튼 영역 끝 */}
