@@ -37,6 +37,12 @@ const GeneralLogin = ({ userType }) => {
       alert(err.message);
     }
   };
+  //엔터 눌리면 handleLoginClick이 실행되는 코드
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLoginClick();
+    }
+  };
   return (
     <div className={styles["login-page"]}>
       <div className="user-type-selector">
@@ -82,6 +88,7 @@ const GeneralLogin = ({ userType }) => {
             onChange={(e) => {
               setPasswordInput(e.target.value);
             }}
+            onKeyDown={handleKeyDown}
           />
           {passwordError && <InputError errorMessage={passwordError} />}
         </div>
