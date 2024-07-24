@@ -3,6 +3,7 @@ import './Board.css';
 import { FaSearch } from 'react-icons/fa';
 
 const Board = () => {
+  window.scrollTo(0, 0); // 수직 스크롤을 맨 위로 설정
   const [activeTab, setActiveTab] = useState('general');
   const [searchTerm, setSearchTerm] = useState('');
   const [searchOption, setSearchOption] = useState('all'); // 추가된 검색 옵션 상태
