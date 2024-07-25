@@ -7,7 +7,6 @@ import "./ServiceGeneralComplete.css";
 import { getUserProfile } from "../api/auth";
 
 const ServiceGeneralComplete = () => {
-  const navigate = useNavigate();
   const [selectedUserType, setSelectedUserType] = useState("general");
   const [nickname, setNickname] = useState("");
   useEffect(() => {

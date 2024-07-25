@@ -92,22 +92,23 @@ export const patchProfile = async (userType, requestBody) => {
   }
 };
 
-export const patchPassword = async (userType, requestBody) => {
-  const formData = new FormData();
+export const patchPassword = async (requestBody) => {
+  // const formData = new FormData();
 
-  // FormData 객체에 데이터 추가
-  for (const key in requestBody) {
-    formData.append(key, requestBody[key]);
-  }
+  // // FormData 객체에 데이터 추가
+  // for (const key in requestBody) {
+  //   formData.append(key, requestBody[key]);
+  // }
 
-  console.log(`다음 정보를 수정합니다 ${requestBody}`);
   try {
-    const response = await axiosInstance.put(
-      `${BASE_URL}/users/profile/${userType === "company" ? "b/" : ""}`,
-      formData,
+    console.log(requestBody);
+    const response = await axiosInstance.patch(
+      `${BASE_URL}/users/pw/`,
+      // formData,
+      requestBody,
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       }
     );
@@ -116,7 +117,7 @@ export const patchPassword = async (userType, requestBody) => {
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 반환했지만 상태 코드는 2xx 범위 밖입니다.
-      throw new Error(error.response.data.detail || "failed");
+      throw new Error(error || "failed");
     } else if (error.request) {
       // 요청이 만들어졌지만 응답을 받지 못했습니다.
       throw new Error("No response received from server");
@@ -136,13 +137,41 @@ export const getCompanyNames = async () => {
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 반환했지만 상태 코드는 2xx 범위 밖입니다.
-      throw new Error(error.response.data.detail || "failed");
+      throw new Error(error || "failed");
     } else if (error.request) {
       // 요청이 만들어졌지만 응답을 받지 못했습니다.
       throw new Error("No response received from server");
     } else {
       // 요청을 설정하는 중에 문제가 발생했습니다.
-      throw new Error(error.message);
+      throw new Error(error);
+    }
+  }
+};
+
+export const deleteUser = async () => {
+  try {
+    const response = await axiosInstance.delete(
+      `${BASE_URL}/users/del/?agree_terms=true&reason=123124123`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          agree_terms: true,
+          reason: "123124123",
+        },
+      }
+    );
+  } catch (error) {
+    if (error.response) {
+      // 서버가 응답을 반환했지만 상태 코드는 2xx 범위 밖입니다.
+      throw new Error(error || "failed");
+    } else if (error.request) {
+      // 요청이 만들어졌지만 응답을 받지 못했습니다.
+      throw new Error("No response received from server");
+    } else {
+      // 요청을 설정하는 중에 문제가 발생했습니다.
+      throw new Error(error);
     }
   }
 };

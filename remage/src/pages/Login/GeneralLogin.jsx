@@ -32,9 +32,21 @@ const GeneralLogin = ({ userType }) => {
     // console.log(usernameInput);
     // console.log(passwordInput);
     try {
-      await loginService(usernameInput, passwordInput, navigate, login, userType)
+      await loginService(
+        usernameInput,
+        passwordInput,
+        navigate,
+        login,
+        userType
+      );
     } catch (err) {
-      alert(err.message);
+      alert("로그인에 실패했습니다. " + err);
+    }
+  };
+  //엔터 눌리면 handleLoginClick이 실행되는 코드
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLoginClick();
     }
   };
   return (
@@ -82,6 +94,7 @@ const GeneralLogin = ({ userType }) => {
             onChange={(e) => {
               setPasswordInput(e.target.value);
             }}
+            onKeyDown={handleKeyDown}
           />
           {passwordError && <InputError errorMessage={passwordError} />}
         </div>

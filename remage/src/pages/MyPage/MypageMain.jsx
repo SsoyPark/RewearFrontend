@@ -8,8 +8,8 @@ import {
   getMyOrders,
 } from "../../api/service";
 import { formatDateString } from "../../utils";
-
 const MypageMain = () => {
+  window.scrollTo(0, 0); // 수직 스크롤을 맨 위로 설정
   const [orders, setOrders] = useState([]);
   // 일반 사용자 주문 개수 정보
   const [counts, setCounts] = useState({});

@@ -88,6 +88,7 @@ const ServiceGeneralConfirm = () => {
         company_name: selectedCompanyName,
       });
       console.log(response);
+      window.scrollTo(0, 0);
       navigate("/service/general/write/complete/");
       resetState();
     } catch (err) {

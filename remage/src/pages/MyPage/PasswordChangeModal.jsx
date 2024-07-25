@@ -4,6 +4,7 @@ import FormInput from "../../components/common/FormInput";
 import Button from "../../components/common/Button";
 import InputError from "../../components/common/InputError";
 import { useState } from "react";
+import { getUserProfile, patchPassword } from "../../api/auth";
 
 const PasswordChangeModal = ({ show, onClose, children }) => {
   const [password, setPassword] = useState("");
@@ -24,13 +25,13 @@ const PasswordChangeModal = ({ show, onClose, children }) => {
     // 패스워드 변경될 때 마다 일치하는지 확인
     const passwordInput = e.target.value;
     setPassword(passwordInput);
-    if (passwordInput !== previousPassword) {
-      setIsPasswordValid(false);
-      setPasswordError("비밀번호가 일치하지 않습니다.");
-    } else {
-      setIsPasswordValid(true);
-      setPasswordError("비밀번호가 일치합니다.");
-    }
+    // if (passwordInput !== previousPassword) {
+    //   setIsPasswordValid(false);
+    //   setPasswordError("비밀번호가 일치하지 않습니다.");
+    // } else {
+    //   setIsPasswordValid(true);
+    //   setPasswordError("비밀번호가 일치합니다.");
+    // }
   };
   const handleNewPasswordChange = (e) => {
     // 비밀번호가 유효한지 확인
@@ -56,13 +57,22 @@ const PasswordChangeModal = ({ show, onClose, children }) => {
       setNewPasswordConfirmError("새 비밀번호가 일치합니다.");
     }
   };
-  const handleConfirmButtonClick = () => {
-    if (isPasswordValid && isNewPasswordValid && isNewPasswordConfirmValid) {
+  const handleConfirmButtonClick = async () => {
+    if (isNewPasswordValid && isNewPasswordConfirmValid) {
       //비밀번호 변경 요청
-
+      try {
+        console.log(password, newPassword, newPasswordConfirm);
+        const response = await patchPassword({
+          old_password: password,
+          new_password: newPassword,
+          verify_password: newPasswordConfirm,
+        });
+        alert("비밀번호 변경이 완료되었습니다.");
+        onClose();
+      } catch (err) {
+        alert("비밀번호 변경 요청에 실패했습니다. " + err);
+      }
       //
-      alert("비밀번호 변경이 완료되었습니다.");
-      onClose();
     } else {
       alert("입력을 확인해주세요.");
     }

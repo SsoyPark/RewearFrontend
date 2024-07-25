@@ -6,6 +6,7 @@ import Button from "../components/common/Button";
 import Banner from "../components/Banner";
 
 const Home = () => {
+  window.scrollTo(0, 0); // 수직 스크롤을 맨 위로 설정
   const navigate = useNavigate();
   // const isAuthenticated = useAuthStore(
   //   (state) => state.isAuthenticated

@@ -10,37 +10,34 @@ import "./ServiceGeneralWrite.css";
 import { postDalleRequest, postImageAnalyze } from "../api/service";
 import { base64ToBlob } from "../utils";
 import { postReformRequest } from "../api/service";
-import useServiceGeneralWriteStore from "../stores/ServiceGeneralWriteStore";
 
 const ServiceGeneralWrite = () => {
   const navigate = useNavigate();
-  const {
-    selectedUserType,
-    setSelectedUserType,
-    formData,
-    setFormData,
-    errorMessage,
-    setErrorMessage,
-    imageError,
-    setImageError,
-    isInfoAreaVisible,
-    setIsInfoAreaVisible,
-    isImageCreated,
-    setIsImageCreated,
-    buttonClass,
-    setButtonClass,
-    uploadedImage,
-    setUploadedImage,
-    analysisInfo,
-    setAnalysisInfo,
-    reformForm,
-    setReformForm,
-    createdImageUrl,
-    setCreatedImageUrl,
-    resetState,
-  } = useServiceGeneralWriteStore();
-
-  // 로딩 상태 관리
+  const formData = {
+    selectField: "",
+    otherOption: "",
+  };
+  const [imageError, setImageError] = useState("");
+  const [isInfoAreaVisible, setIsInfoAreaVisible] = useState(false);
+  const [isImageCreated, setIsImageCreated] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [analysisInfo, setAnalysisInfo] = useState({
+    category: "",
+    material: "",
+    color: "",
+  });
+  const [reformForm, setReformForm] = useState({
+    neck_line: "",
+    sleeve_length: "",
+    pattern: "",
+    pocket: "",
+    zip: "",
+    button: "",
+    addt_design: "",
+  });
+  const [createdImageUrl, setCreatedImageUrl] = useState(
+    "https://i.imgur.com/BM8mG7U.png"
+  );
   const [analyzeLoading, setAnalyzeLoading] = useState(false);
   const [designLoading, setDesignLoading] = useState(false);
 
@@ -235,6 +232,14 @@ const ServiceGeneralWrite = () => {
     { value: "fit", label: "폼 줄이기" },
     { value: "etc", label: "그 외" },
   ];
+
+  // 스크롤 조정 함수
+  const handleButtonClick = (url) => {
+    window.scrollTo(0, 0); // 수직 스크롤을 맨 위로 설정
+    navigate(url);
+    // navigate("/service/general/write/confirm/");
+  };
+
   return (
     <div className="page service-general-write">
       <section>
@@ -473,14 +478,16 @@ const ServiceGeneralWrite = () => {
                 <Button
                   text="가상피팅"
                   className="btn-next btn-white"
-                  url="/service/general/write/fitting/"
-                  // onClick={handleSubmit}
+                  onClick={() =>
+                    handleButtonClick("/service/general/write/fitting/")
+                  }
                 />
                 <Button
                   text="주문 진행"
                   className="btn-next"
-                  url="/service/general/write/confirm/"
-                  // onClick={handleSubmit}
+                  onClick={() =>
+                    handleButtonClick("/service/general/write/confirm/")
+                  }
                 />
               </div>
               {/* 하단 버튼 영역 끝 */}
