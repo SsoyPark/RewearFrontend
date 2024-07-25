@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import "./Login.css";
 import Button from "../../components/common/Button";
 import GeneralLogin from "./GeneralLogin";
+import NotFound from "../NotFound";
 
 const CompanyLogin = () => {
   return <div>CompanyLogin</div>;
@@ -27,6 +28,7 @@ const Login = () => {
           <Route path="/" element={<Navigate to="general" replace />} />
           <Route path="general" element={<GeneralLogin userType="general" />} />
           <Route path="company" element={<GeneralLogin userType="company" />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>

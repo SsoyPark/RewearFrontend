@@ -6,7 +6,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Button from "../../components/common/Button";
 import TermsOfServices from "./TermsOfServices";
 import UserInfo from "./UserInfo";
-import Completion from "./Completion";
+import NotFound from "../NotFound";
 
 const SignUp = () => {
   const [emailRecieveChecked, setEmailRecieveChecked] = useState(false);
@@ -44,12 +44,27 @@ const SignUp = () => {
               <Route path="/" element={<Navigate to="confirm" replace />} />
               <Route
                 path="confirm"
-                element={<TermsOfServices setCurrentStage={setCurrentStage} emailRecieveChecked={emailRecieveChecked} smsRecieveChecked={smsRecieveChecked} setEmailRecieveChecked={setEmailRecieveChecked} setSmsRecieveChecked={setSmsRecieveChecked}/>}
+                element={
+                  <TermsOfServices
+                    setCurrentStage={setCurrentStage}
+                    emailRecieveChecked={emailRecieveChecked}
+                    smsRecieveChecked={smsRecieveChecked}
+                    setEmailRecieveChecked={setEmailRecieveChecked}
+                    setSmsRecieveChecked={setSmsRecieveChecked}
+                  />
+                }
               />
               <Route
                 path="userinfo"
-                element={<UserInfo setCurrentStage={setCurrentStage} emailRecieveChecked={emailRecieveChecked} smsRecieveChecked={smsRecieveChecked}/>}
+                element={
+                  <UserInfo
+                    setCurrentStage={setCurrentStage}
+                    emailRecieveChecked={emailRecieveChecked}
+                    smsRecieveChecked={smsRecieveChecked}
+                  />
+                }
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </div>

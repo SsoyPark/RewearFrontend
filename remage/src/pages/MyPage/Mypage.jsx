@@ -6,6 +6,7 @@ import MypageMain from "./MypageMain";
 import MypageOrderlist from "./MypageOrderlist";
 import ProtectedRoute from "../../components/ProtectedRoute";
 import MypageOrderdetail from "./MypageOrderdetail";
+import NotFound from "../NotFound";
 
 const Mypage = () => {
   const currentLocation = useLocation();
@@ -50,6 +51,7 @@ const Mypage = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </section>

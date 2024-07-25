@@ -36,18 +36,14 @@ function App() {
               <Route path="/sign-up/complete" element={<Completion />} />
               <Route path="/mypage/*" element={<Mypage />} /> {/* /mypage/* 경로 설정 */}
               <Route path="/mypage/edit" element={<EditProfile />} />
-              <Route path="/mypage/*" element={<NotFound />} />
               <Route path="/service/general" element={<ServiceGeneral />} />
               <Route path="/service/general/write" element={<ServiceGeneralWrite />} />
               <Route path="/service/general/write/fitting" element={<ServiceGeneralFitting />} />
               <Route path="/service/general/write/complete" element={<ServiceGeneralComplete />} />
               <Route path="/service/general/write/confirm" element={<ServiceGeneralConfirm />} />
-              <Route path="/service/general/*" element={<NotFound />} />
               <Route path="/service/company/order" element={<CompanyOrder />} />
               <Route path="/service/company/orderlist" element={<CompanyOrderList />} />
-              <Route path="/service/company/*" element={<NotFound />} />
               <Route path="/Board" element={<Board />} />
-              <Route path="/Board/*" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
