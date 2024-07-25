@@ -11,11 +11,7 @@ const MypageSidebar = () => {
   const { logout } = useAuthStore();
   const [showModal, setShowModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleLogoutClick = () => {
-    navigate("/");
-    logout();
-  };
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleAvatarClick = () => {
     setShowModal(true);
@@ -75,35 +71,43 @@ const MypageSidebar = () => {
           data: { nickname },
         } = await getUserProfile();
         setNickname(nickname);
+        setIsLoading(false);
       } catch (err) {
         // setError(err);
       }
     };
     fetchProfile();
   }, []);
+
   return (
     <aside className="mp-sidebar">
-      <div className="user-info">
-        <div className="user-avatar" onClick={handleAvatarClick}>
-          <span className="material-icons user-avatar-icons">person</span>
-        </div>
-        <div className="user-name">{nickname}</div>
-        <Button
-          text="회원정보 수정"
-          url="/mypage/edit/"
-          className="editprofile-button"
-        />
-      </div>
-      <div className="spacer"></div>
-      <button className="delete-account-button" onClick={handleUserDelete}>
-        회원 탈퇴
-      </button>
-      <Modal
-        show={showModal}
-        handleClose={handleCloseModal}
-        handleFileChange={handleFileChange}
-        handleFileSubmit={handleFileSubmit}
-      />
+      {isLoading ? (
+        <></>
+      ) : (
+        <>
+          <div className="user-info">
+            <div className="user-avatar" onClick={handleAvatarClick}>
+              <span className="material-icons user-avatar-icons">person</span>
+            </div>
+            <div className="user-name">{nickname}</div>
+            <Button
+              text="회원정보 수정"
+              url="/mypage/edit/"
+              className="editprofile-button"
+            />
+          </div>
+          <div className="spacer"></div>
+          <button className="delete-account-button" onClick={handleUserDelete}>
+            회원 탈퇴
+          </button>
+          <Modal
+            show={showModal}
+            handleClose={handleCloseModal}
+            handleFileChange={handleFileChange}
+            handleFileSubmit={handleFileSubmit}
+          />
+        </>
+      )}
     </aside>
   );
 };

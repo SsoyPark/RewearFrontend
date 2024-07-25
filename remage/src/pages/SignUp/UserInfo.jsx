@@ -17,8 +17,7 @@ const UserInfo = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const type = queryParams.get("type");
+  const type = location.state?.userType;
   const [isValidAccess, setIsValidAccess] = useState(false);
   useEffect(() => {
     if (location.state?.from !== "TermsOfServices") {
@@ -195,7 +194,7 @@ const UserInfo = ({
       setBusinessNumberSystemMessage("사업자등록번호를 입력해주세요.");
       return;
     }
-    const isValid = checkBusinessNumber(businessNumber);
+    const isValid = await checkBusinessNumber(businessNumber);
     setIsBusinessNumberValid(isValid);
     if (isValid) {
       setBusinessNumberSystemMessage("유효한 사업자등록번호 입니다.");
@@ -204,13 +203,13 @@ const UserInfo = ({
     }
   };
 
-  const handleBusinessNameCheck = () => {
+  const handleBusinessNameCheck = async () => {
     if (!businessName) {
       setIsBusinessNameValid(false);
       setBusinessNameSystemMessage("회사명을 입력해주세요.");
       return;
     }
-    const isValid = checkValue(businessName, "companyName");
+    const isValid = await checkValue(businessName, "companyName");
     setIsBusinessNameValid(isValid);
     if (isValid) {
       setBusinessNameSystemMessage("유효한 회사명 입니다.");
@@ -284,14 +283,21 @@ const UserInfo = ({
             smsRecieveChecked,
             emailRecieveChecked
           );
-          navigate("/sign-up/complete/", { state: { from: "UserInfo" } });
+          navigate("/sign-up/complete/", {
+            state: {
+              from: "UserInfo",
+              userId: userId,
+              password: password,
+              userType: type,
+              nickname: nickname,
+            },
+          });
         } catch (err) {
           alert(err.message);
         }
       }
     }
   };
-
   return (
     <>
       {isValidAccess ? (
