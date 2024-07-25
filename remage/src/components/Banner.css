@@ -5,6 +5,9 @@
   gap: 2rem; /* 이미지 사이 간격 */
   padding: 2rem 0;
 }
+.banner-container:last-of-type {
+  padding-bottom: 0;
+}
 
 .banner-item {
   width: 100%;

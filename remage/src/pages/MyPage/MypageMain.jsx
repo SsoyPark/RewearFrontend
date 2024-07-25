@@ -143,25 +143,37 @@ const MypageMain = () => {
           <div className="activities-section">
             <div className="activities-grid">
               <div className="activity-item">
-                📑 저장한 디자인
+                <div>
+                  <span className="activity-icon"></span>
+                  <p>저장한 디자인</p>
+                </div>
                 <span className="material-icons activity-item-arrow-icon">
                   chevron_right
                 </span>
               </div>
               <div className="activity-item">
-                ⭐ 북마크
+                <div>
+                  <span className="activity-icon"></span>
+                  <p>북마크</p>
+                </div>
                 <span className="material-icons activity-item-arrow-icon">
                   chevron_right
                 </span>
               </div>
               <div className="activity-item">
-                😃 내가 쓴 리뷰
+                <div>
+                  <span className="activity-icon"></span>
+                  <p>내가 쓴 리뷰</p>
+                </div>
                 <span className="material-icons activity-item-arrow-icon">
                   chevron_right
                 </span>
               </div>
               <div className="activity-item">
-                ✉️ 문의 내역
+                <div>
+                    <span className="activity-icon"></span>
+                    <p>문의 내역</p>
+                  </div>
                 <span className="material-icons activity-item-arrow-icon">
                   chevron_right
                 </span>
