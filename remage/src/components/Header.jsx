@@ -24,7 +24,7 @@ const Header = () => {
         {/* <TextButton id="logo-main-page" text="REMAGE" url="/" /> */}
         <div className="header-box">
           <Link to={`${baseUrl}/`} id="logo-main-page">
-            <img src="/Logo.png" alt="REMAGE Logo" />
+            <img src="/img/logo.png" alt="REMAGE Logo" />
           </Link>
           <div className="search-profile-contents">
             {/* <TextButton text="서비스" />
