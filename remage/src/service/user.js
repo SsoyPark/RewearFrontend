@@ -1,6 +1,4 @@
 import { loginUser } from "../api/auth";
-import useAuthStore from "../stores/useAuthStore";
-import { useNavigate } from "react-router-dom";
 
 
 export const loginService = async (usernameInput, passwordInput, navigate, login, userType) =>{

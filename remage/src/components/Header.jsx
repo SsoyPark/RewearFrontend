@@ -1,13 +1,7 @@
 import React from "react";
-import { FaUser, FaRegBell } from "react-icons/fa";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { MdOutlineChatBubbleOutline } from "react-icons/md";
 import useAuthStore from "../stores/useAuthStore";
-import { useEffect } from "react";
-import IconButton from "./common/IconButton";
 import TextButton from "./common/TextButton";
 import "./Header.css";
-import SidebarItem from "./SidebarItem";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 

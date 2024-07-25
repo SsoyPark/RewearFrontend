@@ -9,7 +9,6 @@ import ServiceGeneralWrite from "./pages/ServiceGeneralWrite";
 import ServiceGeneralComplete from "./pages/ServiceGeneralComplete";
 import ServiceGeneralConfirm from "./pages/ServiceGeneralConfirm";
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
 import Mypage from "./pages/MyPage/Mypage";
 import Board from "./pages/Board";
 import EditProfile from "./pages/MyPage/EditProfile";

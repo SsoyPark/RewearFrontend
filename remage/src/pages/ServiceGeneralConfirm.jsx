@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ImageUploader from "../components/common/ImageUploader";
 import Button from "../components/common/Button";
-import TextButton from "../components/common/TextButton";
 // import FormInput from "../components/common/FormInput";
 import Textarea from "../components/common/Textarea";
 import SelectField from "../components/common/SelectField";
@@ -39,7 +37,6 @@ const lookupTable = {
 
 const ServiceGeneralConfirm = () => {
   const navigate = useNavigate();
-  const [selectedUserType, setSelectedUserType] = useState("general");
   const {
     analysisInfo,
     reformForm,

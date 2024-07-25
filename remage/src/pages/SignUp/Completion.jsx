@@ -5,7 +5,6 @@ import styles from "./Completion.module.css";
 import Button from "../../components/common/Button";
 import useAuthStore from "../../stores/useAuthStore";
 import { loginService } from "../../service/user";
-import { getUserProfile } from "../../api/auth";
 
 const Completion = () => {
   const { login } = useAuthStore();

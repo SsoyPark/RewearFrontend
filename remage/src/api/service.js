@@ -1,6 +1,5 @@
 import axios from "axios";
 import { axiosInstance } from "./interceptor";
-import { json } from "react-router-dom";
 axios.defaults.withCredentials = true;
 const baseURL = process.env.REACT_APP_API_BACKEND_URL;
 const fastAPIURL = process.env.REACT_APP_API_FASTAPI_URL;
