@@ -3,6 +3,7 @@ import { axiosInstance } from "./interceptor";
 import { json } from "react-router-dom";
 axios.defaults.withCredentials = true;
 const baseURL = process.env.REACT_APP_API_BACKEND_URL;
+const fastAPIURL = process.env.REACT_APP_API_FASTAPI_URL;
 const formDataHeaders = {
   "Content-Type": "multipart/form-data",
 };
@@ -11,9 +12,10 @@ const jsonDataHeaders = {
 };
 
 export const virtualFitting = async (imageForm) => {
+  console.log(`${fastAPIURL}/analysis/predict`);
   try {
     const response = await axios.post(
-      `http://34.47.70.117:8000/analysis/predict`,
+      `${fastAPIURL}/analysis/predict`,
       imageForm,
       {
         headers: formDataHeaders,

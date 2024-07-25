@@ -41,26 +41,9 @@ const ServiceGeneralConfirm = () => {
   const navigate = useNavigate();
   const [selectedUserType, setSelectedUserType] = useState("general");
   const {
-    formData,
-    // setFormData,
-    // errorMessage,
-    // setErrorMessage,
-    // imageError,
-    // setImageError,
-    // isInfoAreaVisible,
-    // setIsInfoAreaVisible,
-    // isImageCreated,
-    // setIsImageCreated,
-    // buttonClass,
-    // setButtonClass,
-    // uploadedImage,
-    // setUploadedImage,
     analysisInfo,
-    // setAnalysisInfo,
     reformForm,
-    // setReformForm,
     createdImageUrl,
-    // setCreatedImageUrl,
     resetState,
   } = useServiceGeneralWriteStore();
   const [nickname, setNickname] = useState("");

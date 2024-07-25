@@ -10,6 +10,7 @@ import "./ServiceGeneralWrite.css";
 import { postDalleRequest, postImageAnalyze } from "../api/service";
 import { base64ToBlob } from "../utils";
 import { postReformRequest } from "../api/service";
+import useServiceGeneralWriteStore from "../stores/ServiceGeneralWriteStore";
 
 const ServiceGeneralWrite = () => {
   const navigate = useNavigate();
@@ -21,25 +22,17 @@ const ServiceGeneralWrite = () => {
   const [isInfoAreaVisible, setIsInfoAreaVisible] = useState(false);
   const [isImageCreated, setIsImageCreated] = useState(false);
   const [uploadedImage, setUploadedImage] = useState(null);
-  const [analysisInfo, setAnalysisInfo] = useState({
-    category: "",
-    material: "",
-    color: "",
-  });
-  const [reformForm, setReformForm] = useState({
-    neck_line: "",
-    sleeve_length: "",
-    pattern: "",
-    pocket: "",
-    zip: "",
-    button: "",
-    addt_design: "",
-  });
-  const [createdImageUrl, setCreatedImageUrl] = useState(
-    "https://i.imgur.com/BM8mG7U.png"
-  );
   const [analyzeLoading, setAnalyzeLoading] = useState(false);
   const [designLoading, setDesignLoading] = useState(false);
+  const {
+    analysisInfo,
+    setAnalysisInfo,
+    reformForm,
+    setReformForm,
+    createdImageUrl,
+    setCreatedImageUrl,
+    resetState,
+  } = useServiceGeneralWriteStore();
 
   // select 필드 상태 관리
   const handleSelectChange = (e) => {
@@ -53,7 +46,9 @@ const ServiceGeneralWrite = () => {
     setReformForm(newReformForm);
     console.log(newReformForm);
   };
-
+  useEffect(() => {
+    resetState();
+  }, [resetState]);
   // '기타 (선택)' 필드에서 '그 외' 선택 시 텍스트 입력 필드 노출
   useEffect(() => {
     const otherOptionDiv = document.querySelector(".new-line");
