@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Button from "../components/common/Button";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./ServiceGeneralWrite.css";
 import "./ServiceGeneralFitting.css";
 import ImageUploader from "../components/common/ImageUploader";
@@ -26,8 +26,6 @@ const ServiceGeneralFitting = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const fittingImage = queryParams.get("fittingImage");
-  const navigate = useNavigate();
-  const [selectedUserType, setSelectedUserType] = useState("general");
   const [image, setImage] = useState(null);
   const [resultImageURL, setResultImageURL] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 변수

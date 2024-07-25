@@ -1,13 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Button from "../components/common/Button";
-import { useNavigate } from "react-router-dom";
 import "./ServiceGeneralWrite.css";
 import "./ServiceGeneralComplete.css";
 import { getUserProfile } from "../api/auth";
 
 const ServiceGeneralComplete = () => {
-  const [selectedUserType, setSelectedUserType] = useState("general");
   const [nickname, setNickname] = useState("");
   useEffect(() => {
     const fetchProfile = async () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Mypage.css";
 import MypageSidebar from "./MypageSidebar";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
