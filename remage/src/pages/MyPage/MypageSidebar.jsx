@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../components/common/Button";
+import TextButton from "../../components/common/TextButton";
 import useAuthStore from "../../stores/useAuthStore";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -95,11 +96,13 @@ const MypageSidebar = () => {
               url="/mypage/edit/"
               className="editprofile-button"
             />
+            <TextButton
+              className="btn-delete-account"
+              text="회원 탈퇴"
+              onClick={handleUserDelete}
+            />  
           </div>
           <div className="spacer"></div>
-          <button className="delete-account-button" onClick={handleUserDelete}>
-            회원 탈퇴
-          </button>
           <Modal
             show={showModal}
             handleClose={handleCloseModal}
